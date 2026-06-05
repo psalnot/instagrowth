@@ -1,0 +1,6 @@
+{
+    "require": {
+        "ivan1986/dev-container": "^0.4.2",
+        "stripe/stripe-php": "^7.100"
+    }
+}

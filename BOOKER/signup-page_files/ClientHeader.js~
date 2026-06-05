@@ -1,0 +1,373 @@
+$(document).ready(function () {
+    // emojionearea
+    $("body").append('<div class="dummy2 hidden"></div>');
+    $(".dummy2").emojioneArea();
+    var apply_emoji = setInterval(function () {
+        if (window["emojione"] != undefined) {
+            replaceNotificationMessageEmoji();
+            clearInterval(apply_emoji);
+            $(".dummy").remove();
+        }
+    }, 200);
+});
+
+function replaceNotificationMessageEmoji() {
+    if (window["emojione"] != undefined) {
+        $(".last-message-summary").each(function (index, elem) {
+            $(elem).html(emojione.toImage($(elem).text()));
+        });
+    }
+}
+
+var notification_sound = new Audio('mysite/sounds/arpeggio.mp3');
+var mute = false;
+if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    $(".support-link,.messages-menu img,#activities-notification img").qtip({
+        position: {
+            my: 'top right',
+            at: 'bottom center',
+            target: false, // Defaults to target element
+            container: false, // Defaults to $(document.body)
+            viewport: false, // Requires Viewport plugin
+            adjust: {
+                x: 7, y: 5, // Minor x/y adjustments
+                mouse: true, // Follow mouse when using target:'mouse'
+                resize: true, // Reposition on resize by default
+                method: 'flip flip' // Requires Viewport plugin
+            },
+            effect: function (api, pos, viewport) {
+                $(this).animate(pos, {
+                    duration: 200,
+                    queue: false
+                });
+            }
+        },
+        show: {
+            target: false, // Defaults to target element
+            event: 'mouseenter', // Show on mouse over by default
+            effect: true, // Use default 90ms fade effect
+            delay: 90, // 90ms delay before showing
+            solo: false, // Do not hide others when showing
+            ready: false, // Do not show immediately
+            modal: { // Requires Modal plugin
+                on: false, // No modal backdrop by default
+                effect: true, // Mimic show effect on backdrop
+                blur: true, // Hide tooltip by clicking backd rop
+                escape: true // Hide tooltip when Esc pressed
+            }
+        },
+        hide: {
+            target: false, // Defaults to target element
+            event: 'mouseleave', // Hide on mouse out by default
+            effect: true, // Use default 90ms fade effect
+            delay: 0, // No hide delay by default
+            fixed: false, // Non-hoverable by default
+            inactive: false, // Do not hide when inactive
+            leave: 'window', // Hide when we leave the window
+            distance: false // Don't hide after a set distance
+        },
+        style: {
+            classes: 'qtip-youtube'
+        }
+    });
+}
+$(document).ready(function () {
+    $(".favorite-link").on("click", function (event) {
+        if ($(".favorite-link").data('favorites') == 0) {
+            event.preventDefault();
+            openPopup('Ubooker', 'You have no favorite models on your list - to add models, just click the heart icon at the top of their profile picture');
+        }
+
+    });
+});
+function setAllMessagesAsRead() {
+    $.ajax({
+        url: "/message/setAllMessagesAsRead",
+        success: function (response) {
+            try {
+                response = JSON.parse(response);
+            }
+            catch (e) {
+                alert("Sorry there has been a temporary error, please try again later.");
+                return;
+            }
+            if (response.success) {
+                $("#messages-notification .unread").removeClass("unread");
+                $("#messages-count").hide();
+                $(".unread-count").remove();
+            }
+        }
+    })
+}
+
+
+function setAllEventsAsRead() {
+    $.ajax({
+        url: "/message/setAllEventsAsRead",
+        success: function (response) {
+            try {
+                response = JSON.parse(response);
+            }
+            catch (e) {
+                alert("Sorry there has been a temporary error, please try again later.");
+                return;
+            }
+            if (response.success) {
+                $("#activities-notification .unread").removeClass("unread");
+                $("#activities-count").hide();
+            }
+        }
+    })
+}
+
+function readMessages(context_class, context_id) {
+
+    var chat = $("#scroll_container_" + context_class + "_" + context_id);
+    $.ajax({
+        method: "GET",
+        url: "/message/setReadMessages",
+        data: {
+            context_class: context_class,
+            context_id: context_id
+        },
+        success: function (response) {
+            try {
+                response = JSON.parse(response);
+            }
+            catch (e) {
+                alert("Sorry there has been a temporary error, please try again later.");
+                return;
+            }
+            ;
+            if (response.success) {
+
+                updateNotifications();
+            }
+        },
+        error: function (request, status, error) {
+            alert("Sorry there has been a temporary error, please try again later.");
+        }
+    });
+
+
+}
+
+function setMessageAsRead(elem, event) {
+    // if(unapproved_model){
+    //     return;
+    // }
+    var href = $(elem).closest("[data-message-id]").attr("href");
+    if ($(elem).closest("[data-message-id]").hasClass("unread")) {
+        event.preventDefault();
+
+        var message_id = $(elem).closest("[data-message-id]").data("message-id");
+        $.ajax({
+            url: "/message/setMessageAsRead",
+            data: {
+                message_id: message_id
+            },
+            success: function (response) {
+                try {
+                    response = JSON.parse(response);
+                }
+                catch (e) {
+                    alert("Sorry there has been a temporary error, please try again later.");
+                    return;
+                }
+                if (response.success) {
+                    location = href;
+
+                }
+
+            }
+
+        })
+    }
+    var hash = href.split("#");
+
+    if (hash.length == 2) {
+        hash = hash[1];
+        if (window['openChat'] != undefined && hash != "" && $("[data-hash=" + hash + "]").length > 0) {
+
+            openChat($("[data-hash=" + hash + "]")[0])
+        }
+    }
+
+}
+
+function openPopup(title, text) {
+    var select_models_popup = $("<div>");
+    select_models_popup.addClass("custom_popup");
+    var select_models_title = $("<h3>");
+    select_models_title.addClass("popup_title").html(title)
+    select_models_popup.append(select_models_title);
+    var select_models_text = $("<p>");
+    select_models_text.addClass("description").html(text)
+    select_models_popup.append(select_models_text);
+    $.magnificPopup.open({
+        items: {
+            src: select_models_popup,
+            type: 'inline'
+        }
+    });
+}
+
+function checkNotifications() {
+
+    var url = "/message/checkNotifications";
+    var messages_last_edited = $("#messages-notification").data("messages-last-edited");
+    var activities_last_edited = $("#activities-notification").data("activities-last-edited");
+    $.ajax({
+        method: "GET",
+        url: url,
+        data: {
+            MessagesLastEdited: messages_last_edited,
+            ActivitiesLastEdited: activities_last_edited
+        },
+        success: function (response) {
+            setTimeout(function () {
+                checkNotifications();
+            }, 5000);
+            try {
+                response = JSON.parse(response);
+            } catch (e) {
+                response = false;
+                return;
+            }
+            if (response.success) {
+                var refresh = false;
+                if (response.Messages && messages_last_edited != response.Messages.LastEdited) {
+                    $("#messages-count").text(response.Messages.Unread);
+                    $("#messages-count").show();
+                    $("#messages-notification").data("messages-last-edited", response.Messages.LastEdited);
+
+                    if (!mute) {
+                        notification_sound.play();
+                    }
+                    updateNotifications();
+                    if (typeof loadConversations === "function") {
+                        loadConversations();
+                    }
+                }
+                if (response.Activities && activities_last_edited != response.Activities.LastEdited) {
+                    $("#activities-count").text(response.Activities.Unread);
+                    $("#activities-count").show();
+                    $("#activities-notification").data("activities-last-edited", response.Activities.LastEdited);
+                    notification_sound.play();
+                    updateNotifications('Event');
+                    if (typeof reloadDetails === "function") {
+                        reloadDetails();
+                    }
+
+
+                }
+
+            }
+
+        },
+        error: function () {
+            setTimeout(function () {
+                getNewMessages();
+            }, 30000);
+        }
+    });
+}
+
+setTimeout(function () {
+    checkNotifications();
+}, 5000);
+
+function updateNotifications(type) {
+    if (type === undefined) {
+        type = 'Message';
+    }
+    var url = "/message/updateNotifications";
+    $.ajax({
+        method: "GET",
+        url: url,
+        data: {
+            type: type
+        },
+        success: function (response) {
+            try {
+                response = JSON.parse(response);
+            } catch (e) {
+                response = false;
+                return;
+            }
+            if (response.success) {
+                if (type == "Message") {
+                    $("#messages-notification ul.menu").html(response.fragment);
+                    if (response.unread > 0) {
+                        $("#messages-count").text(response.unread);
+                        $("#messages-count").show();
+                    } else {
+                        $("#messages-count").hide();
+                    }
+                    replaceNotificationMessageEmoji();
+                }
+                if (type == "Event") {
+                    $("#activities-notification ul.menu").html(response.fragment);
+                }
+            }
+
+        },
+        error: function () {
+
+        }
+    });
+}
+
+function loadNextActivities(elem) {
+    var scroll_bottom = elem.scrollHeight - elem.clientHeight;
+    var current_scroll_pos = elem.scrollTop;
+    var start = $(elem).data("start");
+    var template = $(elem).data("template");
+    var element = $(elem);
+    if (current_scroll_pos > scroll_bottom - 50 && start != -1 && !element.hasClass("loading")) {
+        element.addClass("loading");
+        start += 15;
+        element.data("start", start);
+        var url = "/message/updateNotifications";
+        $.ajax({
+            method: "GET",
+            url: url,
+            data: {
+                type: 'Event',
+                start: start,
+                template: template
+            },
+            success: function (response) {
+                element.removeClass("loading");
+                try {
+                    response = JSON.parse(response);
+                } catch (e) {
+                    response = false;
+                    return;
+                }
+                if (response.success) {
+
+                    element.append(response.fragment);
+                } else {
+                    element.data("start", -1);
+                }
+
+            },
+            error: function () {
+
+            }
+        });
+    }
+
+}
+function showApprovalPopup() {
+    if (member_class_name == "Client" && needs_validation) {
+        $.magnificPopup.open({
+            items: {
+                src: '<div class="custom_popup">\n    <h3 class="popup_title">Ubooker</h3>\n    <p class="description">\n ' + member_name + ', you can start booking models and access all our features after our team has verified your account\n    </p>\n    <button title="Close (Esc)" type="button" class="mfp-close">×</button>\n</div>',
+                type: 'inline'
+            }
+        });
+    }
+}
+

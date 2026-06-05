@@ -1,0 +1,1001 @@
+body {
+    font-family: "Messina Sans";
+    font-size: 15px;
+    -webkit-text-stroke: 0px!important;
+    -webkit-font-smoothing: antialiased !important;
+
+    /*text-rendering: optimizeLegibility;*/
+
+}
+
+a:focus, a:hover {
+    color: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/*---------------------------Header----------------------------------*/
+header#my-header {
+    position: fixed;
+    background-color: #fff;
+    width: 100%;
+    height: 81px;
+    z-index: 999;
+
+}
+
+header#my-header .logo img {
+    height: 81px;
+    margin: 0 auto;
+    padding: 25px 0;
+}
+
+nav {
+    height: 100%;
+    display: inline-block;
+}
+
+header#my-header .logo {
+    height: 100%;
+
+    text-align: center;
+    display: inline-block;
+}
+
+.search {
+    height: 100%;
+    display: inline-block;
+}
+
+.search img {
+    float: right;
+    height: 81px;
+    margin-right: 16px;
+    padding: 32px 0;
+}
+
+#menu-mask {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.4);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+    z-index: 99999;
+    -webkit-transition: all 225ms ease;
+    -moz-transition: all 225ms ease;
+    transition: all 225ms ease;
+
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 9999999;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    -webkit-box-shadow: 0px 2px 10px -1px rgba(0, 0, 0, 0.20);
+    -moz-box-shadow: 0px 2px 10px -1px rgba(0, 0, 0, 0.20);
+    box-shadow: 0px 2px 10px -1px rgba(0, 0, 0, 0.20);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 35px;
+    text-align: center;
+}
+
+.sidenav .menu-item {
+    padding: 15px;
+    text-decoration: none;
+    width: 320px;
+    font-family: Messina Sans;
+    font-size: 18px;
+    color: #FFFFFF;
+    font-weight: normal;
+    text-align: left;
+    padding-left: 40px;
+}
+
+.closebtn {
+    color: #fff;
+}
+
+a.menu-item.current {
+    background: #fff;
+    color: #2a2928;
+}
+
+
+.sidenav .social-media {
+    width: 180px;
+    margin-left: 70px;
+    position: absolute;
+    bottom:15px;
+}
+
+.sidenav .social-media img {
+    width: 35px;
+    padding: 5px 8px;
+}
+
+.sidenav .social-media i {
+    color: #fff;
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    font-size: 17px;
+    position: relative;
+    top: 2px;
+}
+
+.menu-user {
+    width: 320px;
+    font-family: "Messina Sans";
+    font-size: 15px;
+    line-height: 45px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    position: relative;
+    min-height: 200px;
+    height: 25%;
+
+}
+.menu-user-login {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -160px;
+    margin-top: -22px;
+}
+.menu-user .thumbnail-member {
+    height: 130px;
+    width: 130px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    margin: 0 auto;
+    background-size: cover !important;
+}
+
+.menu-user-name {
+    font-family: "Messina Sans";
+    width: 100%;
+    text-align: center;
+    display: block;
+    color: #f75011 !important;
+    line-height: 30px;
+    text-transform: none;
+    font-weight: bold;
+}
+
+.menu-user-login {
+    width: 100%;
+    text-align: center;
+    display: block;
+
+}
+
+.menu-user-login a {
+    color: #fff;
+    padding: 0 5px;
+}
+
+.menu-user-login a:hover {
+    color: #fff !important;
+
+}
+
+.sidenav a.closebtn:hover, .menu-user a:hover, .offcanvas a:focus, .sidenav a.closebtn:focus, .menu-user a:focus {
+    text-decoration: none;
+    color: #fff;
+}
+
+
+a.menu-item:active{
+
+}
+a.menu-item:hover {
+    text-decoration: underline;
+
+}
+.menu-user-login a:hover,.menu-user span:hover{
+    text-decoration: underline;
+}
+.closebtn {
+    position: absolute;
+    top: 7px;
+    top: 7px;
+    color: #fff;
+    left: 12px;
+    font-size: 45px !important;
+    text-decoration: none;
+    font-family: "Messina Sans";
+    z-index: 9999;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 0 8px;
+    padding-top: 130px;
+}
+
+.our-models#main {
+    padding: 0;
+    padding-top: 95px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+.menu-toggle {
+    color: #2a2928;
+    padding: 30px 0;
+    font-size: 12px;
+    display: block;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 9012;
+    top: 0;
+    float: left;
+    cursor: pointer;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle .icon {
+    width: 20px;
+    display: block;
+    float: left;
+    margin-right: 10px;
+    padding: 1px 0;
+    margin-top: 2px;
+}
+
+.menu-toggle .icon span {
+    height: 2px;
+    width: 100%;
+    display: block;
+    background: #000;
+    margin: 3px 0;
+    -webkit-transition: all 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    transition: all 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+/*---------------------------Footer----------------------------------*/
+.prefooter {
+    width: 100%;
+    color: #2a2928;
+    color: #2a2928;
+}
+
+.social-media-img {
+    display: inline-block;
+    padding-left: 20px;
+}
+
+.social-media-img i {
+    font-size: 20px;
+    margin-right: 15px;
+}
+
+.social-footer-wrap {
+    text-align: center;
+}
+
+.postfooter {
+    width: 100%;
+    height: 85px;
+    color: #fff;
+    background-color: #2a2928;
+}
+
+
+.postfooter a {
+    color: #2a2928;
+}
+
+
+.postfooter a:hover{
+    text-decoration: underline;
+}
+.postfooter{
+    border-top: 1px solid #efedec;
+}
+.my-footer {
+    font-family: "Messina Sans";
+    font-size: 12px;
+    float: none;
+    line-height: 25px;
+    text-align: center;
+    border-top: 1px solid #E3E3E3;
+    min-height: 75px;
+    padding-top: 20px;
+}
+
+footer .credits {
+    text-transform: none;
+}
+
+.footer-questions-wrap {
+    margin-top: 17px;
+    margin-bottom: 20px;
+    color: #2a2928;
+    font-family: "Messina Sans";
+    font-size: 13px;
+    line-height: 20px;
+}
+
+.footer-questions-wrap span {
+    display: block;
+}
+.postfooter #privacy,
+.postfooter #terms,
+.postfooter #fraud {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 12px;
+}
+.postfooter #terms{
+    display: none !important;
+}
+.postfooter .links {
+
+    margin-bottom: 6px;
+}
+
+.footer-questions-wrap a {
+    font-weight: 700;
+    text-decoration: underline;
+}
+.postfooter {
+    text-align: center;
+    height: 75px;
+    font-size: 12px;
+    line-height: 30px;
+}
+.postfooter .credits {
+    line-height: 16px;
+    clear: both;
+
+}
+footer a, footer a:hover {
+    cursor: pointer;
+    text-decoration: none;
+    color: #2a2928;
+}
+.social a, .links a {
+    margin-left: 20px;
+    font-size: 18px;
+}
+footer .credits {
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+footer #privacy {
+    text-decoration: underline;
+    padding-right: 20px;
+}
+
+footer #terms {
+    text-decoration: underline;
+}
+
+.social-footer-wrap {
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+.crop-image {
+    position: absolute;
+    bottom: 31px;
+    right: 8px;
+    background: #000;
+    color: #fff;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    font-size: 18px;
+    border: 1px solid #000;
+    opacity: 0.7;
+    z-index: 2;
+}
+
+.crop-image:hover {
+    opacity: 1;
+    color: #fff;
+
+}
+
+.menu-label:hover {
+    border-bottom: 1px solid #000;
+}
+
+.menu-user-name.subtitle {
+    color: #f75011;
+    font-size: 14px;
+    font-family: "Messina Sans";
+    text-transform: none;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+
+
+.sidenav .menu-item.privacy-menu-item {
+    font-family: Messina Sans;
+    font-size: 18px;
+    color: #D8D4D1;
+    color: rgb(153, 153, 153);
+    display: none !important;
+}
+
+.sidenav .menu-item.privacy-menu-item:hover {
+    background: none;
+    text-decoration: underline;
+}
+.postfooter .social {
+    width: 100%;
+    text-align: center;
+    margin-top: 7px;
+    color: #2a2928;
+}
+.postfooter {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 160px;
+    background-color: #fff;
+    position: static;
+    bottom: 0;
+    color: #2a2928;
+    z-index: 2;
+    border-top: 1px solid #dedbd9;
+    margin-bottom: 15px;
+}
+#HowItWorksPage .postfooter {
+    background-color: #fff;
+    position: fixed;
+    bottom: 0;
+    color: #2a2928;
+    z-index: 2;
+    border: 0;
+    margin-bottom: 0;
+}
+.menu-divider{
+    display: none !important;
+}
+.sidenav .menu-item{
+    position: relative;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 14px;
+}
+.sidenav .menu-item:after{
+    content: " ";
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    bottom: 10px;
+    background: #2D2D2D;
+    display: block;
+    height: 1px;
+
+}
+.header-tel{
+    display: block;
+    /*margin-bottom: 10px;*/
+    padding-top: 5px;
+}
+
+a {
+    color: #000;
+}
+
+.btn{
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    height: 40px;
+    line-height: 40px;
+    padding: 0;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 14px;
+    font-family: "Messina Sans";
+    border: 0;
+    white-space: nowrap;
+    box-shadow: none;
+}
+
+.btn-danger{
+    background: #f75011;
+    color: #fff;
+}
+.btn-primary{
+    background: #000;
+    color: #fff;
+}
+.btn-primary:hover{
+    background: #000;
+    color: #fff;
+    opacity: 0.8;
+}
+.btn-primary.focus, .btn-primary:focus,.btn-primary.active, .btn-primary:active,.btn-primary.active.focus, .btn-primary.active:focus, .btn-primary.active:hover, .btn-primary:active.focus, .btn-primary:active:focus, .btn-primary:active:hover, .open>.dropdown-toggle.btn-primary.focus, .open>.dropdown-toggle.btn-primary:focus, .open>.dropdown-toggle.btn-primary:hover{
+    background-color: #2a2928;
+    border: 0;
+    outline: none;
+}
+.btn-danger{
+    background: #f75011;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.btn-danger:hover{
+    background: #f75011;
+    color: #fff;
+}
+.btn-danger.focus, .btn-danger:focus,.btn-danger.active, .btn-danger:active,.btn-danger.active.focus, .btn-danger.active:focus, .btn-danger.active:hover, .btn-danger:active.focus, .btn-danger:active:focus, .btn-danger:active:hover, .open>.dropdown-toggle.btn-danger.focus, .open>.dropdown-toggle.btn-danger:focus, .open>.dropdown-toggle.btn-danger:hover{
+    background-color: #f75011;
+    border: 0;
+    outline: none;
+}
+
+.simple-btn {
+    padding: 0 20px !important;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+    text-transform: uppercase;
+    color: #fff !important;
+    background: #f75011 !important;
+    border: 0 !important;
+    text-align: center !important;
+}
+
+@media (max-width: 767px) {
+    .postfooter {
+        margin-bottom: 0;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        height: 160px;
+    }
+    .layout.container {
+        margin-top: 0 !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .menu-divider,.sidenav .menu-item.privacy-menu-item{
+        display: block !important;
+
+    }
+    .header-tel{
+        display: inline-block;
+        padding: 0;
+    }
+
+    #alliance-logo{
+        position: absolute;
+        left: 30px;
+        bottom: 70px;
+        line-height: 1.5;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+    }
+    #alliance-logo span{
+        display: block;
+        width: 160px;
+        margin-left: 10px;
+        /*font-family: "Messina Sans";*/
+        line-height: 1.7;
+        color: #fff;
+        font-size: 14px;
+        text-align: left;
+    }
+    #alliance-logo img{
+        width: 42px;
+        height: 42px !important;
+        margin-bottom: 0;
+
+    }
+    .menu-divider:after{
+        position: static !important;
+    }
+    .sidenav .social-media {
+        width: 180px;
+        margin-left: 70px;
+        position: absolute;
+        bottom: 30px;
+    }
+    .sidenav .menu-item{
+
+        padding-left: 40px;
+        font-size: 18px;
+    }
+    .sidenav .menu-item:after{
+        display: none;
+    }
+    .sidenav .menu-item.menu-divider {
+        height: 1px;
+
+        margin-top: 25px;
+        margin-bottom: 20px;
+        padding: 0;
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    .sidenav .menu-item.menu-divider:hover {
+        background: none;
+        text-decoration: none;
+    }
+
+    .sidenav .menu-item.menu-divider:after {
+        content: " ";
+        display: block;
+        background: #333;
+        height: 1px;
+    }
+    .sidenav{
+        padding-top: 60px;
+    }
+    .postfooter .credits {
+        line-height: 60px;;
+        clear: none;
+        font-size: 14px;
+        white-space: nowrap;
+    }
+    .postfooter{
+        margin-bottom: 0;
+    }
+    .footer-questions-wrap {
+        font-size: 14px;
+    }
+    .postfooter #privacy,
+    .postfooter #terms,
+    .postfooter #fraud {
+        display: inline-block;
+        margin-top: 0;
+        margin-bottom: 0;
+        color: #2a2928;
+        font-size: 14px;
+    }
+    .social a:hover, .links a:hover{
+        color: #2a2928;
+    }
+    .postfooter #terms{
+        display: none !important;
+    }
+    #HowItWorksPageModel .postfooter a,#HowItWorksPageModel .credits{
+        color: #fff;
+        font-size: 14px;
+    }
+    #HowItWorksPageModel #privacy,  #HowItWorksPageModel #terms {
+        display: inline-block;
+        color: #fff !important;
+    }
+    #HowItWorksPageClient .postfooter a,#HowItWorksPageClient .credits{
+        color: #fff;
+    }
+    #HowItWorksPageClient #privacy,  #HowItWorksPageClient #terms {
+        display: inline-block;
+        color: #fff !important;
+    }
+    footer .credits {
+        float: left;
+        text-align: left;
+        line-height: 60px;
+    }
+
+    .my-footer {
+        text-align: inherit;
+        padding-top: 14px;
+        font-size: 14px;
+    }
+    .postfooter .social {
+        width: 100%;
+        text-align: center;
+        margin-top: 7px;
+    }
+    .social-footer-wrap {
+        text-align: center;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    footer .links {
+        text-align: center;
+    }
+
+    header#my-header {
+        z-index: 99;
+        height: 90px;
+    }
+
+    #main {
+        padding-top: 110px;
+    }
+
+    .search img {
+        height: 90px;
+        margin-right: 16px;
+        padding: 38px 0;
+    }
+
+    header#my-header .logo {
+        position: relative;
+    }
+
+    header#my-header .logo img {
+        height: 90px;
+        margin: 0 auto;
+        padding: 25px 0;
+        position: absolute;
+        left: 50%;
+        margin-left: -123px;
+    }
+
+    .menu-toggle {
+        height: 90px;
+        display: inline-block;
+        padding: 32px 0;
+
+    }
+
+    .search-label, .menu-label {
+        font-family: Messina Sans;
+        font-size: 14px;
+        text-transform: uppercase;
+        color: #2a2928;
+        display: inline-block;
+    }
+
+    .search-label {
+        float: right;
+        margin-right: 15px;
+        line-height: 90px;
+    }
+
+    .menu-label {
+        float: left;
+        margin-left: 5px;
+    }
+
+    .footer-questions-wrap span {
+        display: inline-block;
+    }
+
+    .my-footer {
+        font-size: 14px;
+    }
+
+    footer .credits {
+        padding-left: 15px;
+    }
+
+    .footer-questions-wrap {
+        margin-top: 17px;
+        margin-bottom: 20px;
+        color: #2a2928;
+        color: #2a2928;
+        font-family: "Messina Sans";
+        font-size: 14px;
+        line-height: 25px;
+    }
+
+    .postfooter {
+        text-align: left;
+        position: static;
+        bottom: 0;
+        height: 60px;
+        font-size: 14px;
+        line-height: 60px;
+        background-color: transparent;
+        padding: 0 15px;
+        font-family: "Messina Sans";
+        color: #2a2928;
+    }
+    .postfooter .social {
+        display: inline-block;
+        width: auto;
+        margin-top: 0;
+
+    }
+    .postfooter a {
+        color: #2a2928;
+    }
+
+    .social a, .links a {
+        margin-left: 20px;
+        font-size: 15px;
+    }
+
+    .postfooter .links {
+        padding-top: 0;
+        float: right;
+        text-align: right;
+        margin-bottom: 0;
+    }
+
+    footer .links {
+        float: right;
+        text-align: right;
+        line-height: 60px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .closebtn {
+        top: 35px;
+        left: 12px;
+    }
+
+    footer .credits {
+        float: left;
+        text-align: left;
+        line-height: 60px;
+    }
+
+    header#my-header .logo img {
+        width: 400px;
+        height: auto;
+        position: absolute;
+        left: 50%;
+        margin-left: -200px;
+        margin-top: 25px;
+        padding: 0;
+
+    }
+
+    header#my-header .logo {
+        position: relative;
+    }
+
+    header#my-header {
+        height: 140px;
+    }
+
+    .search-label, .menu-label {
+        font-size: 17px;
+    }
+
+    .search-label {
+        font-size: 17px;
+        line-height: 140px;
+    }
+
+    .search img {
+        height: 140px;
+        padding: 60px 0;
+    }
+
+    .menu-toggle {
+        height: 140px;
+        padding: 58px 0;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .postfooter .social a,
+    .postfooter .links a,
+    .postfooter .credits,
+    .postfooter #fraud,
+    .postfooter #privacy,
+    .postfooter #terms {
+        font-size: 11px;
+    }
+
+    .postfooter .social a,
+    .postfooter .links a {
+        margin-left: 10px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .closebtn {
+        top: 18px;
+        left: 25px;
+    }
+    .search img {
+        height: 140px;
+        padding: 60px 0;
+        position: relative;
+        top: -15px;
+    }
+
+    .menu-user {
+        margin-top: -20px;
+    }
+
+    .search-label {
+        font-size: 17px;
+        line-height: 108px;
+    }
+
+    .search-label, .menu-label {
+        font-size: 17px;
+    }
+
+    .menu-toggle {
+        height: 140px;
+        padding: 40px 0;
+        margin-left: 15px;
+    }
+
+    header#my-header {
+        height: 140px;
+    }
+
+    .my-footer {
+        font-size: 14px;
+    }
+}
+
+#cookies-policy table{
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+#cookies-policy table td, #cookies-policy table th {
+    border: 1px solid #dddddd;
+}
+
+#cookies-policy table tr:nth-child(even) {
+    background-color: #e3e3e3;
+}
+
+#cookies-policy table{
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+#cookies-policy table td, th {
+    border: 1px solid #dddddd;
+}
+
+#cookies-policy table tr:nth-child(even) {
+    background-color: #e3e3e3;
+}

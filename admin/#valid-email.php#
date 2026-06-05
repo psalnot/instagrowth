@@ -1,0 +1,51 @@
+<?php
+	   
+	include_once("../class/mysql.class.php");
+	include_once("../class/user.class.php");
+	include_once("../class/mailovh.class.php");
+	include_once("../class/cleaninput.class.php");
+	include_once("../utils/defines.class.php");
+
+	if (!isset($_GET["msign"]))
+	{
+		header("location: /" . $BACKOFFICE_LOGIN);die();
+	}
+
+	$cleaninput = new Cleaninput();
+
+
+	
+	$cremoteuseragent = $cleaninput->genclean($_SERVER["HTTP_USER_AGENT"]);
+	$cremoteip = $cleaninput->genclean($_SERVER["REMOTE_ADDR"]);
+	if (isset($_SERVER["REMOTE_REFERER"]))
+	{
+		$creferer = $cleaninput->genclean($_SERVER["REMOTE_REFERER"]);
+	}
+	else
+	{
+		$creferer = "none";
+	}
+	if (isset($_SERVER["REMOTE_HOST"]))
+	{
+		$cremotehost = $cleaninput->genclean($_SERVER["REMOTE_HOST"]);
+	}
+	else
+	{
+		$cremotehost = "none";
+	}
+
+
+
+	$msql = new MMsql();
+	$muser = new Muser();
+	$cstring = $msql->dbconnect($DBUSER,$DBPASS,$DBNAME);                                                                                                                                                  
+	$pemail = $muser->geturlmail($cstring,$cleaninput->genclean($_GET["msign"]));
+	
+	if (!$pemail)
+	{
+		header("location: /" . $BACKOFFICE_LOGIN);die();
+	}
+	
+	$muser->updateurlmail($cstring,$cleaninput->genclean($_GET["msign"]),$cremoteip,$cremotehost,$cremoteuseragent);
+	header("location: $BACKOFFICE_LOGIN?mvalid=44");die();
+?>

@@ -1,0 +1,104 @@
+<?php
+   ini_set('display_errors',1);
+   error_reporting(E_ALL);
+
+   ?>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <style>
+
+a.text--logo.light {
+    font-size: 1.8em!important;
+    }
+.text--logo.light, .thin {
+        font-weight: 300!important;
+	}
+.text--logo {
+	    font-family: Pacifico,cursive;
+	        transition: ease-in-out 1s;
+		}
+.color--primary {
+		    color: #ef4c4c!important;
+		    }
+		    a, a:hover {
+		        color: #e83232;
+			}
+			.menu-horizontal>li>.modal-instance>a, .menu-horizontal>li>a, a {
+			    font-weight: 700;
+			    }
+			    .text--logo:hover, a {
+			        text-decoration: none!important;
+				}
+				a {
+				    font-weight: 700;
+				    }
+				    *, a, h1, h2, h3, h4, h5, h6, p, ul {
+				        margin: 0;
+					    padding: 0;
+					    }
+					    a {
+					        color: #337ab7;
+						    text-decoration: none;
+						    }
+						    a {
+						        background-color: transparent;
+							}
+							
+
+
+
+</style>
+    <meta charset="utf-8" />
+    <title>Accept a card payment</title>
+    <meta name="description" content="A demo of a card payment on Stripe" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    
+    <link rel="stylesheet" href="/dev/global.css" />
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+    <script src="/dev/client.js" defer></script>
+  </head>
+
+
+  <body data-smooth-scroll-offset="100">
+    <!-- Display a payment form -->
+    <div class="content--wrap">
+    <div class="maint-container">
+          
+            <section>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2 col-xs-12 text-center">
+                          
+			  <h1><a href="/index.php" class="text--logo light color--primary"> InstaGrowth</a></h1>
+			<!-- main-container start -->
+			<!-- ================ -->
+			     <!--<p class="lead">Choisissez votre formule !<br> Vous pouvez résilier votre abonnement à tout moment. </p>
+                            <a class="btn btn--lg btn--primary type--uppercase" href="https://app.upleap.com/join"> <span class="btn__text btntxt-fix">
+                                    Try Us For Free First <span class="emoji">👈</span> </span>
+                            </a>-->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+    <form id="payment-form">
+      <div id="card-element"><!--Stripe.js injects the Card Element--></div>
+      <button id="submit">
+        <div class="spinner hidden" id="spinner"></div>
+        <span id="button-text">Pay now</span>
+      </button>
+      <p id="card-error" role="alert"></p>
+      
+      <p class="result-message hidden">
+        Payment succeeded, see the result in your
+        <a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay again.
+      </p>
+      
+    </form>
+    </div>
+  </body>
+</html>

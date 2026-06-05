@@ -1,0 +1,505 @@
+    
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css?m=1560330504" />
+<link rel="stylesheet" type="text/css" href="css/magnific-popup.css?m=1560330482" />
+<link rel="stylesheet" type="text/css" href="css/fonts.css?m=1574689128" />
+<link rel="stylesheet" type="text/css" href="css/slick.css?m=1560330586" />
+<link rel="stylesheet" type="text/css" href="css/slick-theme.css?m=1560330586" />
+<link rel="stylesheet" type="text/css" href="css/main.css?m=1579689696" />
+<link rel="stylesheet" type="text/css" href="css/animate.css?m=1560330554" />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css" />
+<link rel="stylesheet" type="text/css" href="css/HomePage.css?m=1579689696" />
+<!--<link rel="stylesheet" type="text/css" href="css/HomePageNew.css?m=1579689696" />-->
+<link rel="stylesheet" type="text/css" href="css/jquery.qtip.min.css?m=1560330524" />
+<link rel="stylesheet" type="text/css" href="css/emojionearea.css?m=1560330476" />
+<link rel="stylesheet" type="text/css" href="css/Header.css?m=1581340861" />
+
+
+<!-- saved from url=(0066)https://u-booker.com/client/popup?template=ClientRegistrationPopup -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body><div id="client_registration" class="custom_popup">
+    <h3 class="popup_title">
+        Join now
+    </h3>
+    <form id="Form_RegisterForm" action="./register/RegisterClient.php" method="post" class="clearfix " enctype="application/x-www-form-urlencoded" role="form">
+        <input type="hidden" name="ClassName" value="Client" class="hidden" id="Form_RegisterForm_ClassName">
+
+        <div class="row">
+            <div id="FirstName" class="form-group col-sm-4">
+                <input placeholder="First name" type="text" name="FirstName" id="Form_RegisterForm_FirstName" required="required" aria-required="true" value="" class="form-control text">
+            </div>
+            <div id="Surname" class="form-group col-sm-4">
+                <input placeholder="Surname" type="text" name="Surname" value="" id="Form_RegisterForm_Surname" required="" class="form-control text">
+            </div>
+            <div id="Company" class="form-group col-sm-4">
+                <input placeholder="Company name" type="text" name="CompanyName" id="Form_RegisterForm_CompanyName" required="required" autocomplete="off" aria-required="true" class="form-control text">
+            </div>
+        </div>
+
+        <div class="row">
+            <div id="Email" class="form-group  col-sm-4">
+                <input placeholder="Company email" type="email" name="Email" id="Form_RegisterForm_Email" required="required" autocomplete="off" value="" aria-required="true" class="form-control email text">
+
+            </div>
+            <!--<div id="ConfirmEmail" class="form-group  col-sm-4">
+                <input placeholder="Confirm email" type="email" name="ConfirmEmail" id="Form_RegisterForm_ConfirmEmail" required="required" autocomplete="off" value="" aria-required="true" class="form-control email text">
+
+            </div>-->
+            <div id="Password" class="form-group  col-sm-4">
+                <input onfocus="$(this).attr(&#39;type&#39;,&#39;password&#39;)" placeholder="Password" type="text" name="Password" required="" data-indicator="pwindicator" id="Form_RegisterForm_Password" autocomplete="off" class="form-control">
+                <div id="pwindicator">
+                    <div class="bar"></div>
+                    <div class="label"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div id="Address" class="form-group col-sm-4">
+                <input placeholder="Company address" type="text" name="Address" id="Form_ValidationForm_Address" required="required" aria-required="true" class="form-control text">
+            </div>
+            <div id="MobilePhone" class="form-group col-sm-4">
+                <input type="text" name="MobilePhone" id="Form_ValidationForm_MobilePhone" required="required" aria-required="true" placeholder="Phone number" class="form-control text">
+            </div>
+            <div id="Zip" class="form-group col-sm-4">
+                <input placeholder="Zip / Post code" type="text" name="PostalCode" id="Form_ValidationForm_PostalCode" required="required" aria-required="true" class="form-control text">
+            </div>
+        </div>
+
+        <div class="row">
+            <div id="WebpageLink" class="form-group col-sm-4">
+                <input placeholder="Company webpage link" type="text" name="WebpageLink" id="Form_ValidationForm_WebpageLink" required="required" aria-required="true" class="form-control text">
+            </div>
+            <div id="LinkedinLink" class="form-group col-sm-4">
+                <input placeholder="LinkedIn link" type="text" name="LinkedinLink" id="Form_ValidationForm_LinkedinLink"  aria-required="false" class="form-control text">
+            </div>
+            <div id="InstagramLink" class="form-group col-sm-4">
+                <input placeholder="Instagram link" type="text" name="InstagramLink" id="Form_ValidationForm_InstagramLink"  aria-required="false" class="form-control text">
+            </div>
+        </div>
+
+        <div class="row">
+            <div id="ClientIndustry" class="form-group col-sm-4">
+                <select type="text" name="ClientIndustryID" id="Form_ValidationForm_ClientIndustry" required="required" aria-required="true" class="form-control dropdown placeholder">
+                    <option value="" selected="" data-default="">Industry
+                    </option>
+                    
+                        <option value="12">Accessories Brand</option>
+                    
+                        <option value="5">Advertising Agency</option>
+                    
+                        <option value="6">Atelier</option>
+                    
+                        <option value="15">Bridal Brand</option>
+                    
+                        <option value="8">Casting Agency</option>
+                    
+                        <option value="9">Cosmetics / Fragrance</option>
+                    
+                        <option value="3">Fashion Brand with e-com</option>
+                    
+                        <option value="13">Fashion Brand without e-com</option>
+                    
+                        <option value="14">Jewelry Brand</option>
+                    
+                        <option value="1">Magazine</option>
+                    
+                        <option value="11">Media</option>
+                    
+                        <option value="2">Multi Brand Retailer/E-tailer</option>
+                    
+                        <option value="16">Other</option>
+                    
+                        <option value="10">PR / events</option>
+                    
+                        <option value="7">Production Company</option>
+                    
+                        <option value="4">Showroom</option>
+                    
+                </select>
+            </div>
+            <div id="ClientType" class="form-group col-sm-4">
+                <select type="text" name="ClientTypeID" id="Form_ValidationForm_ClientType" required="required" aria-required="true" class="form-control dropdown placeholder">
+                    <option value="" selected="" data-default="">Your role
+                    </option>
+                    
+                        <option value="18">Account Manager/Brand Manager</option>
+                    
+                        <option value="12">Artbuying</option>
+                    
+                        <option value="6">Casting Director</option>
+                    
+                        <option value="19">CEO/Founder</option>
+                    
+                        <option value="20">Commercial Director</option>
+                    
+                        <option value="16">Consultant</option>
+                    
+                        <option value="5">Creative Director</option>
+                    
+                        <option value="3">Designer</option>
+                    
+                        <option value="21">E-com Director</option>
+                    
+                        <option value="22">Editor</option>
+                    
+                        <option value="13">Freelancer</option>
+                    
+                        <option value="8">Hair &amp; Make up Artist</option>
+                    
+                        <option value="23">Journalist</option>
+                    
+                        <option value="15">Marketing Director</option>
+                    
+                        <option value="9">Other</option>
+                    
+                        <option value="2">Photographer</option>
+                    
+                        <option value="14">PR Manager/Agent</option>
+                    
+                        <option value="11">Producer</option>
+                    
+                        <option value="24">Product Manager/Brand Manager</option>
+                    
+                        <option value="25">Showroom Director</option>
+                    
+                        <option value="17">Social media</option>
+                    
+                        <option value="26">Studio Director</option>
+                    
+                        <option value="7">Stylist</option>
+                    
+                </select>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div id="Privacy" class="form-group">
+
+                    
+                    <div class="checkbox">
+                        <label class="checkbox-container privacy_label" for="Form_RegisterForm_Privacy" >I have read and
+                            I accepted the
+                            <input type="checkbox" name="Privacy" value="1" id="Form_RegisterForm_Privacy" required="required" aria-required="true">
+                            <span class="checkbox-checkmark" style="top: 0;"></span>
+                            <a style="text-decoration: underline;" target="_blank" href="https://u-booker.com/privacy">Privacy Policy</a>
+                            and the
+                            <a style="text-decoration: underline;" target="_blank" href="https://u-booker.com/terms-and-conditions">License
+                                Agreement<font color="Red"> You must check this box in order to register</font></a>.
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+        <input type="hidden" name="SecurityID" value="44bb4fba1fd9c9e5c6b28f60f168b6b32f0b64c2" class="hidden" id="Form_RegisterForm_SecurityID">
+        <div style="clear: both;"></div>
+        <div align="center">
+            <button type="submit" name="action_doRegister" value="Register" data-loading-text="&lt;i class=&#39;fa fa-refresh fa-spin&#39;&gt;&lt;/i&gt; Registering..." id="Form_RegisterForm_action_doRegister" class="btn btn-danger">
+                Register
+            </button>
+        </div>
+    </form>
+    <button title="Close (Esc)" type="button" class="mfp-close">×</button>
+</div>
+    <link rel="stylesheet" href="./css/intlTelInput.css">
+    
+<style>
+    #Form_RegisterForm .checkbox label {
+        min-height: 20px;
+        padding-left: 30px;
+        padding-right: 30px !important;
+        margin-bottom: 0;
+        margin-left: 0;
+        font-weight: 400;
+        cursor: pointer;
+        display: inline-block;
+    }
+
+    .form-control.error {
+        border: 1px solid #f75011;
+    }
+
+    .privacy_label {
+        display: inline-block;
+        margin-left: 30px;
+        margin-top: 30px;
+        position: relative;
+        top: -23px !important;
+        min-width: 100%;
+    }
+
+    #Privacy {
+        margin-top: -15px;
+    }
+
+    #Privacy label {
+        font-family: "Messina Sans";
+        font-size: 12px;
+        line-height: 25px;
+        color: #272525;
+        text-transform: none;
+    }
+
+    #Privacy-error {
+        display: block !important;
+        text-transform: none;
+        font-size: 12px !important;
+        color: #f75011 !important;
+        font-weight: normal !important;
+        max-width: none !important;
+        position: absolute;
+        bottom: 0;
+        left: -30px;
+        /*width: 150px;*/
+        top: 25px;
+    }
+
+    .form-control.error {
+        /*border: 1px solid #aa0a11;*/
+        border: 1px solid #f75011;
+    }
+
+    .form-group label.error {
+        display: none !important;
+    }
+
+    #client_registration {
+        max-width: 900px;
+        z-index: 9999 !important;
+        position: relative;
+        -webkit-box-shadow: 2px 2px 5px #999;
+        -moz-box-shadow: 2px 2px 5px #999;
+        box-shadow: 2px 2px 5px #999;
+        border: 1px solid #ebeced;
+    }
+
+    #Form_RegisterForm {
+        padding: 10px;
+    }
+
+    #Form_RegisterForm #MobilePhone .intl-tel-input {
+        width: 100% !important;
+    }
+
+    #client_registration #FirstName,
+    #client_registration #Email,
+    #client_registration #Address,
+    #client_registration #ClientIndustry,
+    #client_registration #Surname,
+    #client_registration #ConfirmEmail,
+    #client_registration #ClientType,
+    #client_registration #MobilePhone {
+        padding-right: 10px;
+    }
+
+    #client_registration #Surname,
+    #client_registration #ConfirmEmail,
+    #client_registration #Password,
+    #client_registration #MobilePhone,
+    #client_registration #ClientType,
+    #client_registration #Company,
+    #client_registration #Zip {
+        padding-left: 10px;
+    }
+
+    #client_registration label {
+        font-weight: normal;
+    }
+
+    #client_registration #Form_RegisterForm_action_doRegister {
+        text-align: center;
+        height: 40px;
+        line-height: 40px;
+        padding: 0;
+        text-transform: uppercase;
+        width: auto;
+        font-weight: bold;
+        padding-left: 30px;
+        padding-right: 30px;
+
+    }
+
+    #client_registration ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: #2A2928;
+    }
+
+    #client_registration ::-moz-placeholder { /* Firefox 19+ */
+        color: #2A2928;
+    }
+
+    #client_registration :-ms-input-placeholder { /* IE 10+ */
+        color: #2A2928;
+    }
+
+    #client_registration :-moz-placeholder { /* Firefox 18- */
+        color: #2A2928;
+    }
+
+    #client_registration .popup_title {
+        text-transform: uppercase;
+
+    }
+
+    #Form_RegisterForm > .row > .col-md-8 {
+        border-right: 1px solid #EFEDEC;
+        padding-right: 20px;
+    }
+
+    #Form_RegisterForm > .row > .col-md-4 {
+        padding-left: 20px;
+    }
+
+    .portfolio-description {
+        font-family: "Messina Sans";
+        font-size: 14px;
+        color: #ADA59F;
+        font-style: italic;
+        font-weight: normal;
+        display: inline-block;
+        margin-top: 5px;
+        margin-bottom: 25px;
+    }
+
+    #Form_RegisterForm .form-group {
+        margin-bottom: 20px;
+    }
+
+    #Form_RegisterForm {
+        font-size: 14px;
+        font-family: "Messina Sans";
+    }
+
+    @media (max-width: 769px) {
+        .privacy_label {
+            margin-top: 0;
+        }
+
+        #client_registration [class*='col-'] {
+            padding-left: 15px !important;
+            padding-right: 15px !important;
+        }
+
+        #client_registration #Form_RegisterForm_action_doRegister {
+            margin-top: 0;
+            display: block;
+            width: 100%;
+        }
+
+        #client_registration {
+            max-width: none;
+            margin: 0;
+        }
+
+        #client_registration #Privacy {
+            margin-bottom: 0;
+            margin-top: 10px;
+        }
+
+        #Privacy-error {
+            margin-top: 10px;
+            right: 0;
+            width: 200px;
+        }
+
+        #Form_RegisterForm > .row > .col-md-8 {
+            border: 0;
+            padding-right: 15px;
+        }
+
+        .mfp-container {
+            padding: 0;
+        }
+
+        #Form_RegisterForm {
+            padding: 0;
+        }
+
+        #Form_RegisterForm > .row > .col-md-4 {
+            padding-left: 15px;
+        }
+    }
+
+    @media (max-width: 376px) {
+        #Privacy-error {
+            margin-top: 25px;
+        }
+    }
+    .mfp-bg {
+        background: rgba(255, 255, 255, 0.8);
+    }
+
+    #pwindicator {
+        margin-top: 4px;
+        position: relative;
+    }
+
+    .bar {
+        height: 4px;
+        margin-top: -8px;
+        position: relative;
+        top: 4px;
+    }
+
+    .label {
+        position: absolute;
+        bottom: -20px;
+        left: 0;
+        font-weight: normal;
+    }
+
+    .pw-very-weak .bar {
+        background: #d00;
+        width: 25%;
+    }
+
+    .pw-very-weak .label {
+        color: #d00;;
+    }
+
+    .pw-weak .bar {
+        background: #dda744;
+        width: 50%;
+    }
+
+    .pw-weak .label {
+        color: #dda744;;
+    }
+
+    .pw-mediocre .bar {
+        background: #c3f322;
+        width: 75%;
+    }
+
+    .pw-mediocre .label {
+        color: #c3f322;;
+    }
+
+    .pw-strong .bar {
+        background: #0ac000;
+        width: 100%;
+    }
+
+    .pw-strong .label {
+        color: #0ac000;;
+    }
+
+    .pw-very-strong .bar {
+        background: #0ac000;
+        width: 100%;
+    }
+
+    .pw-very-strong .label {
+        color: #0ac000;
+    }
+
+    .fork img {
+        border: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+</style>
+</body></html>

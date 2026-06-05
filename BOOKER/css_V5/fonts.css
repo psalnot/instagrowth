@@ -1,0 +1,109 @@
+
+@font-face {
+    font-family: 'fontello';
+    src: url('/mysite/fonts/fontello.eot?19413629');
+    src: url('/mysite/fonts/fontello.eot?19413629#iefix') format('embedded-opentype'),
+    url('/mysite/fonts/fontello.woff2?19413629') format('woff2'),
+    url('/mysite/fonts/fontello.woff?19413629') format('woff'),
+    url('/mysite/fonts/fontello.ttf?19413629') format('truetype'),
+    url('/mysite/fonts/fontello.svg?19413629#fontello') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"]:before, [class*=" icon-"]:before, .model-item .backdrop.selected .select-model:before, .model-item .backdrop.has_option .select-model:before {
+    font-family: "fontello";
+    font-style: normal;
+    font-weight: normal;
+    speak: none;
+
+    display: inline-block;
+    text-decoration: inherit;
+    width: 1em;
+    margin-right: .2em;
+    text-align: center;
+    /* opacity: .8; */
+
+    /* For safety - reset parent styles, that can break glyph codes*/
+    font-variant: normal;
+    text-transform: none;
+
+    /* fix buttons height, for twitter bootstrap */
+    line-height: 1em;
+
+    /* Animation center compensation - margins should be symmetric */
+    /* remove if not needed */
+    margin-left: .2em;
+
+    /* you can be more comfortable with increased icons size */
+    /* font-size: 120%; */
+
+    /* Font smoothing. That was taken from TWBS */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Uncomment for 3D effect */
+    /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+
+.icon-ok-circled2:before,
+.model-item .backdrop.selected:before .select-model, .model-item .backdrop.has_option .select-model:before {
+    content: '\e800';
+
+}
+
+
+@font-face {
+    font-family: 'Messina Sans';
+    src: url('/mysite/fonts/messina-regular.eot');
+    src: url('/mysite/fonts/messina-regular.eot?#iefix') format('embedded-opentype'),
+    url('/mysite/fonts/messina-regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Messina Sans';
+    src: url('/mysite/fonts/messina-bold.eot');
+    src: url('/mysite/fonts/messina-bold.eot?#iefix') format('embedded-opentype'),
+    url('/mysite/fonts/messina-bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Messina Sans';
+    src: url('/mysite/fonts/messina-bold.eot');
+    src: url('/mysite/fonts/messina-bold.eot?#iefix') format('embedded-opentype'),
+    url('/mysite/fonts/messina-bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Messina Sans';
+    src: url('/mysite/fonts/messina-regular-italic.eot');
+    src: url('/mysite/fonts/messina-regular-italic.eot?#iefix') format('embedded-opentype'),
+    url('/mysite/fonts/messina-regular-italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Messina Sans';
+    src: url('/mysite/fonts/MessinaSans-SemiBold.woff2') format('woff2'),
+    url('/mysite/fonts/MessinaSans-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'FreightDisp Pro';
+    src: url('/mysite/fonts/FreightDispProBook-Regular.woff2') format('woff2'),
+    url('/mysite/fonts/FreightDispProBook-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'againts';
+    src: url('/mysite/fonts/againts.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}

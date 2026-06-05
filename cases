@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Use Cases - Upleap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/upleap-v2.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600|Pacifico" rel="stylesheet">
+    <link href="img/favicon-upleap.png" rel="icon" media="all" />
+    <link rel="alternate" href="https://upleap.com/cases" hreflang="x-default" />
+    <meta href="https://upleap.com/cases" rel="canonical">
+    <meta name="contact" content="info@upleap.com" />
+    <meta name="description" content="Upleap helps all types of people grow their Instagram. Learn more about how you can use Upleap to get more followers.">
+    <meta property="og:title" content="Use Cases - Upleap" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.upleap.com/cases" />
+    <meta property="og:image" content="img/og-upleap-logo.jpg" />
+    <meta property="og:description" content="Upleap helps all types of people grow their Instagram. Learn more about how you can use Upleap to get more followers." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@upleapdotcom" />
+    <meta name="twitter:title" content="Use Cases - Upleap" />
+    <meta name="twitter:description" content="Upleap helps all types of people grow their Instagram. Learn more about how you can use Upleap to get more followers." />
+    <meta name="twitter:image" content="https://upleap.com/img/twitter-upleap-logo.jpg" />
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime()
+                , event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0]
+                , j = d.createElement(s)
+                , dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-5R8H94K');
+    </script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<body data-smooth-scroll-offset="100">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5R8H94K" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="content--wrap">
+        <div class="nav-container">
+            <div>
+                <div class="bar bar--sm visible-xs">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-3 col-sm-2"> <a href="/" class="text--logo light color--primary"> Upleap </a> </div>
+                            <div class="col-xs-9 col-sm-10 text-right">
+                                <a href="#" class="hamburger-toggle" data-toggle-class="#menu1;hidden-xs hidden-sm"> <i class="icon icon--sm stack-interface stack-menu"></i> </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <nav id="menu1" class="bar bar-1 hidden-xs bar--fixed">
+                    <div class="container nav-separator">
+                        <div class="row">
+                            <div class="col-md-1 col-sm-2 hidden-xs">
+                                <div class="bar__module"> <a href="/" class="text--logo v2 light xl color--primary"> Upleap </a> </div>
+                            </div>
+                            <div class="col-md-11 col-sm-5 text-right text-left-xs text-left-sm">
+                                <div class="bar__module ml20">
+                                    <ul class="menu-horizontal">
+                                        <li> <a href="/how">
+                                        How It Works
+                                    </a> </li>
+                                        <li> <a href="/pricing">
+                                        Pricing
+                                    </a> </li>
+                                        <li> <a href="/reviews">
+                                        Reviews
+                                    </a> </li>
+                                    </ul>
+                                </div>
+                                <div class="bar__module">
+                                    <a class="btn btn--sm" href="https://app.upleap.com/signin"> <span class="btn__text">
+                                    SIGN IN
+                                </span> </a>
+                                    <a class="btn btn--sm btn--primary" href="https://app.upleap.com/join"> <span class="btn__text">
+                                    TRY US FOR FREE
+                                </span> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="main-container">
+            <section class="space--md text-center-xs">
+                <div class="container">
+                    <div class="row pos-vertical-align-columns">
+                        <div class="col-sm-6">
+                            <h1>It doesn't matter what kind of Instagram - Upleap helps you grow.</h1>
+                            <p class="lead">We have customers across the globe with different goals, professions, and interests. Learn more about the types of customers we usually serve and how we help them get more loyal, organic followers on Instagram.</p>
+                            <div class="hidden-xs">
+                                <a class="btn btn--primary btn--lg type--uppercase" href="https://app.upleap.com/join"> <span class="btn__text">
+                                    Try Us For Free </span> </a>
+                                <a class="mt--xs--1 btn btn--lg btn--gray type--uppercase inner-link" href="#businesses"> <span class="btn__text">
+                                    Learn More </span> </a>
+                            </div>
+                            <div class="visible-xs">
+                                <a class="btn btn--primary type--uppercase" href="https://app.upleap.com/join"> <span class="btn__text">
+                                    Try Us For Free </span> </a>
+                                <a class="btn btn--gray type--uppercase" href="#businesses"> <span class="btn__text">
+                                    Learn More </span> </a>
+                            </div>
+                        </div>
+                        <div class="col-sm-4"> <img class="mt--xs--2" src="img/upleap-instagram-marketing-niche.png"></div>
+                    </div>
+                </div>
+            </section>
+            <section id="businesses" class="space--sm bg--secondary text-center-xs">
+                <div class="container">
+                    <div class="row pos-vertical-align-columns">
+                        <div class="col-sm-6">
+                            <h1>Upleap & Influencers</h1>
+                            <p class="lead">Upleap helps our customers build their persona, propelling you to the heights of today's influencers. Building a social audience of loyal, engaged followers should be on everyone's Instagram to-do list. </p>
+                            <a class="btn btn--primary type--uppercase" href="https://app.upleap.com/join"> <span class="btn__text">
+                                    Try Us For Free </span> </a>
+                            <a class="btn btn--gray type--uppercase" href="/instagram-influencers"> <span class="btn__text">
+                                    Learn More </span> </a>
+                        </div>
+                        <div class="col-sm-5 col-sm-push-1"> <img class="mt--xs--2" src="img/instagram-influencer-marketing-with-upleap.png"></div>
+                    </div>
+                </div>
+            </section>
+            <section class="space--sm text-center-xs">
+                <div class="container">
+                    <div class="row pos-vertical-align-columns">
+                        <div class="col-sm-4"> <img src="img/upleap-helps-you-grow-your-instagram-business.png"></div>
+                        <div class="col-sm-7">
+                            <h1>Upleap & Businesses</h1>
+                            <p class="lead">Building your brand on Instagram is tough work. Upleap helps you identify the right audience to engage with that'll get you more leads and help drive revenue home. </p>
+                            <a class="btn btn--primary type--uppercase" href="https://app.upleap.com/join"> <span class="btn__text">
+                                    Try Us For Free </span> </a>
+                            <a class="btn btn--gray type--uppercase" href="/instagram-business"> <span class="btn__text">
+                                    Learn More </span> </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="space--sm">
+                <div class="container--sm">
+                    <div class="slider" data-arrows="true" data-paging="false" data-autoplay="false" data-timing="5000">
+                        <ul class="slides">
+                            <li class="col-md-3 col-sm-4 col-xs-9">
+                                <div class="imagebg use-case boxed tall" data-scrim-top="7">
+                                    <div class="background-image-holder"> <img alt="Instagram Models getting more followers" src="img/cases/model.jpg" /> </div>
+                                    <div class="use-case-text">
+                                        <h4>Models</h4>
+                                        <a class="btn btn--sm btn--gray type--uppercase" href="/instagram-models"> <span class="btn__text">
+                                    Learn More</span> </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="col-md-3 col-sm-4 col-xs-9">
+                                <div class="imagebg use-case boxed tall" data-scrim-top="7">
+                                    <div class="background-image-holder"> <img alt="Musicians and Music artists using Instagram" src="img/cases/musician.jpg" /> </div>
+                                    <div class="use-case-text">
+                                        <h4>Music</h4>
+                                        <a class="btn btn--sm btn--primary type--uppercase" href="https://app.upleap.com/join"> <span class="btn__text">
+                                    Try Us For Free </span> </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="col-md-3 col-sm-4 col-xs-9">
+                                <div class="imagebg use-case boxed tall" data-scrim-top="7">
+                                    <div class="background-image-holder"> <img alt="Fashion Bloggers using Instagram and Upleap" src="img/cases/blogger.jpg" /> </div>
+                                    <div class="use-case-text">
+                                        <h4>Bloggers</h4>
+                                        <a class="btn btn--sm btn--gray type--uppercase" href="/instagram-bloggers"> <span class="btn__text">
+                                    Learn More</span> </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="col-md-3 col-sm-4 col-xs-9">
+                                <div class="imagebg use-case boxed tall" data-scrim-top="7">
+                                    <div class="background-image-holder"> <img alt="Cosmetics on Instagram with red lipstick" src="img/cases/cosmetics.jpg" /> </div>
+                                    <div class="use-case-text">
+                                        <h4>Cosmetics</h4>
+                                        <a class="btn btn--sm btn--primary type--uppercase" href="https://app.upleap.com/join"> <span class="btn__text">
+                                    Try Us For Free </span> </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="col-md-3 col-sm-4 col-xs-9">
+                                <div class="imagebg use-case boxed tall" data-scrim-top="7">
+                                    <div class="background-image-holder"> <img alt="Collection of fashion items sold on Instagram" src="img/cases/ecommerce.jpg" /> </div>
+                                    <div class="use-case-text">
+                                        <h4>Business</h4>
+                                        <a class="btn btn--sm btn--gray type--uppercase" href="/instagram-business.html"> <span class="btn__text">
+                                    Learn More</span> </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="col-md-3 col-sm-4 col-xs-9">
+                                <div class="imagebg use-case boxed tall" data-scrim-top="7">
+                                    <div class="background-image-holder"> <img alt="A man taking photos for social media" src="img/cases/photographer.jpg" /> </div>
+                                    <div class="use-case-text">
+                                        <h4>Photography</h4>
+                                        <a class="btn btn--sm btn--primary type--uppercase" href="https://app.upleap.com/join"> <span class="btn__text">
+                                    Try Us For Free </span> </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="col-md-3 col-sm-4 col-xs-9">
+                                <div class="imagebg use-case boxed tall" data-scrim-top="7">
+                                    <div class="background-image-holder"> <img alt="UI mockup found on Instagram for iPhones" src="img/cases/design.jpg" /> </div>
+                                    <div class="use-case-text">
+                                        <h4>Design</h4>
+                                        <a class="btn btn--sm btn--gray type--uppercase" href="/instagram-designers"> <span class="btn__text">
+                                    Learn More</span> </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="col-md-3 col-sm-4 col-xs-9">
+                                <div class="imagebg use-case boxed tall" data-scrim-top="7">
+                                    <div class="background-image-holder"> <img alt="Black male on Instagram wearing sunglasses" src="img/cases/lifestyle.jpg" /> </div>
+                                    <div class="use-case-text">
+                                        <h4>Lifestyle</h4>
+                                        <a class="btn btn--sm btn--primary type--uppercase" href="https://app.upleap.com/join"> <span class="btn__text">
+                                    Try Us For Free </span> </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="col-md-3 col-sm-4 col-xs-9">
+                                <div class="imagebg use-case boxed tall" data-scrim-top="7">
+                                    <div class="background-image-holder"> <img alt="A traveller in Iceland on Instagram" src="img/cases/travel.jpg" /> </div>
+                                    <div class="use-case-text">
+                                        <h4>Travel</h4>
+                                        <a class="btn btn--sm btn--gray type--uppercase" href="/instagram-travel"> <span class="btn__text">
+                                    Learn More</span> </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="col-md-3 col-sm-4 col-xs-9">
+                                <div class="imagebg use-case boxed tall" data-scrim-top="7">
+                                    <div class="background-image-holder"> <img alt="Parents using Instagram with their baby in between them" src="img/cases/parenting.jpg" /> </div>
+                                    <div class="use-case-text">
+                                        <h4>Parenting</h4>
+                                        <a class="btn btn--sm btn--primary type--uppercase" href="https://app.upleap.com/join"> <span class="btn__text">
+                                    Try Us For Free </span> </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="col-md-3 col-sm-4 col-xs-9">
+                                <div class="imagebg use-case boxed tall" data-scrim-top="7">
+                                    <div class="background-image-holder"> <img alt="An athlete training on Instagram" src="img/cases/athlete.jpg" /> </div>
+                                    <div class="use-case-text">
+                                        <h4>Athletes</h4>
+                                        <a class="btn btn--sm btn--gray type--uppercase" href="/instagram-athletes"> <span class="btn__text">
+                                    Learn More</span> </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="col-md-3 col-sm-4 col-xs-9">
+                                <div class="imagebg use-case boxed tall" data-scrim-top="7">
+                                    <div class="background-image-holder"> <img alt="A luxury Jacob & Co watch found on Instagram" src="img/cases/luxury.jpg" /> </div>
+                                    <div class="use-case-text">
+                                        <h4>Luxury</h4>
+                                        <a class="btn btn--sm btn--primary type--uppercase" href="https://app.upleap.com/join"> <span class="btn__text">
+                                    Try Us For Free </span> </a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section id="connect" class="bg--secondary">
+                <div class="container">
+                    <div class="row pos-vertical-align-columns text-center-xs">
+                        <div class="col-sm-7">
+                            <h1>We're ready to help ⭐</h1>
+                            <p class="lead">We match you with an account manager that has experience with your niche. All kinds of Instagrammers work with us all the time, and we always strive to keep them happy.</p>
+                            <a class="btn btn--lg btn--primary type--uppercase" href="https://app.upleap.com/join"> <span class="btn__text">
+                                    Start Free Today </span> </a>
+                        </div>
+                        <div class="col-sm-3 col-sm-push-1"> <img src="img/jessica-account-manager-get-instagram-followers.png"></div>
+                    </div>
+                </div>
+            </section>
+            <section id="cta" class="bg--white space--md">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2">
+                            <div class="cta">
+                                <h1>Join thousands of happy customers. Try Upleap for free.</h1>
+                                <p class="lead">Try us for free without any strings attached. We'll show you the difference when growing your Instagram!</p>
+                                <a class="btn btn--lg btn-fix btn--primary type--uppercase" href="https://app.upleap.com/join"> <span class="btn__text btntxt-fix">
+                                    Try us for free now <span class="emoji">👈</span> </span>
+                                </a>
+                                <p class="type--fineprint mt--1">No credit card required. 3 days free trial.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+           <footer class="space--sm footer-2 bg--secondary">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-2 col-lg-2 col-6 text-center">
+                            <div class="t-70">
+                                <ul class="list">
+                                    <li><a href="/" class="text--logo light color--primary h1"> Upleap </a></li>
+                                    <li class="mt--1 hidden-xs">
+                                        <a class="btn btn--primary borderless type--uppercase" href="https://app.upleap.com/join"> <span class="btn__text">
+                                    Try For Free
+                                </span> </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-sm-offset-1 col-lg-3 col-6 mt--xs--1">
+                            <h6 class="type--uppercase">Product</h6>
+                            <ul class="list--hover">
+                                <li> <a href="https://app.upleap.com/join">Sign Up</a> </li>
+                                <li> <a href="/how">How It Works</a> </li>
+                                <li> <a href="/reviews">Reviews</a> </li>
+                                <li> <a href="/pricing">Pricing</a> </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-3 col-lg-3 col-6 mt--xs--1">
+                            <h6 class="type--uppercase">Learn</h6>
+                            <ul class="list--hover">
+                                
+                                <li> <a href="/cases">Use Cases</a> </li>
+                                <li> <a href="https://upleap.com/blog">Blog</a> </li>
+                                <li> <a href="/about">About</a> </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-3 col-lg-3 col-6 mt--xs--1">
+                            <h6 class="type--uppercase">Support</h6>
+                            <ul class="list--hover">
+                                <li> <a href="https://app.upleap.com">Sign In</a> </li>
+                                <li> <a href="https://upleap.zendesk.com/hc/en-us">Help Center</a> </li>
+                                <li> <a href="/press">Press Kit</a> </li>
+                                <li> <a href="/contact">Contact</a> </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--end of row-->
+                    <div class="row">
+                        <div id="share" class="col-sm-3 col-xs-12 text-center-xs"> <span class="type--fine-print">Share us with your friends</span>
+                            <hr class="visible-xs">
+                            <a target="_blank" class="ml5 inline" href="https://twitter.com/share?url=https://upleap.com&text=Just heard about Upleap, a service that can grow your Instagram with an account manager. Check it out 😊 "><img src="img/twitter-svg.svg"></a>
+                            <a class="ml5 visible-lg-inline" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A//upleap.com"><img src="img/facebook-svg.svg"></a>
+                            <a target="_blank" class="ml5 visible-xs-inline" href="fb-messenger://share?link=https%3A%2F%2Fwww.upleap.com"><img src="img/messenger.svg"></a>
+                            <a class="ml5 visible-xs-inline" target="_blank" href="whatsapp://send?text=Just came across https://upleap.com - maybe they can help you with your Instagram? 😊"><img src="img/whatsapp-png.png"></a>
+                        </div>
+                        <div class="col-sm-6 col-xs-12 mt--xs--1"> <span class="type--fine-print">©
+                                                <span class="update-year">2018</span> Upleap.com</span> <a class="type--fine-print" href="/privacy">Privacy Policy</a> <a class="type--fine-print" href="/terms">Terms & Conditions</a> </div>
+                        <div class="visible-xs col-xs-12 text-center-xs">
+                            <a class="mt--xs--1 btn btn--lg btn--primary" href="https://app.upleap.com/join"> <span class="btn__text">
+                                    TRY UPLEAP NOW FOR FREE
+                                </span> </a>
+                            <p class="small mt--xs--1">We're completely free to try for 3 days. No payment method required!</p>
+                        </div>
+                    </div>
+                    <!--end of row-->
+                </div>
+                <!--end of container-->
+            </footer>
+        </div>
+    </div>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/upleap.min.js"></script>
+    <script src="js/flickity.min.js"></script>
+    <script src='https://cdn.useproof.com/proof.js?acc=FA2xKGldHxQujtbWGCaN5zm9L042' async></script>
+</body>
+
+</html>

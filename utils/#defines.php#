@@ -1,0 +1,134 @@
+<?php
+
+
+
+
+define("DEBUG",0);
+
+#Database
+$DBUSER_LIPLUS="root";
+$DBPASS_LIPLUS="alien756";
+
+$DBHOST = "localhost";
+$DBUSER =  "instagrowth";
+$DBPASS =  "influence";
+#$DEBUG  = $config["debug"];
+$DBNAME ="instagrowth";
+
+#Encryption
+$ENCRYPTION_KEY = 'CVXP8Z9RPY3EFD70TLS1ZG4N8WQBOVI6AMJ4';
+
+#Nb jours test
+$NB_JOURS_TEST="3";
+
+#Mail
+$MAIL_ADMIN = "patrice@lesinfluenceurs.fr";
+$MAIL_SUPPORT = "support@lesinfluenceurs.fr";
+$MAIL_SUBJECT = " Demande de support ";
+$MAIL_SUBJECT_EN = " Support request ";
+
+#Signup information
+$SIGNUP_URL_REDUC="/inscription-page-reduc.php?mvalue=7";
+$SIGNUP_URL = "/inscription-page.php";
+$SIGNUP_URL_EN = "/inscription-page-en.php";
+$SIGNUP_SECOND = "inscription-second.php";
+$SIGNUP_SECOND_DEV = "inscription-second-dev-2019.php";
+$SIGNUP_SECOND_DEV_LAST = "inscription-second-dev-last-2019.php";
+
+$SIGNUP_SECOND_EN = "inscription-second-en.php";
+
+$SIGNUP_THIRD = "inscription-third.php";
+$SIGNUP_THIRD_DEV = "inscription-third-dev-2019.php";
+$SIGNUP_THIRD_EN = "inscription-third-en.php";
+
+$SIGNUP_FOURTH = "inscription-fourth.php";
+$SIGNUP_FOURTH_DEV = "inscription-fourth-dev-2019.php";
+
+$SIGNUP_FOURTH_EN = "inscription-fourth-en.php";
+$SIGNUP_FIFTH = "inscription-fifth.php";
+$SIGNUP_FIFTH_DEV = "inscription-fifth-dev-2019.php";
+
+$SIGNUP_FIFTH_EN = "inscription-fifth-en.php";
+
+#Card verification
+$VERIF_CARD = "verification-coordonnees-bancaires.php";
+$VERIF_CARD_EN = "verification-coordonnees-bancaires-en.php";
+
+#Motto
+$MOTTO_EN_INSCRIPTION = "Speed up your instagram growth without buying followers";
+
+#Backoffice
+$BACKOFFICE_LOGIN = "backoffice-authentification.php";
+$BACKOFFICE_LOGIN_EN = "backoffice-authentification-en.php";
+
+$BACKOFFICE_LOGOUT = "bxoffice-traitement/backoffice-logout.php";
+$BACKOFFICE_LOGOUT_EN = "bxoffice-traitement/backoffice-logout-en.php";
+
+
+$BACKOFFICE_AUTHENTIFICATION = "bxoffice-traitement/instagrowth-authentification.php";
+
+
+$DEV_BACKOFFICE_AUTHENTIFICATION = "bxoffice-traitement/dev-instagrowth-authentification.php";
+$DEV_BACKOFFICE_AUTHENTIFICATION_RENEW = "bxoffice-traitement/dev-instagrowth-authentification-renew.php";
+
+$DEV_BACKOFFICE_AUTHENTIFICATION_EN = "bxoffice-traitement/dev-instagrowth-authentification-en.php";
+
+
+#Reset password
+$BACKOFFICE_AUTHENTIFICATION_RESET = "admin/instagrowth-password-reset.php";
+$BACKOFFICE_B_AUTHENTIFICATION_RESET = "admin/instagrowth-update-password-reset.php";
+
+$PARAMETER_EMAIL="memail";
+
+
+$BACKOFFICE_FRONT = "backoffice-user-general.php";
+$BACKOFFICE_FRONT_EN = "backoffice-user-general-en.php";
+
+$BACKOFFICE_FRONT_RESET_PASSWORD = "backoffice-reset-authentification.php";
+$BACKOFFICE_FRONT_RESET_PASSWORD_EN = "backoffice-reset-authentification-en.php";
+
+$BACKOFFICE_RESET_PASSWORD = "admin/reset-password.php";
+$BACKOFFICE_RESET_PASSWORD_EN = "admin/reset-password-en.php";
+
+#
+$BACKOFFICE_EDIT_COMMENTAIRES = "backoffice-edit-commentaires.php";
+$BACKOFFICE_EDIT_COMMENTAIRES_EN = "backoffice-edit-commentaires-en.php";
+
+$BACKOFFICE_EDIT_HASHTAGS = "backoffice-edit-hashtags.php";
+$BACKOFFICE_EDIT_HASHTAGS_EN = "backoffice-edit-hashtags-en.php";
+
+$BACKOFFICE_EDIT_FRIENDLIST = "backoffice-edit-friendlist-influenceurs.php";
+$BACKOFFICE_EDIT_FRIENDLIST_EN = "backoffice-edit-friendlist-influenceurs-en.php";
+
+$BACKOFFICE_EDIT_ABO = "backoffice-edit-abonnement.php";
+$BACKOFFICE_EDIT_ABO_EN = "backoffice-edit-abonnement-en.php";
+
+$BACKOFFICE_UPDATE_ABO = "bxoffice-traitement/update-abonnement.php";
+$BACKOFFICE_UPDATE_ABO_EN = "bxoffice-traitement/update-abonnement-en.php";
+
+$BACKOFFICE_EDIT_COMPTE = "backoffice-edit-compte.php";
+$BACKOFFICE_EDIT_COMPTE_EN = "backoffice-edit-compte-en.php";
+
+$BACKOFFICE_UPDATE_COMPTE = "bxoffice-traitement/update-compte.php";
+$BACKOFFICE_UPDATE_COMPTE_EN = "bxoffice-traitement/update-compte-en.php";
+
+$BACKOFFICE_EDIT_INSTAGRAM = "backoffice-edit-instagram.php";
+$BACKOFFICE_EDIT_INSTAGRAM_EN = "backoffice-edit-instagram-en.php";
+
+$BACKOFFICE_UPDATE_INSTAGRAM = "bxoffice-traitement/update-instagram.php";
+$BACKOFFICE_UPDATE_INSTAGRAM_EN = "bxoffice-traitement/update-instagram-en.php";
+
+$BACKOFFICE_UPDATE_INSTAGRAM_DEV = "bxoffice-traitement/update-instagram-dev.php";
+
+
+#Header information
+$HOW_URL = "/instagrowth-les-influenceurs-how.php";
+$PRICING_URL = "/instagrowth-les-influenceurs-pricing.php";
+$PRICING_URL_EN = "/instagrowth-les-influenceurs-pricing-en.php";
+
+#General
+$CALENDLY_RDV = "https://calendly.com/lesinfluenceurs-instagrowth/15min";
+$REF_SITE = "https://www.lesinfluenceurs.net";
+$CGV_CGU = "/les-influenceurs-cgv-cgu.php";
+$URL_SITE = "https://instagrowth.lesinfluenceurs.net";
+?>

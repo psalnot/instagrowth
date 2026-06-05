@@ -1,0 +1,881 @@
+<?php
+
+include_once("../utils/defines.php");
+
+class MUser
+{
+
+
+
+
+	
+	public function updateinstagrowthInstagramPassword($cstring,$cid,$mpassword,$cremoteip,$cremotehost,$cremoteuseragent)
+	{
+		$sql = "update user_pwd set user_pwd='" . $mpassword . "', remote_ip='" . $cremoteip . "', remote_host='" . $cremoethost . "', remote_user_agent='" . $cremoteuseragent . "' where user_id='" . $cid . "'";
+		#echo " La requete " . $sql;exit();
+		$result = mysqli_query($cstring,$sql);
+		return $result;
+		
+	}
+
+
+
+	
+	public function updateinstagrowthPassword($cstring,$cid,$mpassword,$cremoteip,$cremotehost,$cremoteuseragent)
+	{
+		$sql = "update user set password='" . $mpassword . "', remote_ip='" . $cremoteip . "', remote_host='" . $cremoethost . "', remote_user_agent='" . $cremoteuseragent . "' where id='" . $cid . "'";
+		#echo " La requete " . $sql;exit();
+		$result = mysqli_query($cstring,$sql);
+		return $result;
+		
+	}
+
+
+
+	public function updateinstaGrowthAboCard($cstring,$cid,$user_card_id,$cremoteip, $cremotehost, $cremoteuseragent)
+	{
+		$sql = "update user_abo_info set user_card_id='" . $user_card_id . "', remote_ip='" . $cremoteip . "', remote_user_agent='" . $cremoteuseragent . "'  where user_id='" . $cid . "' and is_active='1'";
+		#echo " requete SQL " . $sql;exit();
+		$result = mysqli_query($cstring,$sql);
+
+	
+		
+		$result = mysqli_query($cstring,$sql);
+		
+		return 1;
+	}
+
+
+
+
+
+	public function updateInstagrowthAbo($cstring,$cid, $cvalue)
+	{
+		$sql = "update user_abo_info set is_active='" . $cvalue . "'  where user_id='" . $cid . "'";
+		
+		$result = mysqli_query($cstring,$sql);
+
+	
+		
+		$result = mysqli_query($cstring,$sql);
+		
+		return 1;
+	}
+
+
+	
+	public function updateInstagrowthHashtags($cstring,$cid, $chashtag1,$chashtag2,$chashtag3,$chashtag4,$chashtag5,$cremoteip,$cremotehost,$cremoteuseragent)
+	{
+		$sql = "update user_hashtags set hashtag_1='" . $chashtag1 ."',hashtag_2='" . $chashtag2 . "', hashtag_3='" . $chashtag3 . "', hashtag_4 = '" . $chashtag4 . "', hashtag_5='" . $chashtag5 ."'  where user_id='" . $cid . "'";
+		
+		$result = mysqli_query($cstring,$sql);
+
+	
+		
+		#$result = mysqli_query($cstring,$sql);
+		
+		return 1;
+	}
+
+
+
+	public function updateInstagrowthCommentaires($cstring,$cid, $chashtag1,$chashtag2,$chashtag3,$chashtag4,$chashtag5,$cremoteip,$cremotehost,$cremoteuseragent)
+	{
+		$sql = "update user_commentaires set commentaire_1='" . $chashtag1 ."',commentaire_2='" . $chashtag2 . "', commentaire_3='" . $chashtag3 . "', commentaire_4 = '" . $chashtag4 . "'  where user_id='" . $cid . "'";
+		#echo " Information " . $sql;exit();
+		$result = mysqli_query($cstring,$sql);
+
+	
+		
+		#$result = mysqli_query($cstring,$sql);
+		
+		return 1;
+	}
+
+
+	
+	public function updateInstagrowthInstagram($cstring,$cid, $cinstagram1,$cinstagram2,$cinstagram3,$cinstagram4,$cinstagram5,$cremoteip,$cremotehost,$cremoteuseragent)
+	{
+		$sql = "update user_instagram set instagram_1='" . $cinstagram1 ."',instagram_2='" . $cinstagram2 . "', instagram_3='" . $cinstagram3 . "', instagram_4 = '" . $cinstagram4 . "', instagram_5='" . $cinstagram5 ."'  where user_id='" . $cid . "'";
+		
+		$result = mysqli_query($cstring,$sql);
+
+	
+		
+		$result = mysqli_query($cstring,$sql);
+		
+		return 1;
+	}
+
+
+
+	public function getinstaGrowthAboid($cstring,$ref_id)
+	{
+	
+		$sql = "select name,montant_mensuel_ht,montant_mensuel_ttc from ref_abo where  id='" . $ref_id . "' limit 1";
+		//echo "Requete SQL " . $sql;
+		$result = mysqli_query($cstring,$sql);
+		$row = mysqli_fetch_row($result);
+		//echo " Erreur " . mysql_errno($cstring) . " erreur " . mysql_error($cstring);
+		if ($row)
+		{
+			
+			return $row;
+		}
+		
+		return 0;
+	}
+
+
+
+	public function geturlmailid($cstring,$user_id)
+	{
+	
+		$sql = "select url_mail.is_active,url_mail.url_valid,url_mail.type_demande from url_mail where user_id='" . $user_id . "' limit 1";
+		$result = mysqli_query($cstring,$sql);
+		$row = mysqli_fetch_row($result);
+		
+		if ($row )
+		{
+			return $row;
+		}
+		return 0;
+	}
+
+
+	
+	public function getInstagrowthHashtags($cstring,$cid)
+	{
+		
+		$sql = "select hashtag_1, hashtag_2,hashtag_3,hashtag_4,hashtag_5,remote_ip,remote_host,remote_user_agent  from user_hashtags where user_id=".$cid;
+		$result = mysqli_query($cstring,$sql);
+		#echo "Requete sql " . $sql;exit();
+		$row = mysqli_fetch_row($result);
+		if ($row )
+		{
+			return $row;
+		}
+		return 0;
+				
+	}
+
+
+	public function getInstagrowthCommentaires($cstring,$cid)
+	{
+		
+		$sql = "select commentaire_1, commentaire_2,commentaire_3,commentaire_4,commentaire_5,remote_ip,remote_host,remote_user_agent  from user_commentaires where user_id=".$cid;
+		$result = mysqli_query($cstring,$sql);
+		#echo "Requete sql " . $sql;exit();
+		$row = mysqli_fetch_row($result);
+		if ($row )
+		{
+			return $row;
+		}
+		return 0;
+				
+	}
+
+
+
+	public function getInstagrowthFriends($cstring,$cid)
+	{
+		
+		$sql = "select instagram_1, instagram_2,instagram_3,instagram_4,instagram_5,remote_ip,remote_host,remote_user_agent  from user_instagram  where user_id=".$cid;
+		$result = mysqli_query($cstring,$sql);
+		#echo "Requete sql " . $sql;exit();
+		$row = mysqli_fetch_row($result);
+		if ($row )
+		{
+			return $row;
+		}
+		return 0;
+				
+	}
+
+
+
+	public function getInstagrowthPasswordInstagram($cstring,$cid)
+	{
+		
+		$sql = "select id,user_pwd  from user_pwd  where user_id='" . $cid . "'";
+
+		$result = mysqli_query($cstring,$sql);
+		#echo "Requete sql " . $sql;exit();
+		$row = mysqli_fetch_row($result);
+		if ($row )
+		{
+			return $row;
+		}
+		return 0;
+				
+	}
+
+
+
+	
+	public function cryptInstagrowthPassword($cstring,$cid, $crypted_token, $cremoteip,$cremotehost,$cremoteuseragent)
+	{
+		$sql = "insert into user_pwd (user_id,user_pwd,remote_ip, remote_host, remote_user_agent) values ('" . $cid . "','" . $crypted_token . "','" . $cremoteip . "','" . $cremotehost . "','" . $cremoteuseragent  . "')";
+		
+		$result = mysqli_query($cstring,$sql);
+		$mid = mysqli_insert_id($cstring);
+		
+		
+		return $mid;
+	}
+
+
+	public function getInstagrowthUserAboStatus($cstring,$user_id,$mstatus)
+	{
+		$sql = "select user_card_id,montant_abo,montant_abo_ttc,ref_abo,automatic_renew,is_invoice,test_period_start,test_period_end,is_active from user_abo_info  where  user_id=" . $user_id . " and is_active='" . $mstatus . "'";
+		#echo "Requete SQL " . $sql; exit();
+		$result = mysqli_query($cstring,$sql);
+		$row = mysqli_fetch_row($result);
+		if ($row )
+		{
+			return $row;
+		}
+		return 0;
+	}
+
+
+	
+	public function getInstagrowthUserAbo($cstring,$user_id)
+	{
+		$sql = "select user_card_id,montant_abo,montant_abo_ttc,ref_abo,automatic_renew,is_invoice,test_period_start,test_period_end,is_active from user_abo_info  where  user_id=" . $user_id . " and is_active=1";
+		#echo "Requete SQL " . $sql; exit();
+		$result = mysqli_query($cstring,$sql);
+		$row = mysqli_fetch_row($result);
+		if ($row )
+		{
+			return $row;
+		}
+		return 0;
+	}
+
+
+	
+	public function getInstagrowthUserInfo($cstring,$user_id)
+	{
+		$sql = "select user.email,user.phone, user.name, user.lastname, user.company, user.date_create, user.date_update, user.remote_ip, user.remote_user_agent, user.remote_host, user.password, user.instagram from user  where  id=" . $user_id;
+		$result = mysqli_query($cstring,$sql);
+		$row = mysqli_fetch_row($result);
+		if ($row )
+		{
+			return $row;
+		}
+		return 0;
+	}
+
+
+
+	public function getinstagrowthcardinfo($cstring,$user_id)
+	{
+		$sql = "select id from user_card_info  where  id=" . $user_id;
+		$result = mysqli_query($cstring,$sql);
+		$row = mysqli_fetch_row($result);
+		if ($row )
+		{
+			return $row;
+		}
+		return 0;
+	}
+
+	
+
+	
+	public function updatecreateinstaGrowthUserAbo($cstring,$user_id, $montant_ht,$montant_ttc,$cmabo,$cremoteip,$cremotehost,$cremoteuseragent)
+	{
+		$sql = "update user_abo_info set montant_abo='" . $montant_ht . "', montant_abo_ttc='" . $montant_ttc . "', ref_abo='" . $cmabo . "', remote_ip='" . $cremoteip . "', remote_host='" . $cremotehost . "', remote_user_agent='" . $cremoteuseragent . "', test_period_start=NOW(), test_period_end=NOW()+INTERVAL 2 DAY where user_id='" . $user_id . "'";
+		
+		
+		
+		#echo " SQL " . $sql;exit();
+		if ( ! mysqli_query($cstring,$sql) )
+		{
+			echo("Error description: " . mysqli_error($cstring));
+			exit();
+		}
+		
+
+               	// mysqli_insert_id($cstring);
+		$mid = mysqli_insert_id($cstring);
+
+	       return $mid;
+		
+	}
+
+
+
+	public function updateinstagrowthcard($cstring,$user_id,$user_card_id)
+	{
+		$sql = "update user_card_info set customer_id='" . $user_card_id . "' where user_id='" . $user_id . "'";
+		
+		
+		
+		#echo " SQL " . $sql;exit();
+		if ( ! mysqli_query($cstring,$sql) )
+		{
+			echo("Error description: " . mysqli_error($cstring));
+			exit();
+		}
+		
+
+               	// mysqli_insert_id($cstring);
+		$mid = mysqli_insert_id($cstring);
+
+	       return $mid;
+		
+	}
+
+
+
+	
+	public function createinstaGrowthUserAbo($cstring,$user_id, $montant_ht,$montant_ttc,$cmabo,$cremoteip,$cremotehost,$cremoteuseragent)
+	{
+		$sql = "insert into user_abo_info (user_id,montant_abo,montant_abo_ttc,ref_abo,remote_ip,remote_host,remote_user_agent,test_period_start,test_period_end) values ('" . $user_id . "','" . $montant_ht . "','" . $montant_ttc . "','" . $cmabo . "','" . $cremoteip . "','" . $cremotehost . "','" . $cremoteuseragent . "',NOW(),NOW()+INTERVAL 3 DAY)";
+		
+		
+		
+		if ( ! mysqli_query($cstring,$sql) )
+		{
+			echo("Error description: " . mysqli_error($cstring));
+			exit();
+		}
+		
+
+               	// mysqli_insert_id($cstring);
+		$mid = mysqli_insert_id($cstring);
+
+	       return $mid;
+		
+	}
+
+
+	
+	public function createInstagrowthInstagram($cstring,$cid, $cinstagram1,$cinstagram2,$cinstagram3,$cinstagram4,$cinstagram5,$cremoteip,$cremotehost,$cremoteuseragent)
+	{
+		$sql = "insert into user_instagram (user_id,instagram_1,instagram_2,instagram_3,instagram_4,instagram_5, remote_ip, remote_host, remote_user_agent) values ('" . $cid . "','" . $cinstagram1 . "','" . $cinstagram2 . "','" . $cinstagram3 . "','" . $cinstagram4 . "','" . $cinstagram5 . "','" . $cremoteip . "','" . $cremotehost . "','" . $cremoteuseragent  . "')";
+		
+		#echo "La requête SQL " . $sql;
+		
+		if ( ! mysqli_query($cstring,$sql) )
+		{
+			echo("Error description: " . mysqli_error($cstring));
+			exit();
+		}
+		
+
+               	// mysqli_insert_id($cstring);
+		$mid = mysqli_insert_id($cstring);
+
+	       return $mid;
+		
+	}
+
+
+	
+	public function createInstagrowthHashtags($cstring, $cid,$chashtag1,$chashtag2,$chashtag3,$chashtag4,$chashtag5,$cremoteip,$cremotehost,$cremoteuseragent)
+	{
+		$sql = "insert into user_hashtags (user_id,hashtag_1,hashtag_2,hashtag_3,hashtag_4,hashtag_5, remote_ip, remote_host, remote_user_agent) values ('" . $cid . "','" . $chashtag1 . "','" . $chashtag2 . "','" . $chashtag3 . "','" . $chashtag4 . "','" . $chashtag5 . "','" . $cremoteip . "','" . $cremotehost . "','" . $cremoteuseragent  . "')";
+
+		#echo "La requête SQL " . $sql;
+		
+		if ( ! mysqli_query($cstring,$sql) )
+		{
+			echo("Error description: " . mysqli_error($cstring));
+			exit();
+		}
+		
+
+               	// mysqli_insert_id($cstring);
+	       $mid = mysqli_insert_id($cstring);
+
+	       return $mid;
+		
+		
+	}
+
+
+	public function createInstagrowthCommentaires($cstring, $cid,$chashtag1,$chashtag2,$chashtag3,$chashtag4,$cremoteip,$cremotehost,$cremoteuseragent)
+	{
+		$sql = "insert into user_commentaires (user_id,commentaire_1,commentaire_2,commentaire_3,commentaire_4, remote_ip, remote_host, remote_user_agent) values ('" . $cid . "','" . $chashtag1 . "','" . $chashtag2 . "','" . $chashtag3 . "','" . $chashtag4 . "','" . $cremoteip . "','" . $cremotehost . "','" . $cremoteuseragent  . "')";
+
+		#echo "La requête SQL " . $sql;
+		
+		if ( ! mysqli_query($cstring,$sql) )
+		{
+			echo("Error description: " . mysqli_error($cstring));
+			exit();
+		}
+		
+
+               	// mysqli_insert_id($cstring);
+	       $mid = mysqli_insert_id($cstring);
+
+	       return $mid;
+		
+		
+	}
+
+
+	
+	public function createInstagrowthCard($cstring, $cid, $customer_id, $cremoteip, $cremotehost, $cremoteuseragent)
+	{
+		$sql = "insert into user_card_info (user_id,customer_id, remote_ip, remote_host, remote_user_agent) values ('" . $cid . "','" . $customer_id . "','" . $cremoteip . "','" . $cremotehost . "','" . $cremoteuseragent  . "')";
+
+		
+		
+		if ( ! mysqli_query($cstring,$sql) )
+		{
+			echo("Error description: " . mysqli_error($cstring));
+			exit();
+		}
+		
+
+               	// mysqli_insert_id($cstring);
+	       $mid = mysqli_insert_id($cstring);
+
+	       return $mid;
+		
+		
+	}
+
+	
+	public function createInstagrowthAbo($cstring, $user_id, $user_card_id, $montant_abo, $ref_abo, $cremoteip, $cremotehost, $cremoteuseragent)
+	{
+		$sql = "insert into user_abo_info (user_id,user_card_id,montant_abo,ref_abo, remote_ip, remote_host, remote_user_agent) values ('" . $user_id . "','" . $user_card_id . "','" . $montant_abo . "','" . $ref_abo . "','" . $cremoteip . "','" . $cremotehost . "','" . $cremoteuseragent  . "')";
+
+		//echo "La requete SQL " . $sql;exit();
+		
+		if ( ! mysqli_query($cstring,$sql) )
+		{
+			echo("Error description: " . mysqli_error($cstring));
+			exit();
+		}
+		
+
+               	// mysqli_insert_id($cstring);
+	       $mid = mysqli_insert_id($cstring);
+
+	       return $mid;
+		
+	}
+
+	
+	
+	
+	
+	public function createwaftoken($cstring, $id_offre, $stripetoken, $user_id, $customer_id,$subscription_id)
+	{
+		//$sql = "insert into user (username,password,email) values (\'". $cname . "\',\'" . $cpassword . "\',\'" . $cemail . "\')";
+		//mysql_select_db("liplus",$cstring);
+		$sql = "insert into paiement_waf (id_offre,customer_id, user_id,stripetoken,date_start_abo,date_end_abo,subscription_id) values ('" . $id_offre . "','" . $customer_id . "','" . $user_id . "','" . $stripetoken . "', NOW(), DATE_ADD(NOW(), interval 1 MONTH),'" . $subscription_id .  "')";
+		
+		
+		mysqli_query($cstring,$sql);
+		
+	}
+	
+
+	public function createurlmail($cstring,$user_id,$type_demande,$urllink,$remote_ip,$remote_host,$remote_useragent)
+	{
+		$sql = "insert into url_mail(user_id,url_valid,is_active,type_demande,remote_ip,remote_host,remote_user_agent) values ('" . $user_id . "','" . $urllink . "','1','" . $type_demande . "','" . $remote_ip . "','" . $remote_host . "','" . $remote_useragent . "')";
+		$result = mysqli_query($cstring,$sql);
+		return $result;
+	}
+
+	public function geturlmail($cstring,$urllink)
+	{
+		$sql = "select user.email,url_mail.type_demande,user.id from url_mail inner join user on url_mail.user_id=user.id where url_mail.is_active='1' and url_mail.url_valid='" . $urllink . "' limit 1";
+		
+		$result = mysqli_query($cstring,$sql);
+		$row = mysqli_fetch_row($result);
+		if ($row )
+		{
+			return $row;
+		}
+		return 0;
+	}
+
+
+
+	public function updateurlmail($cstring,$urllink,$remote_ip,$remote_host,$remote_useragent)
+	{
+		$sql = "update url_mail set is_active='0',remote_ip='" . $remote_ip . "', remote_host='" . $remote_host . "', remote_user_agent = '" . $remote_useragent . "'  where url_valid='" . $urllink . "'";
+		
+		$mrow = $this->geturlmail($cstring,$urllink);
+		$result = mysqli_query($cstring,$sql);
+
+		$sql = "update user set active='1' where id='" . $mrow[2] . "'";
+		#echo "SQL  " . $sql;exit();
+		$result = mysqli_query($cstring,$sql);
+
+		return 1;
+	}
+
+
+
+	public function createcustomer($cstring, $user_id, $customer_id)
+	{
+		//$sql = "insert into user (username,password,email) values (\'". $cname . "\',\'" . $cpassword . "\',\'" . $cemail . "\')";
+		//mysql_select_db("liplus",$cstring);
+		$sql = "insert into customer_id (customer_id, user_id ) values ('" . $customer_id . "','" . $user_id . "')";
+		echo "requete SQL " . $sql;
+		mysqli_query($cstring,$sql);
+		
+	}
+
+
+	
+
+	public function checkuser($cstring,$cemail)
+	{
+		$sql = "select email from user where email='" . $cemail . "' limit 1";
+		$result = mysqli_query($cstring,$sql);
+                $row = mysqli_fetch_row($result);
+
+		if ($row and $row[0])
+                {
+                        return 1;
+                }
+                else
+                {
+                        return 0;
+                }
+	}
+
+
+
+	public function checkusercard($cstring,$cemail)
+	{
+		$sql = "select user.id from user inner join user_card_info on user.id=user_card_info.user_id where user.email='" . $cemail . "' limit 1 ";
+		
+		$result = mysqli_query($cstring,$sql);
+                $row = mysqli_fetch_row($result);
+
+		if ($row and $row[0])
+                {
+                        return 1;
+                }
+                else
+                {
+                        return 0;
+                }
+	}
+
+
+
+
+	public function getprofilinfo($cstring,$uid)
+	{
+
+		$sql = "select id,firstname,lastname,date_create,active,username,avatar,language from user where id='" . $uid ."' limit 1";
+		
+                #$result = mysql_query($sql,$cstring);
+		$result = mysqli_query($cstring,$sql);
+                $row = mysqli_fetch_row($result);
+
+		if ($row)
+                {
+                        return $row;
+                }
+                else
+                {
+                        return 0;
+                }
+
+	}
+
+
+
+
+	public function mcompanyinfo($cstring,$muid)
+	{
+	
+		
+		$sql = "select id,user_id,address,zipcode,phone,siret,companyname,town,country  from user_info where user_id='" . $muid ."' and version_last=1 limit 1";
+                #$result = mysql_query($sql,$cstring);
+		
+		$result = mysqli_query($cstring,$sql);
+                $row = mysqli_fetch_row($result);
+		if ($row)
+                {
+                        return $row;
+                }
+                else
+                {
+                        return 0;
+                }
+
+		
+	}
+
+
+	public function updateuser($cstring,$mlastname,$mfirstname,$uid,$remotehost,$remoteip,$remoteuseragent,$mlanguage)
+	{
+		$sql = "update user set lastname='" . $mlastname . "', firstname='" . $mfirstname . "', remote_ip='" . $remoteip . "', remote_host='" . $remotehost . "', remote_user_agent='" . $remoteuseragent . "', language='" . $mlanguage . "' where id='" . $uid . "'";
+		
+		
+		$result = mysqli_query($cstring,$sql);
+		return $result;
+
+	}
+
+
+
+
+	public function updatepassword($cstring,$mpassword,$cuserid)
+	{
+		$sql = "update user set password='" . $mpassword . "' where id='" . $cuserid . "'";
+		$result = mysqli_query($cstring,$sql);
+		return $result;
+		
+	}
+
+
+	public function updatephoto($cstring,$cphoto,$cuserid)
+	{
+		$sql = "update user set mphoto='" . $cphoto . "' where id='" . $cuserid . "'";
+		$result = mysqli_query($cstring,$sql);
+		#echo " Requete SQL " . $sql;exit();
+		return $result;
+	}
+
+	public function updatephotomarque($cstring,$cphoto,$id_campagne)
+	{
+		$sql = "update user_campagne set campagne_photo='" . $cphoto . "' where id='" . $id_campagne . "'";
+		$result = mysqli_query($cstring,$sql);
+		return $result;
+	}
+	
+
+
+	public function adduserinfo($cstring,$cuserid,$mcompanyname,$mphone,$mzipcode,$maddress,$cremotehost,$cremoteip,$cremoteuseragent,$version_last)
+	{
+		$sql = "insert into user_info (user_id,companyname,phone,zipcode,address,remote_host,remote_ip,remote_user_agent,version_last) values ('" . $cuserid . "','" . $mcompanyname . "','" . $mphone . "','" . $mzipcode . "','" . $maddress . "','" . $cremotehost . "','" . $cremoteip . "','" . $cremoteuseragent . "','" . $version_last . "')"; 
+		$result = mysqli_query($cstring,$sql);
+		return (mysqli_insert_id($cstring));		
+
+	}
+
+	public function updateuserinfolast($cstring,$cuserid,$cuserinfo)
+	{
+		$sql = "update user_info set version_last='0' where user_id='" . $cuserid . "'";
+		$result = mysqli_query($cstring,$sql);
+		$sql = "update user_info set version_last='1' where id='" . $cuserinfo . "' and user_id='" . $cuserid . "'";
+		$result = mysqli_query($cstring,$sql);
+	}
+
+
+	/*Update of influencer informations*/
+	public function updateinfluencerdata($cstring,$cuserid,$ctown,$czipcode,$cbirthday,$csex,$cstatus,$cyoutube,$cfacebook)
+	{
+		$sql = "update user set town='" . $ctown . "',zipcode='" . $czipcode . "',sex='" . $csex . "',birthday='" . $cbirthday . "',status='" . $cstatus . "',youtube='" . $cyoutube . "',facebook='" . $cfacebook ."' where id='" . $cuserid ."'";
+		
+		#echo "La requete SQL " . $sql;
+		$result = mysqli_query($cstring,$sql);
+		return $result;
+	}
+
+	public function updateinfluencergen($cstring,$user_id,$ctown,$czipcode,$cinstagram)
+	{
+		$sql = "update user set town='" . $ctown . "',zipcode='" . $czipcode . "',instagram='" . $cinstagram . "'";
+		$result = mysqli_query($cstring,$sql);
+		return $result;
+	}
+
+	public function updateinfluencergendata($cstring,$user_id,$ctown,$czipcode,$cinstagram)
+        {
+                $sql = "update user set town='" . $ctown . "',zipcode='" . $czipcode . "',instagram='" . $cinstagram . "' where id='" .$user_id  ."'";
+                $result = mysqli_query($cstring,$sql);
+                return $result;
+        }
+
+	public function updatemarquegendata($cstring,$user_id,$ctown,$czipcode,$cweb,$ctel)
+	{
+		$sql = "update user set town='" . $ctown . "',zipcode='" . $czipcode . "',url_web='" . $cweb . "', phone='" . $ctel . "' where id='" .$user_id  ."'";
+		$result = mysqli_query($cstring,$sql);
+		return $result;
+	}
+	
+
+        public function updateinfluencerdetails($cstring, $user_id, $cinterest,$cpolitique,$csante,$cbeaute,$ccuisine,$csport,$cmode)
+	{
+		$sql = "update user_details set sport='" . $csport . "',sante='" . $csante . "',cuisine='" . $ccuisine . "',politique='" . $cpolitique . "',beaute='" . $cbeaute . "',centre_interet='" . $cinterest . "',mode='" . $cmode . "' where user_id='" . $user_id ."'";
+		#echo "SQL " . $sql; exit();
+		$result = mysqli_query($cstring,$sql);
+		return $result;
+	}
+
+
+	public function updatecampagne($cstring,$id_campagne,$cinterest,$cpolitique,$csante,$cbeaute,$ccuisine,$csport,$cmode,$cnbinfluenceurs,$cnbposts,$cnature,$cbudget)
+	{
+		$sql = "update user_campagne set t_sport='" . $csport . "',t_sante='" . $csante . "',t_cuisine='" . $ccuisine . "',t_politique='" . $cpolitique . "',t_beaute='" . $cbeaute . "',description='" . $cinterest . "',t_mode='" . $cmode . "',nb_influenceurs='" . $cnbinfluenceurs . "',nb_post_influenceurs='" . $cnbposts . "',nature_post='" . $cnature . "',budget='" . $cbudget .  "' where id='" . $id_campagne ."'";
+		$result = mysqli_query($cstring,$sql);
+		return $result;
+		#echo $sql;exit();
+		
+	}
+
+
+        public function createinfluencerdata($cstring, $user_id, $cinterest,$cpolitique,$csante,$cbeaute,$ccuisine,$csport)
+	{
+		     
+		$sql = "insert into user_details (user_id, centre_interet, politique, sante, beaute, cuisine, sport) values ('" . $user_id . "','" . $cinterest . "','" . $cpolitique . "','" . $csante . "','" . $cbeaute .  "','" . $ccuisine . "','" . $csport . "')";
+                mysqli_query($cstring,$sql);
+
+        }
+
+	public function createcampagnemarque($cstring,$user_id,$cname,$cweb,$cdesc,$cnbinfluenceurs,$cnbposts,$cnature,$cbudget,$cpolitique,$csante,$cbeaute,$ccuisine,$csport,$cmode,$cremoteuseragent,$cremoteip,$cremotehost)
+	{
+		$sql = "insert into user_campagne (user_id,name,url_web,description,nb_influenceurs,nb_post_influenceurs,nature_post,budget,t_politique,t_beaute,t_sante,t_cuisine,t_sport,t_mode,remote_useragent,remote_ip,remote_host) values ('" . $user_id ."','" . $cname . "','" . $cweb . "','" . $cdesc . "','" . $cnbinfluenceurs . "','" . $cnbposts . "','" . $cnature . "','" . $cbudget . "','" . $cpolitique . "','" . $cbeaute . "','" . $csante . "','" . $ccuisine . "','" . $csport . "','" . $cmode . "','" . $cremoteuseragent . "','" . $cremoteip . "','" . $cremotehost . "')";
+		#echo "La description : " . $cdesc;exit();
+		#echo "La requete " . $sql; exit();
+		$result = mysqli_query($cstring,$sql);
+		$insert_id = mysqli_insert_id($cstring);
+		return $insert_id;
+	}
+
+	   public function createmarquedata($cstring, $user_id, $cdesc,$csecteur,$ccampagne,$cbudget)
+	   	  {
+
+                $sql = "insert into user_details (user_id, marque_description, marque_secteur, marque_nbinfluenceurs, marque_budget) values ('" . $user_id . "','" . $cdesc . "','" . $csecteur . "','" . $ccampagne . "','" . $cbudget . "')";
+		//echo " Requete sql " . $sql;exit();
+		                mysqli_query($cstring,$sql);
+
+				}
+	
+	public function getinfluencerinfo($cstring,$user_id)
+	{
+		$sql = "select username,email,firstname,lastname,phone,instagram,youtube,facebook,zipcode,town,sex,status,birthday,mphoto,is_marque,company_name,url_web from user where id='" . $user_id ."'";
+		$result = mysqli_query($cstring,$sql);
+		$row = mysqli_fetch_row($result);
+
+		if ($row)
+		{
+			return $row;
+		}
+		else
+		{
+			return 0;
+		}
+	}
+
+	public function getcampagnemarque($cstring,$id_campagne)
+	{
+		$sql = "select name,url_web,description, nb_influenceurs, nb_post_influenceurs, nature_post, budget, t_mode,t_sport,t_sante,t_cuisine,t_politique,t_beaute,campagne_photo from user_campagne where id=" . $id_campagne;
+		$result = mysqli_query($cstring,$sql);
+		
+		$row = mysqli_fetch_row($result);
+
+		if ($row)
+		{
+			return $row;
+		}
+		else
+		{
+			return 0;
+		}
+		
+		
+	}
+
+	public function getlistcampagne($cstring,$id_user)
+	{
+		$sql = "select id,name,url_web,description, nb_influenceurs, nb_post_influenceurs, nature_post, budget, t_mode,t_sport,t_sante,t_cuisine,t_politique,t_beaute,campagne_photo from user_campagne where user_id=" . $id_user;
+		$result = mysqli_query($cstring,$sql);
+		return $result;
+		
+	}
+
+	public function getinfluencerdetails($cstring,$user_id)
+	{
+		$sql = "select id,sport,sante,cuisine,politique,beaute,centre_interet,user_id,mode from user_details where user_id='" . $user_id . "' limit 1";
+		//echo " SQL "  . $sql;
+		$result = mysqli_query($cstring,$sql);
+		$row = mysqli_fetch_row($result);
+		if ($row)
+		{
+			return $row;
+		}
+		else
+		{
+			return 0;
+		}
+	}
+
+	public function getinteretinfluencer($cstring, $mlist)
+	{
+		$interet = "";
+		if ($mlist[1]) $interet = "Sport";
+		if ($mlist[2]) $interet .= " Sante";
+		if ($mlist[3]) $interet .= " Cuisine";
+		if ($mlist[4]) $interet .= " Politique";
+		if ($mlist[5]) $interet .= " Beaute";
+
+		return $interet;
+	}
+
+	public function getinteretmarque($cstring,$infodetails)
+	{
+		#$sql = "select name,url_web,description, nb_influenceurs, nb_post_influenceurs, nature_post, budget, t_mode,t_sport,t_sante,t_cuisine,t_politique,t_beaute from user_campagne where id=" . $id_campagne;
+		if ($infodetails[7]) $interet = "Mode";
+		if ($infodetails[8]) $interet .= " Sport";
+		if ($infodetails[9]) $interet .= " Sante";
+		if ($infodetails[10]) $interet .= " Cuisine";
+		if ($infodetails[11]) $interet .= " Politique";
+		if ($infodetails[12]) $interet .= " Beaute";
+
+		return $interet;
+	}
+
+	public function getcampagnebudget($infos)
+	{
+		if ($infos == 1) return "Moins de 1 000 Euros";
+		if ($infos == 2) return "Entre 1 000 et 2 500 Euros";
+		if ($infos == 3) return "Entre 2 500 et 5 000 Euros";
+		if ($infos == 4) return "Plus de 5 000 Euros";
+		return "Inconnu";
+	}
+
+	public function getcampagnepubli($infos)
+	{
+		if ($infos == 1) return "Publication simple";
+		if ($infos == 2) return "Publication + Story";
+		
+	}
+
+	public function getnbinfluenceurs($infos)
+	{
+		if ($infos == 1) return "Vous recherchez un influenceur";
+		if ($infos == 2) return "Vous recherchez deux influenceurs";
+		if ($infos == 5) return "Vous recherchez plus de cinq influenceurs";
+		
+	}
+
+	public function getnbposts($infos)
+	{
+		if ($infos == 1) return "Une publication par influenceur";
+		if ($infos == 2) return "Deux publications par influenceur";
+		if ($infos == 4) return "Plus de quatre publications par influenceur";
+	}
+
+	public function getnatureposts($infos)
+	{
+		if ($infos == 1) return "Publication simple";
+		if ($infos == 2) return "Publication + Story";
+	}
+
+	public function getbudget($infos)
+	{
+		if ($infos == 1) return "Moins de 1000 &euro;";
+		if ($infos == 2) return "Entre 1 000 &euro; et 2 500 &euro;";
+		if ($infos == 3) return "Entre 2 500 &euro; et 5 000 &euro;";
+		if ($infos == 4) return "Plus de 5 000 &euro;";
+		
+	}
+	
+}
+
+?>

@@ -1,0 +1,591 @@
+function replaceURLWithHTMLLinks(text) {
+    var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/i;
+    return text.replace(exp,"<a target='_blank' href='$1'>$1</a>");
+}
+
+function showModelRegistrationPopup() {
+    $.magnificPopup.open({
+        mainClass: 'mfp-fade',
+        closeOnBgClick: false,
+        fixedContentPos: true,
+        type: 'ajax',
+        items: {src: '/client/popup'},
+        ajax: {
+            settings: {
+                data: {
+                    template: "ModelRegistrationPopup"
+                }
+            },
+            cursor: 'mfp-ajax-cur', // CSS class that will be added to body during the loading (adds "progress" cursor)
+            tError: '<a href="%url%">The content</a> could not be loaded.' //  Error message, can contain %curr% and %total% tags if gallery is enabled
+        },
+        callbacks: {
+            ajaxContentAdded: function () {
+
+                var script = document.createElement('script');
+                var portfolio_dropzone;
+                script.onload = function () {
+                    Dropzone.autoDiscover = false;
+                    portfolio_dropzone = new Dropzone("#Form_RegisterForm #Portfolio", {
+                        url: "/register/uploadPortfolio",
+                        maxFiles: 5,
+                        acceptedFiles: ".jpg,.jpeg,.png",
+                        addRemoveLinks: true,
+                        dictRemoveFileConfirmation: "Remove image?",
+                        dictRemoveFile: "×",
+                        dictCancelUpload: "×",
+                        success: function (file, response) {
+                            file.id = response;
+                            $("#Form_RegisterForm").valid();
+                        },
+                        removedfile: function (file) {
+                            var id = file.id;
+
+                            $.ajax({
+                                type: 'POST',
+                                url: '/register/deletePortfolio',
+                                data: {id: id},
+                                success: function (data) {
+
+                                }
+                            });
+                            var _ref;
+                            return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
+                        }
+                    });
+                    $("#upload_images").on("click", function () {
+                        portfolio_dropzone.hiddenFileInput.click();
+                    });
+
+                };
+                script.src = "/mysite/javascript/dropzone.js";
+
+                document.body.appendChild(script);
+                var script2 = document.createElement('script');
+                script2.src = "/mysite/javascript/jquery.pwstrength.min.js";
+                script2.onload = function () {
+                    $('#Form_RegisterForm_Password').pwstrength();
+                };
+                document.body.appendChild(script2);
+
+                var script3 = document.createElement('script');
+                script3.src = "/mysite/bower_components/jQueryDateSelectBoxes/jquery.dateSelectBoxes.js";
+                script3.onload = function () {
+                    $().dateSelectBoxes({
+                        yearMax: moment().subtract(18, "years").year(),
+                        yearMin: moment().subtract(100, "years").year(),
+                        monthElement: $('#birth-month'),
+                        dayElement: $('#birth-day'),
+                        yearElement: $('#birth-year')
+                    });
+                };
+                document.body.appendChild(script3);
+                $("[name=Gender]").on("change",function () {
+                    $("#Form_RegisterForm_Height,#Form_RegisterForm_MaleHeight").hide();
+                   if($(this).val()=="Female"){
+                       $("#Form_RegisterForm_Height").show();
+                   }
+                    if($(this).val()=="Male"){
+                        $("#Form_RegisterForm_MaleHeight").show();
+                    }
+                });
+
+
+                jQuery.validator.addMethod("minPortfolio", function (value, element) {
+
+                    return portfolio_dropzone.getFilesWithStatus(Dropzone.SUCCESS).length == 5;
+                }, "This field is required");
+                jQuery.validator.addMethod("BirthDate", function (value, element) {
+                    var is_valid= $("#birth-day").val() != 0 && $("#birth-month").val() != 0 && $("#birth-year").val() != 0;
+                    var isLegal=false;
+                    if(is_valid){
+                        var birthday=moment($("#birth-day").val()+"-"+$("#birth-month").val()+"-"+$("#birth-year").val(), "DD-MM-YYYY");
+                        var age = moment().diff(birthday, 'years');
+                        isLegal = (age >= 18);
+                    }
+
+                    return is_valid&&isLegal;
+                }, "");
+                $("#Form_RegisterForm").validate({
+                    rules: {
+                        Email: {
+                            required: true,
+                            email: true,
+                            remote: {
+                                url: "/register/checkemail",
+                                type: "post"
+                            }
+                        },
+                        PortfolioCount: {
+                            minPortfolio: true
+                        },
+                        Height: {
+                            required: "#Form_RegisterForm_GenderFemale:checked"
+                        },
+                        MaleHeight: {
+                            required: "#Form_RegisterForm_GenderMale:checked"
+                        },
+                        ConfirmEmail: {
+                            equalTo: "#Form_RegisterForm_Email"
+                        },
+                        InstagramUsername: {
+                            // required: true,
+                            email: false,
+                            remote: {
+                                url: "/register/checkinstagram",
+                                type: "post"
+                            }
+                        }
+                    },
+                    messages: {
+                        "Email": {
+                            remote: "This email already exists."
+                        },
+                        ConfirmEmail: {
+                            equalTo: "Please enter the same email"
+                        },
+                    },
+                    // errorPlacement: function(error, element) {
+                    //     if (element.attr("name") == "TravelArrangement") {
+                    //         error.insertAfter("#TravelArrangementContainer");
+                    //     } else {
+                    //         error.insertAfter(element);
+                    //     }
+                    // },
+                    submitHandler: function (form) {
+                        if (window["fbq"]) {
+                            fbq('track', 'Lead');
+                        }
+                        var files = portfolio_dropzone.getAcceptedFiles();
+
+                        var data = $(form).serialize();
+                        $.each(files, function (k, v) {
+                            console.log(this);
+                            data += "&Portfolio[]=" + v.id;
+                        });
+
+                        var url = $(form).attr("action") + "?" + window.location.search.substring(1);
+
+                        $("#Form_RegisterForm_action_doRegister").button("loading");
+
+                        $.ajax({
+                            method: "POST",
+                            url: url,
+                            data: data,
+                            success: function (response) {
+                                $.magnificPopup.close();
+                                $("#Form_RegisterForm_action_doRegister").button("reset");
+
+                                try {
+                                    response = JSON.parse(response);
+                                }
+                                catch (e) {
+                                    alert("Sorry there has been a temporary error, please try again later.");
+                                    return;
+                                }
+                                if (response.success) {
+
+                                    form.reset();
+                                    location = "/model";
+
+                                }
+                            },
+                            error: function (request, status, error) {
+                                $("#Form_RegisterForm_action_doRegister").button("reset");
+                                alert("Sorry there has been a temporary error, please try again later.");
+                            }
+                        });
+                    }
+                });
+                $("#Form_RegisterForm select").on("change", function () {
+                    $("#Form_RegisterForm").valid();
+                });
+
+                /* iCheck - disabled */
+                /*$("#Form_RegisterForm").on("ifChanged", function () {
+                 $("#Form_RegisterForm").valid();
+                 });*/
+                $("#Form_RegisterForm").on("change", function () {
+                    $("#Form_RegisterForm").valid();
+                });
+                $("#birth-day").rules("add", {required: true, BirthDate: true});
+                $("#birth-month").rules("add", {required: true, BirthDate: true});
+                $("#birth-year").rules("add", {required: true, BirthDate: true});
+
+            }
+        }
+    });
+}
+function showClientRegistrationPopup() {
+    $.magnificPopup.open({
+
+        closeOnBgClick: false,
+        fixedContentPos: true,
+	mainClass: 'mfp-fade',
+        type: 'ajax',
+        items: {
+		src: './client-register-popup.htm',
+		crossOrigin: null
+		 
+	},
+        ajax: {
+	    settings: null,
+            cursor: 'mfp-ajax-cur', // CSS class that will be added to body during the loading (adds "progress" cursor)
+            tError: '<a href="%url%">The content 4242</a> could not be loaded.' //  Error message, can contain %curr% and %total% tags if gallery is enabled
+        },
+        callbacks: {
+            ajaxContentAdded: function () {
+
+                $("#Form_RegisterForm_Email").qtip({
+                    show: 'focus',
+                    hide: 'blur',
+                    style: {
+                        classes: 'qtip-bootstrap'
+                    },
+                    content: {
+                        text: 'For fast verification we suggest using your company e-mail address.',
+                        button: true
+                    },
+                    position: {
+                        my: 'top left',  // Position my top left...
+                        at: 'bottom left', // at the bottom right of...
+                        target: $('#Form_RegisterForm_Email') // my target
+                    }
+                });
+
+                $("#Form_ValidationForm_ClientType,#Form_ValidationForm_ClientIndustry").on("change", function () {
+                    if ($(this).val()) {
+                        $(this).removeClass("placeholder");
+                    } else {
+                        $(this).addClass("placeholder");
+                    }
+                });
+
+                var webpage_link = $("#Form_ValidationForm_WebpageLink");
+                var linkedin_link = $("#Form_ValidationForm_LinkedinLink");
+                var instagram_link = $("#Form_ValidationForm_InstagramLink");
+                var valid = false;
+
+                autocomplete_address = new google.maps.places.Autocomplete((document.getElementById('Form_ValidationForm_Address')), {types: ['geocode']});
+                autocomplete_address.addListener('place_changed', function () {
+                    var place = autocomplete_address.getPlace();
+
+                    var formatted_address = place.formatted_address;
+                    $("#Form_ValidationForm_Address").val(autocomplete_address.getPlace().formatted_address);
+                });
+                $("#Form_ValidationForm_MobilePhone").on("change", function () {
+                    if ($(this).intlTelInput("isValidNumber")) {
+                        $(this).val($(this).intlTelInput("getNumber"));
+                    } else {
+                        $(this).val("");
+                    }
+
+                });
+                var intl_tel_script1 = document.createElement('script');
+                var intl_tel_script2 = document.createElement('script');
+                intl_tel_script1.src = "js/utils.js";
+                intl_tel_script2.src = "js/intlTelInput.min.js";
+                intl_tel_script1.onload = function () {
+                    document.body.appendChild(intl_tel_script2);
+                };
+                intl_tel_script2.onload = function () {
+                    $("#Form_ValidationForm_MobilePhone").intlTelInput({
+                        nationalMode: false
+                    });
+                };
+                document.body.appendChild(intl_tel_script1);
+
+
+                $("#Form_ValidationForm_Address,#Form_ValidationForm_City").on("keypress", function (e) {
+                    if (e.keyCode == 13) {
+                        return false;
+                    }
+                });
+
+                var script2 = document.createElement('script');
+                script2.src = "js/jquery.pwstrength.min.js";
+                script2.onload = function () {
+                    $('#Form_RegisterForm_Password').pwstrength();
+                };
+                document.body.appendChild(script2);
+
+                $("#Form_ValidationForm_WebpageLink,#Form_ValidationForm_LinkedinLink,#Form_ValidationForm_InstagramLink").on("change", function () {
+                    if ( webpage_link.val() || linkedin_link.val() || instagram_link.val() ) {
+                        webpage_link.removeAttr('required').removeClass("error");
+                        linkedin_link.removeAttr('required').removeClass("error");
+                        instagram_link.removeAttr('required').removeClass("error");
+                    }
+                });
+
+                $("#Form_RegisterForm").validate({
+                    rules: {
+                        Email: {
+                            required: true,
+                            email: true,
+                            remote: {
+                                url: "/register/checkemail",
+                                type: "post"
+                            }
+                        },
+                        ConfirmEmail: {
+                            equalTo: "#Form_RegisterForm_Email"
+                        },
+                        WebpageLink: {
+                            email: false,
+                            remote: {
+                                url: "/register/checkurl",
+                                type: "post"
+                            }
+                        },
+                        LinkedinLink: {
+                            email: false,
+                            remote: {
+                                url: "/register/checkurl",
+                                type: "post"
+                            }
+                        },
+                        InstagramLink: {
+                            email: false,
+                            remote: {
+                                url: "/register/checkurl",
+                                type: "post"
+                            }
+                        }
+                    },
+                    messages: {
+                        "Email": {
+                            remote: "This email already exists."
+                        },
+                        ConfirmEmail: {
+                            equalTo: "Please enter the same email"
+                        },
+                        WebpageLink: {
+                            remote: "Please provide a valid webpage link."
+                        },
+                        LinkedinLink: {
+                            remote: "Please provide a valid LinkedIn link."
+                        },
+                        InstagramLink: {
+                            remote: "Please provide a valid Instagram link."
+                        }
+
+                    },
+
+                    submitHandler: function (form) {
+                        if (window["fbq"]) {
+                            fbq('track', 'Lead');
+                        }
+                        var data = $(form).serialize();
+                        var url = $(form).attr("action") + "?" + window.location.search.substring(1);
+                        $("#Form_RegisterForm_action_doRegister").button("loading");
+                        $.ajax({
+                            method: "POST",
+                            url: url,
+                            data: data,
+                            success: function (response) {
+
+                                $("#Form_RegisterForm_action_doRegister").button("reset");
+                                try {
+                                    response = JSON.parse(response);
+                                }
+                                catch (e) {
+                                    alert("Sorry there has been a temporary error, please try again later.");
+                                    return;
+                                }
+
+                                if (response.success) {
+                                    $.magnificPopup.close();
+                                    sendGAEvent('client-onboard', 'sign-up');
+                                    form.reset();
+                                    location = "/client";
+                                }
+                                if (response.error) {
+                                    bootbox.alert({
+                                        size: "small",
+                                        title: response.error_title ? response.error_title : "Error",
+                                        message: response.message
+                                    });
+                                }
+
+                            },
+                            error: function (request, status, error) {
+                                $("#Form_RegisterForm_action_doRegister").button("reset");
+                                alert("Sorry there has been a temporary error, please try again later.");
+                            }
+                        });
+                    }
+                });
+
+
+                $("#Form_RegisterForm select").on("change", function () {
+                    $("#Form_RegisterForm").valid();
+                });
+                /* iCheck - disabled */
+                /*$("#Form_RegisterForm").on("ifChanged", function () {
+                 $("#Form_RegisterForm").valid();
+                 });*/
+                $("#Form_RegisterForm").on("change", function () {
+                    $("#Form_RegisterForm").valid();
+                });
+
+
+            }
+        }
+    });
+}
+function showMARegistrationPopup() {
+    $.magnificPopup.open({
+
+        closeOnBgClick: false,
+        fixedContentPos: true,
+        mainClass: 'mfp-fade',
+        type: 'ajax',
+        items: {src: '/client/popup'},
+        ajax: {
+            settings: {
+                data: {
+                    template: "MARegistrationPopup"
+                }
+            },
+            cursor: 'mfp-ajax-cur', // CSS class that will be added to body during the loading (adds "progress" cursor)
+            tError: '<a href="%url%">The content</a> could not be loaded.' //  Error message, can contain %curr% and %total% tags if gallery is enabled
+        },
+        callbacks: {
+            ajaxContentAdded: function () {
+
+                $("#Form_RegisterForm_Email").qtip({
+                    show: 'focus',
+                    hide: 'blur',
+                    style: {
+                        classes: 'qtip-bootstrap'
+                    },
+                    content: {
+                        text: 'For fast verification we suggest using your company e-mail address.',
+                        button: true
+                    },
+                    position: {
+                        my: 'top left',  // Position my top left...
+                        at: 'bottom left', // at the bottom right of...
+                        target: $('#Form_RegisterForm_Email') // my target
+                    }
+                });
+
+
+                $("#Form_ValidationForm_MobilePhone").on("change", function () {
+                    if ($(this).intlTelInput("isValidNumber")) {
+                        $(this).val($(this).intlTelInput("getNumber"));
+                    } else {
+                        $(this).val("");
+                    }
+
+                });
+                var intl_tel_script1 = document.createElement('script');
+                var intl_tel_script2 = document.createElement('script');
+                intl_tel_script1.src = "/mysite/bower_components/intl-tel-input/build/js/utils.js";
+                intl_tel_script2.src = "/mysite/bower_components/intl-tel-input/build/js/intlTelInput.min.js";
+                intl_tel_script1.onload = function () {
+                    document.body.appendChild(intl_tel_script2);
+                };
+                intl_tel_script2.onload = function () {
+                    $("#Form_ValidationForm_MobilePhone").intlTelInput({
+                        nationalMode: false
+                    });
+                };
+                document.body.appendChild(intl_tel_script1);
+
+
+
+
+
+                $("#Form_RegisterForm").validate({
+                    rules: {
+                        Email: {
+                            required: true,
+                            email: true,
+                            remote: {
+                                url: "/register/checkemail",
+                                type: "post"
+                            }
+                        },
+                        ConfirmEmail: {
+                            equalTo: "#Form_RegisterForm_Email"
+                        }
+                    },
+                    messages: {
+                        "Email": {
+                            remote: "This email already exists."
+                        },
+                        ConfirmEmail: {
+                            equalTo: "Please enter the same email"
+                        }
+                    },
+                    submitHandler: function (form) {
+                        if (window["fbq"]) {
+                            fbq('track', 'Lead');
+                        }
+                        var data = $(form).serialize();
+                        var url = $(form).attr("action") + "?" + window.location.search.substring(1);
+                        $("#Form_RegisterForm_action_doRegister").button("loading");
+                        $.ajax({
+                            method: "POST",
+                            url: url,
+                            data: data,
+                            success: function (response) {
+                                $.magnificPopup.close();
+                                $("#Form_RegisterForm_action_doRegister").button("reset");
+                                try {
+                                    response = JSON.parse(response);
+                                }
+                                catch (e) {
+                                    alert("Sorry there has been a temporary error, please try again later.");
+                                    return;
+                                }
+
+                                if (response.success) {
+                                    sendGAEvent('agency-onboard', 'sign-up');
+                                    form.reset();
+                                    bootbox.alert({
+                                        size: "small",
+                                        title: "CONTACT REQUEST",
+                                        message: "Thank you for your request, we will contact you as soon as possible."
+                                    });
+                                }
+
+                            },
+                            error: function (request, status, error) {
+                                $("#Form_RegisterForm_action_doRegister").button("reset");
+                                alert("Sorry there has been a temporary error, please try again later.");
+                            }
+                        });
+                    }
+                });
+
+
+                $("#Form_RegisterForm select").on("change", function () {
+                    $("#Form_RegisterForm").valid();
+                });
+                $("#Form_RegisterForm").on("change", function () {
+                    $("#Form_RegisterForm").valid();
+                });
+
+
+            }
+        }
+    });
+}
+
+if(location.hash=="#register-clients"){
+    showClientRegistrationPopup();
+}
+if(location.hash=="#register-models"){
+    showModelRegistrationPopup();
+}
+if(location.hash=="#register-agencies"){
+    showMARegistrationPopup();
+}
+bootbox.setDefaults({
+    animate:false,
+    centerVertical:true,
+    backdrop: false,
+
+});

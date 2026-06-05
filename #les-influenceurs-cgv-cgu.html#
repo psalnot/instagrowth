@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <title>CGV & CGU - Les influenceurs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/upleap-v2.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600|Pacifico" rel="stylesheet">
+    <link href="img/favicon-upleap.png" rel="icon" media="all" />
+    <link rel="alternate" href="https://upleap.com/terms" hreflang="x-default" />
+    <meta href="https://upleap.com/terms" rel="canonical">
+    <meta name="contact" content="info@upleap.com" />
+    <meta name="description" content="Learn more about the terms and conditions of using Upleap's service, account managers, and what it means to be an Upleap client.">
+    <meta property="og:title" content="Terms & Conditions - Upleap" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.upleap.com/terms" />
+    <meta property="og:image" content="img/og-upleap-logo.jpg" />
+    <meta property="og:description" content="Learn more about the terms and conditions to Upleap and what it means to be an Upleap client." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@upleapdotcom" />
+    <meta name="twitter:title" content="Grow Your Instagram - Upleap" />
+    <meta name="twitter:description" content="Please review Upleap's terms and conditions and what it means to become an upleap client." />
+    <meta name="twitter:image" content="https://upleap.com/img/twitter-upleap-logo.jpg" />
+    <!-- Google Tag Manager -->
+    <!--<script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime()
+                , event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0]
+                , j = d.createElement(s)
+                , dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-5R8H94K');
+    </script>-->
+    <!-- End Google Tag Manager -->
+</head>
+
+<body class="" data-smooth-scroll-offset="100">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5R8H94K" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="content--wrap">
+        <div class="nav-container">
+            <div>
+                <div class="bar bar--sm visible-xs">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-3 col-sm-2"> <a href="/" class="text--logo light color--primary"> Instagrowth </a> </div>
+                            <div class="col-xs-9 col-sm-10 text-right">
+                                <a href="#" class="hamburger-toggle" data-toggle-class="#menu1;hidden-xs hidden-sm"> <i class="icon icon--sm stack-interface stack-menu"></i> </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <nav id="menu1" class="bar bar-1 hidden-xs bar--fixed">
+                    <div class="container nav-separator">
+                        <div class="row">
+                            <div class="col-md-1 col-sm-2 hidden-xs">
+                                <div class="bar__module"> <a href="/" class="text--logo v2 light xl color--primary"> Instagrowth </a> </div>
+                            </div>
+                            <div class="col-md-11 col-sm-5 text-right text-left-xs text-left-sm">
+                                <div class="bar__module ml20">
+                                    <ul class="menu-horizontal">
+                                        <li> <a href="how.html">
+                                        How It Works
+                                    </a> </li>
+                                        <li> <a href="pricing.html">
+                                        Pricing
+                                    </a> </li>
+                                        <li> <a href="reviews.html">
+                                        Reviews
+                                    </a> </li>
+                                    </ul>
+                                </div>
+                                <div class="bar__module">
+                                    <a class="btn btn--sm" href="https://app.upleap.com/signin"> <span class="btn__text">
+                                    SIGN IN
+                                </span> </a>
+                                    <a class="btn btn--sm btn--primary" href="https://app.upleap.com/join"> <span class="btn__text">
+                                    TRY US FOR FREE
+                                </span> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="main-container">
+            <section id="terms">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-10 col-sm-offset-2">
+                            <h2>Conditions générales de vente et d'utilisation</h2>
+                            <!--<p class="lead">Effective on 8 January, 2017</p>-->
+                            <p>Mise à jour le 23 Octobre 2018</p>
+                            <article><span class="h4">I. A propos de nous</span>
+			      
+                                <p><span>
+                                    La société Les influenceurs (ci-après la "<b>Société</b>") est une société par actions simplifiée au capital de 8 000 &euro;, dont le siège social est au 10, rue de Penthièvre 75008 Paris et immatriculée au Registre du commerce et des sociétés de Paris sous le numéro de SIREN 807 433 271.
+				    La société offre les services suivant :
+				    <ul class="fa-ul custom-list">
+				      <ol><i class="fa fa-check fa-fw"></i>Instagrowth : Solution permettant d'automatiser le community management de comptes Instagram</ol>
+				      <li>Marketplace influenceurs : Permet la mise en relation de marques avec des influenceus</li>
+				      <li>Conseil stratégique aux entreprises</li>
+				    </ul>
+
+                                </span></p>
+				
+                                <h4>II. Préambule</h4>
+                              <p> La Société invite ses utilisateurs à lire les présentes Conditions Générales de Vente et d'Utilisation (ci-après les "<b>CGV/CGU</b>"). Les CGV/CGU s'appliquent à tous les Servics fournis par la Société à ses Clients d'une même catégorie, quelles que soient les clauses pouvant être inscrites sur les documents du Client et notamment ses conditions générales d'achat.
+			      </p>
+			      <p>
+				Les CGV/CGU sont systématiquement communiquées au Client qui en fait la demande.
+			      </p>
+			      <p>
+				Le Client est tenu de prendre connaissance des CGV/CGU avant toute passation de Commande.
+			      </p>
+			      <p>
+				En cas de modification ultérieure des CGV/CGU, le Client est soumis à la version en vigueur lors de sa Commande.
+			      </p>
+			      <p>
+				Les données enregistrées dans le système informatique de la Société constituent la preuve des transactions conclues avec le Client.
+			      </p>
+			      
+                              
+                                <h4>III. Définitions</h4>
+                              <p>
+				<b>"Client"</b> désigne toute personne physique ou morale qui passe par une Comande sur le présent Site Internet;
+			      </p>
+			      <p>
+				<b>"Commande"</b> désigne toute commande passée par l'Utilisateur inscrit sur le présent Site, en vue de bénéficier des Services de la Société;
+			      </p>
+			      <p>
+				<b>"Conditions Générales de Vente et d'Utilisation" ou "CGV/CGU"</b> désignent les présentes conditions générales de vente et d'utilisation en ligne;
+			      </p>
+			      <p>
+				<b>"Consommateur"</b> désigne l'acheteur personne physique qui n'agit pas pour des besoins professionnels et/ou hors de son activité professionnelle;
+			      </p>
+			      <p>
+				<b>"Professionnel"</b> désigne l'acheteur personne morale ou physique qui agit dans le cadre de son activitié professionnelle;
+			      </p>
+			      <p>
+				<b>"Services"</b> désigne toutes les prestations de service proposées aux utilisateurs par la société à travers le présent site;
+			      </p>
+			      <p>
+				<b>"Site"</b> désigne le présent site, c'est-à-dire <a href="https://instagrowth.lesinfluenceurs.net">instagrowth.lesinfluenceurs.net</a>;
+			      </p>
+			      <p>
+				<b>"Société"</b> désigne la Société Les influenceurs, plus amplement amplement désignée à l'article I des présentes; et
+			      </p>
+			      <p>
+				<b>"Utilisateur"</b> désigne toute pesonne qui fait utilisation du Site.
+				</p>
+                                <h4>IV. Inscription</h4>
+                              <p> L'inscription au Site est ouverte à toutes les personnes morales ou physiques majeures et jouissant de leurs pleines personnalités et capacités juridiques.
+			      </p>
+			      <p>
+				L'utilisation des Services proposées sur le Site est conditionnée à l'inscription de l'Utilisateur sur le Site. L'inscription est gratuite.
+			      </p>
+			      <p>
+				Pour procéder à l'inscription, l'Utilisateur doit remplir tous les champs obligatoires; à défaut l'inscription ne pourra être complétée.
+			      </p>
+			      <p>
+				Les Utilisateurs garantissent et déclarent sur l'honneur que toutes les inforations communiquées ssur Site, notamemnt lors de leur inscription, sont exactes et conformes à la réalité. Ils s'engagent à mettre à jour leurs informations personnelles à partir de la page dédiée à ces dernières et disponible dans leur compte.
+				
+			      </p>
+			      <p>
+				Tout Utilisateur enregistré dispose d'un identifiant et d'un mot de passe. Ces derniers sont strictement personnels et confidentiels et ne devront en aucun cas faire l'objet d'une communication à des tiers sous peine de suppression du compte de l'Utilisateur enregistré contrevenant. Chaque Utilisateur inscrit est personnellement responsable du maintien de la confidentialité de son identifiant et de son mot de passe. La Société ne sera en aucun cas tenue pour responsable de l'usurpation d'identité d'un Utilisateur. Si un Utilisateur suspecte une fraude à n'importe quel moment, il devra contacter la Société dans les plus brefs délais afin que cette dernière puisse prendre les mesures nécessaires et régulariser la situation.
+			      </p>
+			      <p>
+				Chaque Utilisateur, qu'il soit une personne morale ou physique, ne peut êtr titulaire que d'un compte sur le Site
+			      </p>
+			      <p>
+				En cas de non-respect des CGV/CGU, notamment la création de plusieus comptes pour une seule personne ou encore la fourniture de fausses informations, la Société se réserve le droit de procéder à la suppression temporaire ou définitive de tous les comptes créés par l'Utilisateur enregistré contrevenant.
+			      </p>
+			      <p>
+				La suppression du compte entraîne la perte définitive de tous les avantages et services acquis sur le Site. Cependant, toute Commande réalisée et facturée par le Site avant la suppression du compte sera exécutée dans les conditions normales.
+			      </p>
+			      <p>
+				En cas de suppression d'un compte la Société pour manquement aux devois et obligrations énoncées dans les CGV/CGU, il est formellement interdit à l'Utilisateur contrevenant de se réinscrire sur le Site directement, par le biais d'une autre adresse électronique ou par personne interposée sans l'autorisation expresse de la Société.
+				</p>
+                                <h4>V. Prestations de service et prix</h4>
+                              <p>
+				Les services faisant l'objet des CGV/CGU sont ceux qui figurent sur le Site et qui sont proposés directement par la Société ou ses prestataires partenaires.
+			      </p>
+			      <p>
+				Les services sont décrits sur la page correspondante au sein du Site et mention est faite de toutes leurs cractéristiques essentielles. La société ne peut être tenue responsable de l'impossibilité de réaliser ladite prestation lorsque l'Utilisateur n'est pas éligible.
+			      </p>
+			      <p>
+				Lorsqu'un Utilisateur enregistré souhaite obtenir une prestation de service vendue par la Société à travers el Site, le prix indiqué su la page de la prestation correspond au prix en euros Hors Taxe et tient compte des réductions applicables et en vigueur le jour de la Commande. Le prix indiqué n'inclut pas les frais accessoires qui seront indiqués le cas échéant dans le récapitulatif avant de passer la commande.
+			      </p>
+			      <p>
+				La Société se réserve la possibilité de modifier à tout moment ses tarifs. Elle s'engage à facturer les prestations au tarif applicable au moment de leur Commande. Pour les prestations dont le prix ne peut être connu a priori ni indiqué avec certitude, un devis détaillé sera transmis au Client.
+			      </p>
+			      <p>
+				En aucun cas un Utilisateur ne pourra exiger l'application de réductions n'étant plus en vigueur le jour de la commande.
+			      </p>
+			      
+			
+			
+                                <h4>VI Commandes</h4>
+                              <p> La prise de commande sur le Site est soumise au respect de la procédure mise en place par la Société concrétisée par une succession de différentes étapes que le cleint doit impérativement suivre pour valider sa commande. Le client aura la possibilité, avant de valider définitivement sa commande, de vérifier le détail de celle-ci et son prix total, et de corriger d'éventuelles erreurs, avant de confirmer celle-ci pour exprimer son acceptation. Toute confirmée par le Client vaut contrat de vente et acceptation de l'ensemble des stipulations des présentes.
+			      </p>
+			      
+				
+                                <h4>VII Modalité de paiement</h4>
+                              <p> Les produits sont payables le jour de la commande effective</p>
+			      <p>Le réglement des achats s'effectue soit par Carte bancaire, virement ou chèque</p>
+			      <p>En cas de défaut de paiement total ou partiel des prestations convenue sur la facture, le Client Consommateur devra verser à la Société une pénalité de retard dont le taux est égal au taux d'intérêt légal.</p>
+			      <p>
+				Aucune compensation ne pourra être effectuée par le Cient entre les pénalités de retard dans la fourniture des prestations commandées et des sommes dues par le Client à la Société au titre de l'achat de Services proposés sur le Site.
+			      </p>
+			      <p>
+				La pénalité due par le Client, Professionnel ou Consommateur, est calculée sur le montant toutes taxes comprises de la somme restante due, et court à compter de la date d'échéance du prix sans qu'aucune mise en demeure préalable soit nécessaire.
+				
+			      </p>
+			      <p>
+				En cas de non respect des conditions de paiement décrites ci-dessus, la Société se réserve la possibilité d'annuler ou de suspendre la vente.
+			      </p>
+			      <h4> VIII. Réalisation des prestations </h4>
+			      <p>
+				La prestation de services commandée sur le site sera assurée par :
+			      </p>
+			      <p>
+				La société s'engage à mettre en oeuvre tous les moyens humains et matériels pour réaliser la prestation dans les délais annoncés lors de la passation de la Commande. Cependant, elle ne peut en aucun cas être tenue responsable pour les retards de réalisation de prestation occassionnés en raison de fautes, modifications du site Instagram.com ou autres fautes qui ne lui sont pas imputables.
+			      </p>
+			      <p>
+				Si les prestations n'ont pas été effectuées dans le délai prévu, la résolution de la vente pourra être demandée par le Client dans les conditions prévues aux articles L138-2 et L138-3 du Code de la consommation. Les sommes versées par le Client lui seront restituées au plus tard dans les quatorze jours qui suivent la dénonciation du contrat.
+Cette disposition ne s'applique pas quand le retard de la Société est dû à une faute du Client ou à un cas de force majeure, c'est à dire à la survenance d'un événement imprévisible, irrésistible et indépendant de la volonté de la Société.
+			      </p>
+			      
+			      <h4>IX. Réclamation </h4>
+			      
+			
+			
+			      <p>
+				Pour exercer ce droit de réclatmation, le Client doit faire parvenir à la Société, à l'adresse bonjour@lesinfluenceurs, une déclaration dans laquelle il exprime ses réserves et réclamations, assorites des justificatifs y afférents.
+			      </p>
+			      <h4>X. Droit de rétractation du Consommateur</h4>
+			      <p>
+				Le consommateur dispose d'un droit de rétractation de 14 jours à compter de la passation de la Commande, sauf pour les produits mentionnés à l'article L121-21-8 du Code de la consommation, cela concerne notamment :
+			      </p>
+			      <p>
+				"Le droit de rétractation ne peut être exercé pour les contrats :
+			      </p>
+			      <p>
+				1. De fourniture de services pleinement exécutés vant la fin du délai de rétractation et dont l'exécution a commencé après accord préalable exprès du consommateur et renoncement exprès à son droit de rétractation; 
+			      </p>
+			      <p>
+			      13. De fourniture d'un contenu numérique non fourni sur un support matériel dont l'exécution a commencé après accord préalable exprès et renoncement exprès à son droit de rétraction."
+			      </p>
+			      <p>
+				Si la prestation de services est déjà entrainée à la date de la prise de connaissance de la rétractation par la Société, la valeur correspondant à la prestation de service déjà effectuée sera déduite du remboursement. 
+			      </p>
+			      <h4>XI. Modification </h4>
+			      <p>La société se réserve le droit de modifier le Site, les services qui y sont proposés, les CGV/CGU ainsi que toute procédure de livraison ou autre élément constitutif des prestations réalisées par la Société par le biais du Site.
+			      </p>
+			      <p>
+				Lorsqu'il passe une Commande, l'Utilisateur est soumis aux stipulations énoncées par les CGV/CGU en vigueur lors de la passation de la Commande.
+				</p>
+			      <h4>XII. Responsabilité </h4>
+			      <p>
+				La société ne peut en aucun cas être tenue responsble pour l'indisponibilité, qu'elle soit temporaire ou permanente du Site Internet et, bien qu'elle mette en oeuvre tous les moyens afin d'assurer en permanence le service, il se peut que celui-ci soit interrompu à tout moment. En outre, la Société se réserve le droit, par un acte volontaire, de rendre le Site indisponible afin de réaliser toute opération de mise à jour, d'amélioration ou de maintenance.
+			      </p>
+			      <p>
+				Tel que mentionné auparavant dans les présentes, la Société ne peut en aucun cas être tenue responsable des retards de réalisation d'une prestation de service pour des motifs qui échappent à son contrôle, indépendants de sa volonté, imprévisibles et irrésistibles ou dont la faute ne peut lui être imputable, comme le modifcation du site intagram.com.
+			      </p>
+			      <h4>XIV. Clause attributive de compétence </h4>
+			      <p>Le droit régissant les CGV/CGU est le droit français. Tout litige pouvant survenir entre la Société et un Utilisateur lors de l'exécution des présentes fera l'objet d'une tentative de résolution à l'amiable. A défaut, les litigs seront portés à la connaissance du tribunal de commerce de Paris.
+			      </p>
+			      <p>
+				Le Client est informé qu'il peut recourir à une médiation conventionnelle auprès de la Commission de la médiation de la Consommation prévue à l'article L534-7 du Code de la consommation ou auprès des instances de médiation sectorielles existantes. Il peut également recourir à tout mode alternatif de réglement des différends en cas de litige.
+			      </p>
+			      <h4>XV. Information précontractuelle</h4>
+			      <p>Préalablement à sa Commande, le Client reconnait avoir eu communication, de façon lisible et compréhensible, des CGV/CGU et des informations et renseignements prévus aux articles L111-1 à L111-7 du Code de la consommation et notamment :
+			      <ul>
+				<li>Les caractéritistiques essentielles des Services;</li>
+				<li>Le prix des Services; </li>
+				<li>La date ou le délai auquel la Société s'engage à fournir le Service;</li>
+				<li>Les informations relatives à l'identité de la Société (coordonnées postales, électroniques);</li>
+				<li>La possibilité de recourir à une médiation conventionnelle en cas de litige;</li>
+				<li>Les informations relatives au droit de rétractation (délai, modalités d'exercice).</li>
+			      </ul>
+			      La passation d'une Commande sur le Site emporte adhésion et acceptation des CGV/CGU. Le Client ne pourra se prévaloir d'un document contradictoire.
+			      </p>
+			      
+			
+			      
+                            </article>
+                        </div>
+                    </div>
+                    <!--end of row-->
+                </div>
+                <!--end of container-->
+            </section>
+            <footer class="space--sm footer-2 bg--secondary">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-2 col-lg-2 col-6 text-center">
+                            <div class="t-70">
+                                <ul class="list">
+                                    <li><a href="/" class="text--logo light color--primary h1"> Upleap </a></li>
+                                    <li class="mt--1 hidden-xs">
+                                        <a class="btn btn--primary borderless type--uppercase" href="https://app.upleap.com/join"> <span class="btn__text">
+                                    Try For Free
+                                </span> </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-sm-offset-1 col-lg-3 col-6 mt--xs--1">
+                            <h6 class="type--uppercase">Product</h6>
+                            <ul class="list--hover">
+                                <li> <a href="https://app.upleap.com/join">Sign Up</a> </li>
+                                <li> <a href="/how">How It Works</a> </li>
+                                <li> <a href="/reviews">Reviews</a> </li>
+                                <li> <a href="/pricing">Pricing</a> </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-3 col-lg-3 col-6 mt--xs--1">
+                            <h6 class="type--uppercase">Learn</h6>
+                            <ul class="list--hover">
+                                
+                                <li> <a href="/cases">Use Cases</a> </li>
+                                <li> <a href="https://upleap.com/blog">Blog</a> </li>
+                                <li> <a href="/about">About</a> </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-3 col-lg-3 col-6 mt--xs--1">
+                            <h6 class="type--uppercase">Support</h6>
+                            <ul class="list--hover">
+                                <li> <a href="https://app.upleap.com">Sign In</a> </li>
+                                <li> <a href="https://upleap.zendesk.com/hc/en-us">Help Center</a> </li>
+                                <li> <a href="/press">Press Kit</a> </li>
+                                <li> <a href="/contact">Contact</a> </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--end of row-->
+                    <div class="row">
+                        <div id="share" class="col-sm-3 col-xs-12 text-center-xs"> <span class="type--fine-print">Share us with your friends</span>
+                            <hr class="visible-xs">
+                            <a target="_blank" class="ml5 inline" href="https://twitter.com/share?url=https://upleap.com&text=Just heard about Upleap, a service that can grow your Instagram with an account manager. Check it out 😊 "><img src="img/twitter-svg.svg"></a>
+                            <a class="ml5 visible-lg-inline" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A//upleap.com"><img src="img/facebook-svg.svg"></a>
+                            <a target="_blank" class="ml5 visible-xs-inline" href="fb-messenger://share?link=https%3A%2F%2Fwww.upleap.com"><img src="img/messenger.svg"></a>
+                            <a class="ml5 visible-xs-inline" target="_blank" href="whatsapp://send?text=Just came across https://upleap.com - maybe they can help you with your Instagram? 😊"><img src="img/whatsapp-png.png"></a>
+                        </div>
+                        <div class="col-sm-6 col-xs-12 mt--xs--1"> <span class="type--fine-print">©
+                                                <span class="update-year">2018</span> Upleap.com</span> <a class="type--fine-print" href="/privacy">Privacy Policy</a> <a class="type--fine-print" href="/terms">Terms & Conditions</a> </div>
+                        <div class="visible-xs col-xs-12 text-center-xs">
+                            <a class="mt--xs--1 btn btn--lg btn--primary" href="https://app.upleap.com/join"> <span class="btn__text">
+                                    TRY UPLEAP NOW FOR FREE
+                                </span> </a>
+                            <p class="small mt--xs--1">We're completely free to try for 3 days. No payment method required!</p>
+                        </div>
+                    </div>
+                    <!--end of row-->
+                </div>
+                <!--end of container-->
+            </footer>
+        </div>
+    </div>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/upleap.min.js"></script>
+    <script src='https://cdn.useproof.com/proof.js?acc=FA2xKGldHxQujtbWGCaN5zm9L042' async></script>
+</body>
+
+</html>

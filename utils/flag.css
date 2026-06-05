@@ -1,0 +1,30 @@
+
+.flag {
+    height: 200px;
+    width: 300px;
+    background: #fff;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    &:before {
+	content: "";
+	height: 100%;
+	width: 100px;
+	left: 0;
+	top: 0;
+	background: blue;
+	position: absolute;
+    }
+    &:after {
+	content: "";
+	height: 100%;
+	width: 100px;
+	left: 200px;
+	top: 0;
+	background: red;
+	position: absolute;
+    }
+}

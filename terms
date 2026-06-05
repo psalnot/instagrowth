@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Terms & Conditions - Upleap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/upleap-v2.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600|Pacifico" rel="stylesheet">
+    <link href="img/favicon-upleap.png" rel="icon" media="all" />
+    <link rel="alternate" href="https://upleap.com/terms" hreflang="x-default" />
+    <meta href="https://upleap.com/terms" rel="canonical">
+    <meta name="contact" content="info@upleap.com" />
+    <meta name="description" content="Learn more about the terms and conditions of using Upleap's service, account managers, and what it means to be an Upleap client.">
+    <meta property="og:title" content="Terms & Conditions - Upleap" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.upleap.com/terms" />
+    <meta property="og:image" content="img/og-upleap-logo.jpg" />
+    <meta property="og:description" content="Learn more about the terms and conditions to Upleap and what it means to be an Upleap client." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@upleapdotcom" />
+    <meta name="twitter:title" content="Grow Your Instagram - Upleap" />
+    <meta name="twitter:description" content="Please review Upleap's terms and conditions and what it means to become an upleap client." />
+    <meta name="twitter:image" content="https://upleap.com/img/twitter-upleap-logo.jpg" />
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime()
+                , event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0]
+                , j = d.createElement(s)
+                , dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-5R8H94K');
+    </script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<body class="" data-smooth-scroll-offset="100">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5R8H94K" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="content--wrap">
+        <div class="nav-container">
+            <div>
+                <div class="bar bar--sm visible-xs">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-3 col-sm-2"> <a href="/" class="text--logo light color--primary"> Upleap </a> </div>
+                            <div class="col-xs-9 col-sm-10 text-right">
+                                <a href="#" class="hamburger-toggle" data-toggle-class="#menu1;hidden-xs hidden-sm"> <i class="icon icon--sm stack-interface stack-menu"></i> </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <nav id="menu1" class="bar bar-1 hidden-xs bar--fixed">
+                    <div class="container nav-separator">
+                        <div class="row">
+                            <div class="col-md-1 col-sm-2 hidden-xs">
+                                <div class="bar__module"> <a href="/" class="text--logo v2 light xl color--primary"> Upleap </a> </div>
+                            </div>
+                            <div class="col-md-11 col-sm-5 text-right text-left-xs text-left-sm">
+                                <div class="bar__module ml20">
+                                    <ul class="menu-horizontal">
+                                        <li> <a href="/how">
+                                        How It Works
+                                    </a> </li>
+                                        <li> <a href="/pricing">
+                                        Pricing
+                                    </a> </li>
+                                        <li> <a href="/reviews">
+                                        Reviews
+                                    </a> </li>
+                                    </ul>
+                                </div>
+                                <div class="bar__module">
+                                    <a class="btn btn--sm" href="https://app.upleap.com/signin"> <span class="btn__text">
+                                    SIGN IN
+                                </span> </a>
+                                    <a class="btn btn--sm btn--primary" href="https://app.upleap.com/join"> <span class="btn__text">
+                                    TRY US FOR FREE
+                                </span> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="main-container">
+            <section id="terms">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2">
+                            <h2>Terms & Conditions</h2>
+                            <p class="lead">Effective on 8 January, 2017</p>
+                            <p>Updated on 29 May, 2018</p>
+                            <article> <span class="h4">Introduction</span>
+                                <p><span>
+                                    These Terms & Conditions (hereby referred to as "Terms") serve to govern the use and access of our dashboard and correspondence with our subcontracted social media account managers (hereby referred to as "Services"). Please go through these Terms carefully and thank you for looking into our Terms, as they are important to understand!
+
+                                </span></p>
+                                <h4>Terms are Legally Binding</h4>
+                                <p> By using the Services we provide, you agree to be legally bound by the Terms outlined on our website as well as comply to the <a href="/privacy">Privacy Policy</a> also defined on our website. </p>
+                                <p> When we use the words "Upleap," "we,", "our," or "us" throughout this policy, we're referring to Upleap Inc., which is understood as the intermediary company that connects "Account Managers" to provide the Customer with Services listed on our website. When we talk about "Services" in this policy, we are referring explicitly to the actions committed by Account Managers in order to help you grow your social media accounts. </p>
+                                <h4>You are an Authorized Member of Our Community And Your Account is Managed </h4>
+                                <p> A company, organization, or other qualified third party we refer to in these Terms are considered the "Customer". Being a Customer effectively makes you a member of our Community. Every member of our Community is provided a communication channel to an "Account Manager", which in and beyond these Terms is understood as a third-party, subcontracted person(s) that provides Services of Upleap on behalf of the Customer. An Account Manager is granted access to the social media account(s) of the Customer, thus allowing for the fulfillment of Services. </p>
+                                <h5>For you, this means:</h5>
+                                <p> Your Customer Data is accessed discreetly both by employees of Upleap <span class="type--bold">and</span> by third party, sub-contracted account managers in order for improved delivery of Services. You agree to allow access to Customer Data upon registering for access to our Services under a "Contract", which is activated upon Customer Registration. This Contract holds our commitment in delivering Services to the Customer through the delegation of tasks to a subcontracted Account Manager. </p>
+                                <h4>Notable Rules</h4>
+                                <p> The Services provided by Upleap require for the Customer to follow the Rules specified below as well as comply to the <a href="/privacy">Privacy Policy</a> described. </p>
+                                <h5>The Customer Must Be Aged 18 or Over</h5>
+                                <p> Services we provide are strictly unavailable to children under the age of 18. If a child under the age of 18 has provided us with their information without a consenting parent/guardian, please contact us immediately. </p>
+                                <h5>The Customer Is Bound to Contract Periods</h5>
+                                <p> These Terms remain in effect until the end of the Customer's billing cycle. The Customer is entitled to cancel their contract with us without prior notice or given reason. The Customer is required to cancel their billing at least ONE (1) day prior to the following billing cycle. Otherwise, the Customer is obliged to fulfil the last month of billing prior to cancellation. <strong>Please note that pausing an account does not cancel the subscription and related charges.</strong>
+                                    <div class="boxed boxed--lg boxed--border">
+                                        <h4 class="color--primary">Billing Cancellation Example</h4>
+                                        <p> The Customer is due to be billed on the 31st of March for the provision of Services from the 31st of March to 30th of April 2017. </p>
+                                        <p><span class="type--bold">Scenario 1 - The Customer cancels on 31st of March:</span> The Customer will still pay for services supplied for the periods of 31st of March - 30th April 2017. The Customer <span class="type--italic">will not be billed on the 30th of April, for the month of May.</span></p>
+                                        <p><span class="type--bold">Scenario 2 - The Customer cancels before 30th of March:</span> The Customer will <span class="type--italic">not pay</span> for the periods of 31st of March - 30th April 2017. The Customer shall not receive any Services after the 30th of March.</p>
+                                    </div>
+                                    <h5>The Customer Agrees To Limitation of Liability</h5>
+                                    <p> Services provided by Account Managers of Upleap will not be held accountable to the Company, Upleap Inc. The Company may not be held liable for any potential damages incurred. We may directly step in and take what we deem appropriate action against the Customer or Account Manager (including the disabling of accounts on the Upleap website) depending on circumstance. In no event will you or us have any liability to the other for lost profit, revenue, or any cimrcumstantial, incidental, consequential, punitive, or other forms of damages however they may have been caused, whether in contract, tort, or under any other theoretical circumstance of liability and regardless of whether the party has been advised of the possibility of the aforementioned damages. You will have no financial liability to us for a breach of these Terms, and our maximum aggregate liability to you for any alleged breach of these Terms is FIVE HUNDRED MALAY RINGGIT (500 MYR). </p>
+                                    <h5>The Customer Agrees Services May Be Delayed Or Suspended Under Force Majeure</h5>
+                                    <p> While Upleap strives to provide the very best Account Managers to fulfill services to the Customer, unforeseeable circumstances may prevent our Account Managers from fulfilling their contractual obligations. Otherwise known as "Superior Force," a "Force Majeure" is understood as natural disasters, including fire, flood, earthquakes, storms, hurricanes, other natural disasters, war, invasion, acts of hostility, civil war, rebellions, revolutions, insurrections, military coups, terrorist activity, suspension of electricity or phone services. No party is considered liable under said events. Should the Service to the Customer be postponed, suspended, or cancelled under Force Majeure, both the Customer and the Company agree not to hold any party liable. </p>
+                                    <h5 id="refund">The Customer Agrees To The Refund Policy as Described</h5>
+                                    <p>Refund requests are reviewed on a case by case basis. The refund policy as described in the Terms of Service does not serve as a guarantee of refund. Typically, only new subscribers may be eligible for a refund. Multiple factors are taken into consideration, of which may include (but not limited to): amount of account management provided, amount of followers received, date of subscription, events of force majeure, contract period binding, subscription type, past experience with the Service, account manager feedback, targeting as defined by the Customer.</p>
+                                    <p>Refunds for annual subscriptions are provided at the sole discretion of the Company. Refunds are not provided for annual subscriptions if the Service is provided as stated. Fulfillment of Service results in cases of non-refund. Should a refund for an annual subscription be provided at the discretion of the Company, the Company may offer only partial refund in accordance to the remaining time on the Subscription minus discount offered on the price.</p>
+                                <h5 id="#pause">Refunds When Account Paused</h5>
+                                <p>As stated in the Helpdesk FAQ and Terms of Service, pausing an account <strong>does not cancel the subscription and related charges</strong>. The pause functionality serves to let your account manager know he should temporarily stop activity on your account. It does not pause the subscription itself, meaning it does not affect time until the subscription is renewed or the billing date. We don’t currently credit additional days for paused days. If you believe you should be refunded for a paused account please contact Support, refunds will be reviewed on a case by case basis.</p>
+                                <h5 id="#performance">Refunds due to Performance Issues</h5>
+                                <p>Refund requests based on performance issues of account management are reviewed on a case-by-case basis. Requests may include but are not limited to slow growth or irrelevant quality of followers and/or likes. While the Company strives to render Services as best as possible through the Intermediary, the Company is under no obligation to fulfil requests of refunds. </p>
+                                 <h5 id="#quality">Refunds due to Management Quality</h5>
+                                <p>Refund requests based on quality of account management are reviewed on a case-by-case basis. Requests may include but are not limited to actions taken by their account manager that extend beyond the scope of the Agreement, such as inappropriate likes, or commenting and following. While the Company strives to render Services through the Intermediary, the Company is under no obligation to fulfil requests of refunds. </p>
+                                <h5 id="#recurring">Refunds due to Recurring Subscription Billing Agreement</h5>
+                                <p>Should a refund request be submitted by the Customer due to the Customer not being aware of a recurring subscription, the Company are able to fulfil said requests at its sole discretion. Generally, it is the responsibility of the Customer to understand the nature of their Billing Agreement, which is expressly mentioned on the <a href="/pricing">Pricing</a> section of the Website, as well as during the checkout process of the Company's designated payment provider.  </p>
+                                 <h5 id="#claims">Refunds due to Unexpected Service</h5>
+                                <p>Should the customer request a refund on the basis that the service is not as expected, the Company are able to fulfil such refund requests at its sole discretion. The Customer is offered a 3 (three) day trial without obligation to enter a Billing Agreement with the Company. The trial period is for evaluation purposes of the Customer. As such and while the Company strives to render Services as best as possible through the Intermediary, the Company is under no obligation to fulfil refund requests in the event the Customer claims service is not as expected. </p>
+                                 <h5 id="#untimely">Refunds due to Untimely Cancellation</h5>
+                                <p>Should the Customer cancel the Billing Agreement with the Company in an untimely fashion, the Company are able to fulfil said refund request at its sole discretion. In most instances, the Customer is offered Services for the rest of the paid month. Should an untimely cancellation occur within a reasonable timeframe as determined by the Company, the Customer may be eligible to a refund.   </p>
+                                <h5 id="#inactivity">Refunds due to Inactivity</h5>
+                                <p>Should the Customer request a refund due to account inactivity as caused by technical issues and/or the non-participation of the Intermediary account manager, the Company may issue a refund at its sole discretion. Refunds in such instance are typically fulfilled when the issue cannot be solved within a reasonable timeframe as determined by the Company. As such, refund requests are reviewed on a case-by-case basis.</p>
+                                 <h5 id="#double">Refunds due to Double Charge</h5>
+                                <p>Should the Customer enter an additional billing agreement with the Company that renders the first billing agreement obsolete, the Customer may be double-charged by mistake. In such instance, the Company shall always endeavor to refund the Customer in a reasonable timeframe as determined by the Company.</p>
+                                  <hr>
+                                    <p>If you believe you should be issued a refund, <a href="https://upleap.zendesk.com/hc/en-us/requests/new">please reach out to our support team</a> with full details of your request. While we strive to be as fair as possible when reviewing a refund request, please keep in mind that refunds are usually provided only in extreme circumstances. </p>
+                                    <hr>
+                                    <h4>Discrepancies & Agreement to Terms</h4>
+                                    <p> The Terms stated above, including any terminology referred to in our <a href="/terms">Terms</a> or within our <a href="/privacy">Privacy Policy</a>, are constitutive of the entirety of our Terms agreement between you the Customer, us the Company, and involved third parties that provide Services, wholesomely understood as the Account Managers. The Terms stated supersede prior agreements (both written and verbal) concerning all subject matter related to the provision of Services and Terms of use of Upleap as an intermediary Service. Should there be conflict, inconsistency, or claims that counter either the Terms or Privacy Policy, the terms stated on this Terms page shall be the prevailing agreement presented to any "Authoritative Party" understood as local jurisdictive parties. </p>
+                                    <h4>Governing Law</h4>
+                                    <p> The Terms stated above and any disputes relevant to the <a href="/terms">Terms</a> or our <a href="/privacy">Privacy Policy</a> shall be addressed exclusively by the law of Malaysia and relevant constitutional bodies of Malaysia. </p>
+                                    <hr>
+                                    <h4>Contact Upleap</h4>
+                                    <p> We appreciate all forms of feedback and welcome you to contact Upleap <a href="/contact">through this form</a> should there be any indiscrepancies, misunderstandings, or other noteworthy mentions regarding the Terms and/or Privacy Policy. </p>
+                                    <p>Thank you for your understanding and cooperation. Let's grow your social media together!</p>
+                            </article>
+                        </div>
+                    </div>
+                    <!--end of row-->
+                </div>
+                <!--end of container-->
+            </section>
+            <footer class="space--sm footer-2 bg--secondary">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-2 col-lg-2 col-6 text-center">
+                            <div class="t-70">
+                                <ul class="list">
+                                    <li><a href="/" class="text--logo light color--primary h1"> Upleap </a></li>
+                                    <li class="mt--1 hidden-xs">
+                                        <a class="btn btn--primary borderless type--uppercase" href="https://app.upleap.com/join"> <span class="btn__text">
+                                    Try For Free
+                                </span> </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-sm-offset-1 col-lg-3 col-6 mt--xs--1">
+                            <h6 class="type--uppercase">Product</h6>
+                            <ul class="list--hover">
+                                <li> <a href="https://app.upleap.com/join">Sign Up</a> </li>
+                                <li> <a href="/how">How It Works</a> </li>
+                                <li> <a href="/reviews">Reviews</a> </li>
+                                <li> <a href="/pricing">Pricing</a> </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-3 col-lg-3 col-6 mt--xs--1">
+                            <h6 class="type--uppercase">Learn</h6>
+                            <ul class="list--hover">
+                                
+                                <li> <a href="/cases">Use Cases</a> </li>
+                                <li> <a href="https://upleap.com/blog">Blog</a> </li>
+                                <li> <a href="/about">About</a> </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-3 col-lg-3 col-6 mt--xs--1">
+                            <h6 class="type--uppercase">Support</h6>
+                            <ul class="list--hover">
+                                <li> <a href="https://app.upleap.com">Sign In</a> </li>
+                                <li> <a href="https://upleap.zendesk.com/hc/en-us">Help Center</a> </li>
+                                <li> <a href="/press">Press Kit</a> </li>
+                                <li> <a href="/contact">Contact</a> </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--end of row-->
+                    <div class="row">
+                        <div id="share" class="col-sm-3 col-xs-12 text-center-xs"> <span class="type--fine-print">Share us with your friends</span>
+                            <hr class="visible-xs">
+                            <a target="_blank" class="ml5 inline" href="https://twitter.com/share?url=https://upleap.com&text=Just heard about Upleap, a service that can grow your Instagram with an account manager. Check it out 😊 "><img src="img/twitter-svg.svg"></a>
+                            <a class="ml5 visible-lg-inline" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A//upleap.com"><img src="img/facebook-svg.svg"></a>
+                            <a target="_blank" class="ml5 visible-xs-inline" href="fb-messenger://share?link=https%3A%2F%2Fwww.upleap.com"><img src="img/messenger.svg"></a>
+                            <a class="ml5 visible-xs-inline" target="_blank" href="whatsapp://send?text=Just came across https://upleap.com - maybe they can help you with your Instagram? 😊"><img src="img/whatsapp-png.png"></a>
+                        </div>
+                        <div class="col-sm-6 col-xs-12 mt--xs--1"> <span class="type--fine-print">©
+                                                <span class="update-year">2018</span> Upleap.com</span> <a class="type--fine-print" href="/privacy">Privacy Policy</a> <a class="type--fine-print" href="/terms">Terms & Conditions</a> </div>
+                        <div class="visible-xs col-xs-12 text-center-xs">
+                            <a class="mt--xs--1 btn btn--lg btn--primary" href="https://app.upleap.com/join"> <span class="btn__text">
+                                    TRY UPLEAP NOW FOR FREE
+                                </span> </a>
+                            <p class="small mt--xs--1">We're completely free to try for 3 days. No payment method required!</p>
+                        </div>
+                    </div>
+                    <!--end of row-->
+                </div>
+                <!--end of container-->
+            </footer>
+        </div>
+    </div>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/upleap.min.js"></script>
+    <script src='https://cdn.useproof.com/proof.js?acc=FA2xKGldHxQujtbWGCaN5zm9L042' async></script>
+</body>
+
+</html>

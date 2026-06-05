@@ -1,0 +1,596 @@
+<?php
+/**
+ * This example shows how to use POP-before-SMTP for authentication.
+ */
+
+require_once('../xtze/vendor/autoload.php');
+
+
+
+
+use Mailgun\Mailgun;
+
+Class MMmailgun 
+{
+
+	public function buildlink($urllink)
+	{
+		$blink = "https://instagrowth.lesinfluenceurs.net/admin/valid-email.php?msign=" . $urllink;
+		return $blink;
+	}
+
+	public function mhtmlaccount($urllink)
+	{
+
+		$body = file_get_contents('../PHPMailer-master/examples/activation-mail.html');
+		$body  = eregi_replace("%e%" ,$this->buildlink($urllink), $body);
+		return $body;
+	}
+
+
+
+	 public function mhtmlresetpassword($urllink)
+	 {
+
+                $body = file_get_contents('../PHPMailer-master/examples/reset-password-inscription.html');
+		
+		$body  = eregi_replace("%e%" ,$urllink, $body);
+
+		return $body;
+	}
+
+
+
+	 public function mhtmlconfirmationmail($urllink)
+	 {
+
+                $body = file_get_contents('../PHPMailer-master/examples/confirmation-mail-inscription.html');
+
+		$body  = eregi_replace("%e%" ,$this->buildlink($urllink), $body);
+
+		return $body;
+	}
+
+
+
+	 public function mhtmlconfirmationmailen($urllink)
+	 {
+
+                $body = file_get_contents('../PHPMailer-master/examples/confirmation-mail-inscription-en.html');
+
+		$body  = eregi_replace("%e%" ,$this->buildlink($urllink), $body);
+
+		return $body;
+	}
+
+
+
+	 public function mhtmlerrorcard($email)
+	 {
+
+                $body = file_get_contents('../PHPMailer-master/examples/errorcard-mail-inscription.html');
+
+		$body  = eregi_replace("%e%" ,$email, $body);
+
+		return $body;
+	}
+
+
+
+
+	 public function mhtmlmailinginstagrowthtest($minstagram)
+	 {
+
+                $body = file_get_contents('../PHPMailer-master/examples/test2.html');
+
+		$body  = eregi_replace("%e%" ,$minstagram, $body);
+
+		return $body;
+	}
+
+
+
+	 public function mhtmlmailinginstagrowth($urllink)
+	 {
+
+                $body = file_get_contents('../PHPMailer-master/examples/test.html');
+
+		$body  = eregi_replace("%e%" ,$this->buildlink($urllink), $body);
+
+		return $body;
+	}
+
+
+
+	 public function mhtmlmailinginstagrowthen($urllink)
+	 {
+
+                $body = file_get_contents('../PHPMailer-master/examples/english-mailing.html');
+		
+		$body  = eregi_replace("%e%" ,$this->buildlink($urllink), $body);
+
+		return $body;
+	}
+
+
+
+	 public function mhtmlwrongpassword($user_instagram)
+	 {
+
+		
+                $body = file_get_contents('../PHPMailer-master/examples/wrong-password-instagrowth.html');
+
+		$body  = eregi_replace("%e%" ,$user_instagram, $body);
+
+		return $body;
+	}
+
+
+
+
+
+	 public function mhtmlmarque($urllink)
+	 {
+
+                $body = file_get_contents('../PHPMailer-master/examples/confirmation-prise-en-compte-inscription-marque.html');
+
+		$body  = eregi_replace("%e%" ,$this->buildlink($urllink), $body);
+
+		return $body;
+	}
+
+	public function mhtmlsupport($mtext)
+	{
+
+		$body = file_get_contents('../PHPMailer-master/examples/confirmation-prise-en-compte-support.html');
+		$body  = eregi_replace("%e%" ,$mtext, $body);
+		return $body;
+	}
+
+
+	public function mhtmlsupportmarque($mtext)
+        {
+
+                $body = file_get_contents('../PHPMailer-master/examples/confirmation-prise-en-compte-support-marque.html');
+                $body  = eregi_replace("%e%" ,$mtext, $body);
+                return $body;
+        }
+
+	public function minfoadmincampagne($mtext)
+	{
+
+		#$body = file_get_contents('../PHPMailer-master/examples/information-nouvelle-campagne-admin.html');
+		$body = file_get_contents('../PHPMailer-master/examples/information-nouvelle-campagne-admin.html');
+		$body  = eregi_replace("%e%" ,$mtext, $body);
+		return $body;
+		
+	}
+
+
+	 public function mhtmlevent()
+	 {
+
+		$body = file_get_contents('../PHPMailer-master/examples/confirmation-prise-en-compte-event.html');
+		
+		//$body  = eregi_replace("%e%" ,$this->buildlink($urllink), $body);
+		return $body;
+	}
+
+	
+	 public function mhtmlgaitelyrique()
+	 {
+
+                $body = file_get_contents('../PHPMailer-master/examples/confirmation-gaite-lyrique.html');
+
+		      //$body  = eregi_replace("%e%" ,$this->buildlink($urllink), $body);
+		      		      	       	 return $body;
+	}
+
+
+	 public function mhtmlevalevent()
+	 {
+
+                $body = file_get_contents('../PHPMailer-master/examples/eval-event-gaite-lyrique.html');
+
+                      //$body  = eregi_replace("%e%" ,$this->buildlink($urllink), $body);
+		                                                       return $body;
+	}
+
+
+
+	public function msendmail($toemail,$mtypemail,$subjectemail,$urllink,$wmail)
+	{
+			
+		# Instantiate the client.
+		#$mgClient = new Mailgun('key-4d3f7268e467c52b9af7ca6c852479d8');
+		$mgClient = new Mailgun('key-4d3f7268e467c52b9af7ca6c852479d8');	
+		#$domain = "mg.lesinfluenceurs.fr";
+		$domain = "mg.my-instagrowth.eu";
+
+
+		if ($mtypemail == 1)
+		{
+			$mailhtml = $this->mhtmlaccount($urllink);
+		}
+		if ($mtypemail == 2)
+		{
+			$mailhtml = $urllink;
+		}
+		# Make the call to the client.
+		$result = $mgClient->sendMessage($domain, array(
+			'from'    => 'Support les influenceurs  <support@lesinfluenceurs.fr>',
+			'to' => $toemail,			
+			'subject' => $subjectemail,
+			'text'    => 'Ceci est votre mot de passe ',
+			'html' => $mailhtml
+		));
+		return $result;
+	}
+
+
+	public function msendevent($toemail,$mtypemail,$subjectemail)
+        {
+		
+                # Instantiate the client.
+                #$mgClient = new Mailgun('key-4d3f7268e467c52b9af7ca6c852479d8');
+		$mgClient = new Mailgun('key-4d3f7268e467c52b9af7ca6c852479d8');
+		#$domain = "mg.lesinfluenceurs.fr";
+		$domain = "mg.my-instagrowth.eu";
+		
+                if ($mtypemail == 1)
+                {
+                        $mailhtml = $this->mhtmlevent($urllink);
+			$mtext = "Prise en compte de votre inscription";
+                }
+                if ($mtypemail == 2)
+                {
+                        $mailhtml = $urllink;
+			$mtext = "Prise en compte de votre inscription";
+                }
+		if ($mtypemail == 3)
+		{
+			$mailhtml = $this->mhtmlgaitelyrique($urllink);
+			$mtext = "Prise en compte de votre inscription";
+		}
+		if ($mtypemail == 4)
+		{
+			$mailhtml = $this->mhtmlevalevent($urllink);
+			$mtext = "Nous avons pris en compte votre avis pour le brunch de la Gaité Lyrique";
+		}
+		
+                # Make the call to the client.
+                $result = $mgClient->sendMessage($domain, array(
+                        'from'    => 'Support les influenceurs  <support@lesinfluenceurs.fr>',
+                        'to' => $toemail,
+                        'subject' => $subjectemail,
+                        'text'    => $mtext,
+                        'html' => $mailhtml
+                ));
+		//echo "ici mailgun"; exit();
+                return $result;
+        }	
+
+	public function madmincampagne($cname, $cdesc, $cbudget, $email, $insert_id, $nature,$toemail,$msubject)
+	{
+		//$mtext = "Nom de la campagne : " . $name . "<br>";
+		//$mtext .= "Description de la campagne :<br> ####<br>";
+		//$mtext .= $cdesc . "<br>########<br>";
+		//$mtext .= "Le budget : " . $cbudget . "<br>";
+		//$mtext .= "Le mail du contact :". $email . "<br>";
+		//$mtext .= "Identification de la campagne :" . $insert_id . "<br>";
+		//$mtext .= "Nature de la campagne : " . $nature;
+
+
+		$mtext = " Mail du demandeur : " . $email . " Id de la campagne : " . $insert_id . " Nom de la campagne : " . $cname; 
+		$mgClient = new Mailgun('key-4d3f7268e467c52b9af7ca6c852479d8');
+                $domain = "mg.lesinfluenceurs.fr";
+
+                
+                
+                $mailhtml = $this->minfoadmincampagne($mtext);
+
+		//echo "Sujet du mail : " . $msubject;
+		//echo "<br> Le contenu " . $mailhtml;exit(); 
+                
+                
+                
+                
+                # Make the call to the client.
+                $result = $mgClient->sendMessage($domain, array(
+                        'from'    => 'Support les influenceurs  <support@lesinfluenceurs.fr>',
+                        'to' => $toemail,
+                        'subject' => $msubject,
+                        'text'    => 'test',
+                        'html' => $mailhtml
+                ));
+                return $result;	
+
+	
+	}
+
+
+	public function msendresetpassword($toemail,$subjectemail,$mtext)
+        {		
+		# Instantiate the client.
+		#$mgClient = new Mailgun('key-4d3f7268e467c52b9af7ca6c852479d8');
+		$mgClient = new Mailgun('key-4d3f7268e467c52b9af7ca6c852479d8');
+                $domain = "mg.lesinfluenceurs.fr";
+		//echo " Toemail " . $toemail;
+		//echo " URL " . $mtext;exit();
+		$mailhtml = $this->mhtmlresetpassword($mtext);
+		
+		//echo " Le texte html " . $mailhtml;exit();
+                # Make the call to the client.
+
+                $result = $mgClient->sendMessage($domain, array(
+                        'from'    => 'Votre agence d\'influence les influenceurs  <support@lesinfluenceurs.fr>',
+                        'to' => $toemail,	
+                        'subject' => $subjectemail,
+			'text'    => 'Confirmation de votre inscription',
+                        'html' => $mailhtml
+                ));
+		
+                return $result;
+        }
+
+
+	public function msendconfirmationmail($toemail,$subjectemail,$mtext)
+        {
+
+		# Instantiate the client.
+		#$mgClient = new Mailgun('key-4d3f7268e467c52b9af7ca6c852479d8');
+		$mgClient = new Mailgun('key-4d3f7268e467c52b9af7ca6c852479d8');
+                $domain = "mg.lesinfluenceurs.fr";
+		//echo " Toemail " . $toemail;
+		
+		$mailhtml = $this->mhtmlconfirmationmail($mtext);
+		
+		//echo " Le texte html " . $mailhtml;exit();
+                # Make the call to the client.
+                $result = $mgClient->sendMessage($domain, array(
+                        'from'    => 'Votre agence d\'influence les influenceurs  <support@lesinfluenceurs.fr>',
+                        'to' => $toemail,	
+                        'subject' => $subjectemail,
+			'text'    => 'Confirmation de votre inscription',
+                        'html' => $mailhtml
+                ));
+		
+                return $result;
+        }
+
+
+	public function msendconfirmationmailen($toemail,$subjectemail,$mtext)
+        {
+
+		# Instantiate the client.
+		#$mgClient = new Mailgun('key-4d3f7268e467c52b9af7ca6c852479d8');
+		$mgClient = new Mailgun('key-4d3f7268e467c52b9af7ca6c852479d8');
+                $domain = "mg.lesinfluenceurs.fr";
+		//echo " Toemail " . $toemail;
+		
+		$mailhtml = $this->mhtmlconfirmationmailen($mtext);
+		
+		//echo " Le texte html " . $mailhtml;exit();
+                # Make the call to the client.
+                $result = $mgClient->sendMessage($domain, array(
+                        'from'    => 'Votre agence d\'influence les influenceurs  <support@lesinfluenceurs.fr>',
+                        'to' => $toemail,	
+                        'subject' => $subjectemail,
+			'text'    => 'InstaGrowth subscription confirmation mail',
+                        'html' => $mailhtml
+                ));
+		
+                return $result;
+        }
+
+
+
+
+	public function mailinginstagrowthtest($toemail,$subjectemail,$minstagram)
+        {
+
+		# Instantiate the client.
+		#$mgClient = new Mailgun('key-4d3f7268e467c52b9af7ca6c852479d8');
+		$mgClient = new Mailgun('key-4d3f7268e467c52b9af7ca6c852479d8');
+   		#$domain = "mg.lesinfluenceurs.fr";
+		$domain = "mg.my-instagrowth.eu";
+		
+		
+		$mailhtml = $this->mhtmlmailinginstagrowthtest($minstagram);
+		
+		//echo " Le texte html " . $mailhtml;exit();
+                # Make the call to the client.
+
+                $result = $mgClient->sendMessage($domain, array(
+                        'from'    => 'Votre agence d\'influence les influenceurs  <bonjour@my-instagrowth.eu>',
+                        'to' => $toemail,	
+                        'subject' => $subjectemail,
+			'text'    => 'Gagnez des followers bien réels sur Instagram avec la solution InstaGrowth',
+                        'html' => $mailhtml
+                ));
+		
+                return $result;
+        }
+
+
+
+	public function mailinginstagrowth($toemail,$subjectemail,$mtext)
+        {
+
+		# Instantiate the client.
+		#$mgClient = new Mailgun('key-4d3f7268e467c52b9af7ca6c852479d8');
+		$mgClient = new Mailgun('key-4d3f7268e467c52b9af7ca6c852479d8');
+                $domain = "mg.lesinfluenceurs.fr";
+		
+		
+		$mailhtml = $this->mhtmlmailinginstagrowth($mtext);
+		
+		//echo " Le texte html " . $mailhtml;exit();
+                # Make the call to the client.
+
+                $result = $mgClient->sendMessage($domain, array(
+                        'from'    => 'Votre agence d\'influence les influenceurs  <support@lesinfluenceurs.fr>',
+                        'to' => $toemail,	
+                        'subject' => $subjectemail,
+			'text'    => 'Gagnez des followers bien réels sur Instagram avec la solution InstaGrowth',
+                        'html' => $mailhtml
+                ));
+		
+                return $result;
+        }
+
+
+	public function mailinginstagrowthen($toemail,$subjectemail,$mtext)
+        {
+
+		# Instantiate the client.
+		#$mgClient = new Mailgun('key-4d3f7268e467c52b9af7ca6c852479d8');
+		$mgClient = new Mailgun('key-4d3f7268e467c52b9af7ca6c852479d8');
+		#$domain = "mg.lesinfluenceurs.fr";
+		$domain = "mg.my-instagrowth.eu";
+		
+		
+		$mailhtml = $this->mhtmlmailinginstagrowthen($mtext);
+		
+		//echo " Le texte html " . $mailhtml;exit();
+                # Make the call to the client.
+
+                $result = $mgClient->sendMessage($domain, array(
+                        'from'    => 'Votre agence d\'influence les influenceurs  <bonjour@my-instagrowth.eu>',
+                        'to' => $toemail,	
+                        'subject' => $subjectemail,
+			'text'    => $subjectemail,
+                        'html' => $mailhtml
+                ));
+		
+                return $result;
+        }
+
+
+
+	public function mailinginstagrowtherrorcard($toemail,$subjectemail,$mtext)
+        {
+
+		# Instantiate the client.
+		#$mgClient = new Mailgun('key-4d3f7268e467c52b9af7ca6c852479d8');
+		$mgClient = new Mailgun('key-4d3f7268e467c52b9af7ca6c852479d8');
+                $domain = "mg.lesinfluenceurs.fr";
+		
+		
+		$mailhtml = $this->mhtmlerrorcard($toemail);
+		
+		//echo " Le texte html " . $mailhtml;exit();
+                # Make the call to the client.
+
+                $result = $mgClient->sendMessage($domain, array(
+                        'from'    => 'Votre agence d\'influence les influenceurs  <support@lesinfluenceurs.fr>',
+                        'to' => $toemail,	
+                        'subject' => $subjectemail,
+			'text'    => 'Mauvai numero de carte',
+                        'html' => $mailhtml
+                ));
+		
+                return $result;
+        }
+
+
+
+
+	public function mailwrongpassword($toemail,$subjectemail,$mtext)
+        {
+
+		# Instantiate the client.
+		#$mgClient = new Mailgun('key-4d3f7268e467c52b9af7ca6c852479d8');
+		$mgClient = new Mailgun('key-4d3f7268e467c52b9af7ca6c852479d8');
+                $domain = "mg.lesinfluenceurs.fr";
+		
+		
+		$mailhtml = $this->mhtmlwrongpassword($mtext);
+		
+		//echo " Le texte html " . $mailhtml;exit();
+                # Make the call to the client.
+
+                $result = $mgClient->sendMessage($domain, array(
+                        'from'    => 'Votre agence d\'influence digitale  <support@lesinfluenceurs.fr>',
+                        'to' => $toemail,	
+                        'subject' => $subjectemail,
+			'text'    => 'Configuration de votre compte InstaGrowth',
+                        'html' => $mailhtml
+                ));
+		
+                return $result;
+        }
+
+
+
+	public function msendrequest($toemail,$subjectemail,$mtext)
+        {
+
+		# Instantiate the client.
+		#$mgClient = new Mailgun('key-4d3f7268e467c52b9af7ca6c852479d8');
+		$mgClient = new Mailgun('key-4d3f7268e467c52b9af7ca6c852479d8');
+                $domain = "mg.lesinfluenceurs.fr";
+		//echo " Toemail " . $toemail;
+		$mailhtml = $this->mhtmlmarque($mtext);
+		//echo " Le texte html " . $mailhtml;exit();
+                # Make the call to the client.
+
+                $result = $mgClient->sendMessage($domain, array(
+                        'from'    => 'Votre agence d\'influence les influenceurs  <support@lesinfluenceurs.fr>',
+                        'to' => $toemail,	
+                        'subject' => $subjectemail,
+			'text'    => 'Confirmation de votre inscription',
+                        'html' => $mailhtml
+                ));
+
+                return $result;
+        }
+
+
+	public function msendsupport($toemail,$subjectemail,$mtext)
+        {
+
+                # Instantiate the client.
+                #$mgClient = new Mailgun('key-4d3f7268e467c52b9af7ca6c852479d8');
+                $mgClient = new Mailgun('key-4d3f7268e467c52b9af7ca6c852479d8');
+                $domain = "mg.lesinfluenceurs.fr";
+                //echo " Toemail " . $toemail;
+                $mailhtml = $this->mhtmlsupportmarque($mtext);
+                # Make the call to the client.
+
+                $result = $mgClient->sendMessage($domain, array(
+                        'from'    => 'Support les influenceurs  <support@lesinfluenceurs.fr>',
+                        'to' => $toemail,
+                        'subject' => $subjectemail,
+                        'text'    => $mailhtml,
+                        'html' => $mailhtml
+                ));
+
+                return $result;
+        }
+
+
+	public function msendsupportmarque($toemail,$subjectemail,$mtext)
+        {
+
+                # Instantiate the client.
+                #$mgClient = new Mailgun('key-4d3f7268e467c52b9af7ca6c852479d8');
+                $mgClient = new Mailgun('key-4d3f7268e467c52b9af7ca6c852479d8');
+                $domain = "mg.lesinfluenceurs.fr";
+                //echo " Toemail " . $toemail;
+                $mailhtml = $this->mhtmlsupportmarque($mtext);
+                # Make the call to the client.
+
+                $result = $mgClient->sendMessage($domain, array(
+                        'from'    => 'Support les influenceurs  <support@lesinfluenceurs.fr>',
+                        'to' => $toemail,
+                        'subject' => $subjectemail,
+                        'text'    => $mailhtml,
+                        'html' => $mailhtml
+                ));
+
+                return $result;
+        }
+
+
+}
