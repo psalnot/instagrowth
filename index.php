@@ -44,8 +44,8 @@
                     <div class="row text-center">
                         <div class="col-sm-8 col-sm-offset-2">
                           <!--<h1>Gagnez des Followers sur Instagram avec un Community Manager d&eacute;di&eacute;.</h1>-->
-			  <h1>Take your Instagram account to the next level <span style="font-size: 48px;">🚀</span></h1>
-                            <div class="typed-headline"> <span class="h2 thin inline-block">Increase your</span> <span class="h2 thin inline-block typed-text typed-text--cursor color--primary text--logo light" data-typed-strings="reach.,engagement.,followers."></span> </div>
+			  <h1>Gagnez des followers Instagram et développez votre influence <span style="font-size: 48px;">🚀</span></h1>
+                            <div class="typed-headline"> <span class="h2 thin inline-block">Augmentez votre</span> <span class="h2 thin inline-block typed-text typed-text--cursor color--primary text--logo light" data-typed-strings="portée.,engagement.,nombre de followers."></span> </div>
                             <div class="mt--1 text-center-xs">
                                 <a class="btn btn--lg btn-fix btn--primary type--uppercase" href="<?php echo $SIGNUP_URL; ?>"> <span class="btn__text btntxt-fix">
                                     Testez nous gratuitement <span class="emoji">👈</span> </span>

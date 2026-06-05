@@ -111,9 +111,8 @@
                 <div class="container">
                     <div class="row pos-vertical-align-columns">
                         <div class="col-sm-5 col-xs-12"> <span class="p small color--primary">Get more real Instagram followers</span>
-                            <h1>Speed up your Instagram Growth</h1>
+                            <h2>Speed up your Instagram Growth</h2>
                           <p class="lead">Accelerate your Instagram Growth without buying followers. </p>
-			  </p>
 			  <p>
 			    
 			  </p>
@@ -137,13 +136,13 @@
                     <div class="row pos-vertical-align-columns">
                         <div class="col-sm-6 col-xs-12"> <img alt="Upleap notifications illustrating an increase in followers on Instagram" class="mt--3" src="img/get-more-instagram-followers-upleap.png"> </div>
                         <div class="col-sm-5 col-xs-12 mt--xs--2"> <span class="p small color--primary">Accelerate your InstaGram Growth</span>
-                            <h1>Grow your social exposure</h1>
+                            <h2>Grow your social exposure</h2>
                           <p class="lead">
 			    Instagrowth accelerate your instagram growth without buying followers !
 
 			    </p>
                             <a href="<?php echo $SIGNUP_URL_EN; ?>" class="btn btn--lg btn--primary type--uppercase"> <span class="btn__text">
-                                    Trys us for free
+                                    Try us for free
                                 </span> </a>
                         </div>
                     </div>
@@ -165,7 +164,7 @@
                 <div class="container text-center">
                     <div class="row">
                         <div class="col-sm-14">
-                            <h1>Speed up your Instagram Growth !</h1>
+                            <h2>Speed up your Instagram Growth !</h2>
                             <p class="lead"> <?php echo $NB_JOURS_TEST;?> days free trial</p>
                         </div>
                     </div>
