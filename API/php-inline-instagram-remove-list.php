@@ -117,7 +117,7 @@ private function getTargetsToRemove($sessionIds) {
     foreach ($targetSessionMap as $key => $sessions) {
         // Ensure the target appears in exactly three sessions
         
-        if (count($sessions) > 2) {
+        if (count($sessions) > 1) {
             $allBelowThreshold = true;
 
 	    // Check if all sessions have interactions less than 5

@@ -50,6 +50,14 @@ Global constants and DB credentials live in `utils/defines.php` (included first 
 
 **Blog** (`blog/`) — Static HTML blog posts, no PHP.
 
+**Instagram automation backend** (`API/`) — Server-side scripts that drive the follow/unfollow automation: `instagram_interact_api.php` (main interaction loop), `instagram_session_interact.php` (session management), `instagram_target_top_followers_build_list_api.php` (target list builder), and helpers for follow-back tracking and config updates. These run as scheduled or long-running CLI/HTTP processes, not as user-facing pages.
+
+**Co-located sub-products** — `BOOKER/` and `UBOOKER-2/` are separate booking-related products sharing the same repo. Their code is self-contained and independent of the instagrowth frontend.
+
+## Local setup
+
+`utils/defines.php` is gitignored (it holds DB credentials and API keys). A local copy must be created manually before the app will run. The production path assumed by class `set_include_path` calls is `/var/www/instagrowth-V1/` — override this locally or symlink accordingly.
+
 ## Multilingual
 
 FR is default. EN variants use the `-en` suffix on both pages (`index-en.php`) and partials (`header-menu-en.php`, `footer-en.php`). The `traduction.class.php` class handles runtime string switching.
@@ -59,4 +67,5 @@ FR is default. EN variants use the `-en` suffix on both pages (`index-en.php`) a
 - Dated files (e.g. `backoffice-user-general-2024-10-07.php`) are backups/snapshots — do not edit them.
 - Files prefixed with `#` (e.g. `#checkout.php#`) are Emacs auto-save artifacts — ignore them.
 - Files ending with `~` are editor backup files — ignore them.
-- Active production files have no date suffix and no `~`.
+- Files with `-SAUVEGARDE`, `-SAVE`, `-ORIG`, or `-dev` suffixes are also snapshots/backups — ignore them.
+- Active production files have no date suffix, no backup suffix, and no `~`.

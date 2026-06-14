@@ -316,9 +316,9 @@ if (php_sapi_name() === 'cli') {
     //$DBNAME = "your_db_name";
 
     $updater = new InstagramConfigUpdater($DBUSER, $DBPASS, $DBNAME);
-    #$updater->updateConfigFollowers($instagram_username_interact, $datee);
-    #$updater->updateConfigLikers($instagram_username_interact,$datee);
-    $updater->updateRemoveConfig($instagram_username_interact,$datee);
+    $updater->updateConfigFollowers($instagram_username_interact, $datee);
+    $updater->updateConfigLikers($instagram_username_interact,$datee);
+    #$updater->updateRemoveConfig($instagram_username_interact,$datee);
 
     echo "Update completed.\n";
 }
