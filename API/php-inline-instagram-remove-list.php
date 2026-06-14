@@ -120,9 +120,10 @@ private function getTargetsToRemove($sessionIds) {
         if (count($sessions) > 2) {
             $allBelowThreshold = true;
 
-            // Check if all sessions have interactions less than 5
+	    // Check if all sessions have interactions less than 5
+	    // 13-06-2026 : Enhance the threeshold to 800 in order to remove target after each run
             foreach ($sessions as $interactions) {
-                if ($interactions >= 8) {
+                if ($interactions >= 800) {
                     $allBelowThreshold = false;
                     break; // No need to check further if one session exceeds the threshold
                 }
