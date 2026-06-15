@@ -111,18 +111,33 @@ class InstagramConfigUpdater
                   AND is_follow_back = 1
                 GROUP BY target
             )
-            SELECT 
+            SELECT
                 tf.target,
                 COALESCE(fb.follow_backs, 0) AS follow_backs,
                 tf.total_follows,
-                ROUND(CAST(COALESCE(fb.follow_backs, 0) AS DECIMAL(10,4)) / tf.total_follows, 4) AS follow_back_percentage
+                ROUND(CAST(COALESCE(fb.follow_backs, 0) AS DECIMAL(10,4)) / tf.total_follows, 4) AS follow_back_percentage,
+                COALESCE(lf.followers, 0) AS followers
             FROM total_follows tf
             LEFT JOIN follow_backs fb ON tf.target = fb.target
+            LEFT JOIN (
+                SELECT target, followers
+                FROM instagram_interact ii
+                WHERE instagram_username_interact = ?
+                  AND followers IS NOT NULL
+                  AND last_interaction = (
+                      SELECT MAX(last_interaction)
+                      FROM instagram_interact
+                      WHERE target = ii.target
+                        AND instagram_username_interact = ii.instagram_username_interact
+                        AND followers IS NOT NULL
+                  )
+                GROUP BY target
+            ) lf ON tf.target = lf.target
             ORDER BY follow_back_percentage DESC
         ";
 
         $stmt = $this->db->prepare($sql);
-        $stmt->bind_param("ss", $instagram_username_interact, $instagram_username_interact);
+        $stmt->bind_param("sss", $instagram_username_interact, $instagram_username_interact, $instagram_username_interact);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -132,8 +147,9 @@ class InstagramConfigUpdater
         while ($row = $result->fetch_assoc()) {
             $target = $row['target'];
             $percentage = (float)$row['follow_back_percentage'];
+            $followers = (int)$row['followers'];
 
-            if ($percentage <= 0.1) {
+            if ($percentage <= 0.1 || $followers < 5000) {
                 continue;
             }
 
@@ -157,9 +173,26 @@ class InstagramConfigUpdater
             $count = $countRow['cnt'] ?? 0;
 
             if ($count == 0) {
+                // Cross-job dedup: skip if already added under any job
+                $dedupSql = "
+                    SELECT COUNT(*) as cnt
+                    FROM instagram_add_config
+                    WHERE instagram_username_interact = ?
+                      AND instagram_username = ?
+                ";
+                $dedupStmt = $this->db->prepare($dedupSql);
+                $dedupStmt->bind_param("ss", $instagram_username_interact, $target);
+                $dedupStmt->execute();
+                $dedupRow = $dedupStmt->get_result()->fetch_assoc();
+                if (($dedupRow['cnt'] ?? 0) > 0) {
+                    echo "Skipped (exists in another job): $instagram_username_interact / $target\n";
+                    $usedUsernames[] = $target;
+                    continue;
+                }
+
                 // Insert row
                 $insertSql = "
-                    INSERT INTO instagram_add_config 
+                    INSERT INTO instagram_add_config
                         (instagram_username_interact, instagram_username, job_name, is_added)
                     VALUES (?, ?, 'blogger-post-likers', 1)
                 ";
@@ -281,9 +314,26 @@ class InstagramConfigUpdater
             $count = $countRow['cnt'] ?? 0;
 
             if ($count == 0) {
+                // Cross-job dedup: skip if already added under any job
+                $dedupSql = "
+                    SELECT COUNT(*) as cnt
+                    FROM instagram_add_config
+                    WHERE instagram_username_interact = ?
+                      AND instagram_username = ?
+                ";
+                $dedupStmt = $this->db->prepare($dedupSql);
+                $dedupStmt->bind_param("ss", $instagram_username_interact, $follower_username);
+                $dedupStmt->execute();
+                $dedupRow = $dedupStmt->get_result()->fetch_assoc();
+                if (($dedupRow['cnt'] ?? 0) > 0) {
+                    echo "Skipped (exists in another job): $instagram_username_interact / $follower_username\n";
+                    $usedUsernames[] = $follower_username;
+                    continue;
+                }
+
                 // Insert
                 $insertSql = "
-                    INSERT INTO instagram_add_config 
+                    INSERT INTO instagram_add_config
                         (instagram_username_interact, instagram_username, target, job_name, is_added, followers, following)
                     VALUES (?, ?, ?, 'blogger-followers', 1, ?, ?)
 ";
