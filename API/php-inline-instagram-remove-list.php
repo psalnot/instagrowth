@@ -88,7 +88,13 @@ class InstagramInteractionRemover {
         }
 
         if (empty($targetJobSessions)) {
+            echo "[DEBUG] No targets extracted from session JSON columns.\n";
             return [];
+        }
+
+        echo "[DEBUG] Target/job map built: " . count($targetJobSessions) . " entries\n";
+        foreach ($targetJobSessions as $key => $sids) {
+            echo "[DEBUG]   $key => sessions: " . implode(',', $sids) . "\n";
         }
 
         // Step 2: For each target/job, count interactions per session in instagram_interact
@@ -116,12 +122,14 @@ class InstagramInteractionRemover {
 
             // Guard: skip if no interaction rows at all (configured but never interacted)
             if (empty($rows)) {
+                echo "[DEBUG] $target / $jobName — skipped (0 interactions in instagram_interact)\n";
                 continue;
             }
 
             // Check all sessions are below threshold
             $allBelowThreshold = true;
             foreach ($rows as $row) {
+                echo "[DEBUG] $target / $jobName — session {$row['session_id']}: {$row['interactions']} interactions\n";
                 if ((int)$row['interactions'] >= 800) {
                     $allBelowThreshold = false;
                     break;
@@ -129,10 +137,13 @@ class InstagramInteractionRemover {
             }
 
             if ($allBelowThreshold) {
+                echo "[DEBUG] $target / $jobName — FLAGGED for removal\n";
                 $targetsToRemove[] = [
                     'target'   => $target,
                     'job_name' => $jobName,
                 ];
+            } else {
+                echo "[DEBUG] $target / $jobName — kept (threshold reached)\n";
             }
         }
 
@@ -193,6 +204,11 @@ private function insertTargetsToRemove($targets) {
     public function run() {
         // Step 1: Get sessions from the last 2 days
         $sessions = $this->getRecentSessions();
+
+        echo "[DEBUG] Sessions found: " . count($sessions) . "\n";
+        foreach ($sessions as $s) {
+            echo "[DEBUG] session_id={$s['session_id']} blogger_followers={$s['blogger_followers']} blogger_post_likers={$s['blogger_post_likers']}\n";
+        }
 
         // Step 2: Get targets below the interaction threshold
         $targetsToRemove = $this->getTargetsToRemove($sessions);
