@@ -74,6 +74,10 @@ class InstagramInteractionRemover {
                     continue;
                 }
                 $targets = json_decode($jsonValue, true);
+                // Handle double-encoded JSON (stored as "[\"...\"]" in DB)
+                if (is_string($targets)) {
+                    $targets = json_decode($targets, true);
+                }
                 if (!is_array($targets)) {
                     continue;
                 }
