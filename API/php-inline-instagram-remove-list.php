@@ -25,20 +25,20 @@ class InstagramInteractionRemover {
     }
 
     /**
-     * Get the last three session IDs for the given username.
-     * @return array The array of last three session_ids.
+     * Get session IDs and their blogger_followers/blogger_post_likers JSON from the last 2 days.
+     * @return array Rows with session_id, blogger_followers, blogger_post_likers.
      */
-    private function getLastThreeSessions() {
+    private function getRecentSessions() {
         $query = "
-            SELECT session_id 
+            SELECT session_id, blogger_followers, blogger_post_likers
             FROM instagram_session
             WHERE instagram_username_interact = :username
-            ORDER BY start_time DESC
-            LIMIT 10";
-        
+              AND start_time >= DATE_SUB(NOW(), INTERVAL 2 DAY)
+            ORDER BY start_time DESC";
+
         $stmt = $this->pdo->prepare($query);
         $stmt->execute(['username' => $this->username]);
-        return $stmt->fetchAll(PDO::FETCH_COLUMN);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     /**
@@ -46,152 +46,142 @@ class InstagramInteractionRemover {
      * @param array $sessionIds The list of session IDs to filter by.
      * @return array The array of targets to be removed.
      */
-    /*private function getTargetsToRemove($sessionIds) {
-        if (empty($sessionIds)) {
+    /**
+     * Build target→job_name map from instagram_session JSON columns,
+     * then verify interaction counts against the 800 threshold.
+     * @param array $sessions Rows from getRecentSessions().
+     * @return array Targets flagged for removal with their job_name.
+     */
+    private function getTargetsToRemove($sessions) {
+        if (empty($sessions)) {
             return [];
         }
-        
-        $inQuery = implode(',', array_fill(0, count($sessionIds), '?'));
-        
-        $query = "
-            SELECT target, job_name, session_id, COUNT(*) as interactions
-            FROM instagram_interact
-            WHERE instagram_username_interact = ?
-            AND session_id IN ($inQuery)
-            GROUP BY target, job_name, session_id
-            HAVING interactions < 5";
-            
-        
-        $stmt = $this->pdo->prepare($query);
-        $params = array_merge([$this->username], $sessionIds);
-        $stmt->execute($params);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }*/
-    /**
- * Fetch the targets where all sessions have fewer than 5 interactions per session_id and job_name.
- * The target must appear in all three sessions to be considered for removal.
- * @param array $sessionIds The list of session IDs to filter by.
- * @return array The array of targets to be removed.
- */
-private function getTargetsToRemove($sessionIds) {
-    if (empty($sessionIds)) {
-        return [];
-    }
 
-    $inQuery = implode(',', array_fill(0, count($sessionIds), '?'));
+        // Step 1: Build target→job map from session JSON columns
+        // A target may appear in multiple sessions; track all session_ids per target/job key
+        $targetJobSessions = []; // ['target|job_name' => [session_id, ...]]
 
-    // Step 1: Retrieve the counts of interactions
-    $query = "
-        SELECT target, job_name, session_id, COUNT(*) as interactions
-        FROM instagram_interact
-        WHERE instagram_username_interact = ?
-        AND session_id IN ($inQuery)
-        AND is_unlist=0
-        AND unfollowed=0
-        GROUP BY target, job_name, session_id
-        ";
+        foreach ($sessions as $session) {
+            $sessionId = $session['session_id'];
 
-    $stmt = $this->pdo->prepare($query);
-    $params = array_merge([$this->username], $sessionIds);
-    $stmt->execute($params);
+            $jobColumns = [
+                'blogger-followers'    => $session['blogger_followers'],
+                'blogger-post-likers'  => $session['blogger_post_likers'],
+            ];
 
-    // Step 2: Fetch results and filter targets
-    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $targetsToRemove = [];
-
-    // Check if all sessions for each target and job_name are below the threshold
-    $targetSessionMap = [];
-    foreach ($results as $row) {
-        $key = $row['target'] . '|' . $row['job_name']; // Create a unique key for target/job_name combination
-
-        if (!isset($targetSessionMap[$key])) {
-            $targetSessionMap[$key] = []; // Initialize array for this target/job_name
+            foreach ($jobColumns as $jobName => $jsonValue) {
+                if ($jsonValue === null || $jsonValue === 'null') {
+                    continue;
+                }
+                $targets = json_decode($jsonValue, true);
+                if (!is_array($targets)) {
+                    continue;
+                }
+                foreach ($targets as $target) {
+                    $key = $target . '|' . $jobName;
+                    if (!isset($targetJobSessions[$key])) {
+                        $targetJobSessions[$key] = [];
+                    }
+                    $targetJobSessions[$key][] = $sessionId;
+                }
+            }
         }
 
-        // Store the interaction count for the session
-        $targetSessionMap[$key][$row['session_id']] = $row['interactions'];
-    }
+        if (empty($targetJobSessions)) {
+            return [];
+        }
 
-    //print_r($targetSessionMap);
-    // Filter targets based on interaction counts
-    foreach ($targetSessionMap as $key => $sessions) {
-        // Ensure the target appears in exactly three sessions
-        
-        if (count($sessions) >= 1) {
+        // Step 2: For each target/job, count interactions per session in instagram_interact
+        $targetsToRemove = [];
+
+        foreach ($targetJobSessions as $key => $sessionIds) {
+            list($target, $jobName) = explode('|', $key, 2);
+
+            $inQuery = implode(',', array_fill(0, count($sessionIds), '?'));
+            $query = "
+                SELECT session_id, COUNT(*) as interactions
+                FROM instagram_interact
+                WHERE instagram_username_interact = ?
+                  AND target = ?
+                  AND session_id IN ($inQuery)
+                  AND is_unlist = 0
+                  AND unfollowed = 0
+                GROUP BY session_id
+            ";
+
+            $params = array_merge([$this->username, $target], $sessionIds);
+            $stmt = $this->pdo->prepare($query);
+            $stmt->execute($params);
+            $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            // Guard: skip if no interaction rows at all (configured but never interacted)
+            if (empty($rows)) {
+                continue;
+            }
+
+            // Check all sessions are below threshold
             $allBelowThreshold = true;
-
-	    // Check if all sessions have interactions less than 5
-	    // 13-06-2026 : Enhance the threeshold to 800 in order to remove target after each run
-            foreach ($sessions as $interactions) {
-                if ($interactions >= 800) {
+            foreach ($rows as $row) {
+                if ((int)$row['interactions'] >= 800) {
                     $allBelowThreshold = false;
-                    break; // No need to check further if one session exceeds the threshold
+                    break;
                 }
             }
 
-            // If all sessions are below the threshold, add to targets to remove
             if ($allBelowThreshold) {
-                list($target, $jobName) = explode('|', $key);
                 $targetsToRemove[] = [
-                    'target' => $target,
+                    'target'   => $target,
                     'job_name' => $jobName,
-                    'sessions' => $sessions
                 ];
             }
         }
-    }
 
-    return $targetsToRemove;
-}
+        return $targetsToRemove;
+    }
 
 
 
 /**
- * Insert the targets to be removed into the instagram_target_interact_remove table,
- * only if there is no existing entry with the same target_name, job_name, and taget_instagram_interact_username.
- * 
+ * Insert targets to be removed into instagram_remove_config,
+ * skipping entries that already exist with is_removed = 0.
+ *
  * @param array $targets The array of targets to insert.
  * @return void
  */
 private function insertTargetsToRemove($targets) {
-    // Query to check if a target with the same target_name, job_name, and username already exists
     $checkQuery = "
-        SELECT COUNT(*) 
-        FROM instagram_target_interact_remove
-        WHERE target_name = :target_name 
-        AND job_name = :job_name 
-        AND taget_instagram_interact_username = :taget_instagram_interact_username";
-    
-    // Query to insert a new target
-    $insertQuery = "
-        INSERT INTO instagram_target_interact_remove (target_name, job_name, date_created, taget_instagram_interact_username)
-        VALUES (:target_name, :job_name, NOW(), :taget_instagram_interact_username)";
+        SELECT COUNT(*)
+        FROM instagram_remove_config
+        WHERE target = :target
+          AND job_name = :job_name
+          AND instagram_username_interact = :instagram_username_interact
+          AND is_removed = 0";
 
-    // Prepare the queries
-    $checkStmt = $this->pdo->prepare($checkQuery);
+    $insertQuery = "
+        INSERT INTO instagram_remove_config (target, job_name, instagram_username_interact, is_removed, date_created)
+        VALUES (:target, :job_name, :instagram_username_interact, 0, NOW())";
+
+    $checkStmt  = $this->pdo->prepare($checkQuery);
     $insertStmt = $this->pdo->prepare($insertQuery);
 
     foreach ($targets as $target) {
-        // Check if the target_name, job_name, and username already exist in the table
         $checkStmt->execute([
-            'target_name' => $target['target'],
-            'job_name' => $target['job_name'],
-            'taget_instagram_interact_username' => $this->username, // the username being processed
+            'target'                      => $target['target'],
+            'job_name'                    => $target['job_name'],
+            'instagram_username_interact' => $this->username,
         ]);
 
-        // Fetch the result (COUNT value)
         $count = $checkStmt->fetchColumn();
 
         if ($count == 0) {
-            // If no existing entry found, insert the new target
             $insertStmt->execute([
-                'target_name' => $target['target'],
-                'job_name' => $target['job_name'],
-                'taget_instagram_interact_username' => $this->username,
+                'target'                      => $target['target'],
+                'job_name'                    => $target['job_name'],
+                'instagram_username_interact' => $this->username,
             ]);
+            echo "Inserted: '{$target['target']}' / '{$target['job_name']}' for '{$this->username}'.\n";
         } else {
-            // Optionally log or print that the target already exists
-            echo "Target '{$target['target']}' with job '{$target['job_name']}' for user '{$this->username}' already exists, skipping insert.\n";
+            echo "Skipped (already exists): '{$target['target']}' / '{$target['job_name']}'.\n";
         }
     }
 }
@@ -201,11 +191,11 @@ private function insertTargetsToRemove($targets) {
      * Main function to run the logic for fetching and removing targets.
      */
     public function run() {
-        // Step 1: Get the last three session IDs
-        $sessionIds = $this->getLastThreeSessions();
+        // Step 1: Get sessions from the last 2 days
+        $sessions = $this->getRecentSessions();
 
-        // Step 2: Get the targets with less than 5 interactions
-        $targetsToRemove = $this->getTargetsToRemove($sessionIds);
+        // Step 2: Get targets below the interaction threshold
+        $targetsToRemove = $this->getTargetsToRemove($sessions);
 
         // Step 3: Insert the targets into the instagram_target_interact_remove table
         if (!empty($targetsToRemove)) {
