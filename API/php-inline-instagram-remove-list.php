@@ -143,8 +143,9 @@ class InstagramInteractionRemover {
             if ($allBelowThreshold) {
                 echo "[DEBUG] $target / $jobName — FLAGGED for removal\n";
                 $targetsToRemove[] = [
-                    'target'   => $target,
-                    'job_name' => $jobName,
+                    'target'     => $target,
+                    'job_name'   => $jobName,
+                    'session_id' => $sessionIds[0],
                 ];
             } else {
                 echo "[DEBUG] $target / $jobName — kept (threshold reached)\n";
@@ -173,8 +174,8 @@ private function insertTargetsToRemove($targets) {
           AND is_removed = 0";
 
     $insertQuery = "
-        INSERT INTO instagram_remove_config (target, job_name, instagram_username_interact, is_removed, date_created)
-        VALUES (:target, :job_name, :instagram_username_interact, 0, NOW())";
+        INSERT INTO instagram_remove_config (target, job_name, instagram_username_interact, is_removed, session_id, date_created)
+        VALUES (:target, :job_name, :instagram_username_interact, 0, :session_id, NOW())";
 
     $checkStmt  = $this->pdo->prepare($checkQuery);
     $insertStmt = $this->pdo->prepare($insertQuery);
@@ -193,6 +194,7 @@ private function insertTargetsToRemove($targets) {
                 'target'                      => $target['target'],
                 'job_name'                    => $target['job_name'],
                 'instagram_username_interact' => $this->username,
+                'session_id'                  => $target['session_id'],
             ]);
             echo "Inserted: '{$target['target']}' / '{$target['job_name']}' for '{$this->username}'.\n";
         } else {
