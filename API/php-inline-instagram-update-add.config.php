@@ -347,7 +347,314 @@ class InstagramConfigUpdater
         }
     }
 
-    
+    /**
+     * Update config likers based on instagram_session.blogger_post_likers.
+     * Only considers sessions with successful_interactions > 10.
+     * Only adds targets with follow-back rate > 10% not used in the last 2 days.
+     *
+     * @param string $instagram_username_interact
+     */
+    public function updateConfigLikerSession($instagram_username_interact)
+    {
+        $dateMinus2 = date('Y-m-d', strtotime('-2 days'));
+
+        // Step 1: Fetch sessions from last 2 days with successful_interactions > 10
+        $sessionSql = "
+            SELECT session_id, blogger_post_likers
+            FROM instagram_session
+            WHERE instagram_username_interact = ?
+              AND start_time >= DATE_SUB(NOW(), INTERVAL 2 DAY)
+              AND successful_interactions > 10
+              AND blogger_post_likers IS NOT NULL
+              AND blogger_post_likers != 'null'
+        ";
+        $sessionStmt = $this->db->prepare($sessionSql);
+        $sessionStmt->bind_param("s", $instagram_username_interact);
+        $sessionStmt->execute();
+        $sessionResult = $sessionStmt->get_result();
+
+        // Step 2: Build unique target list from JSON columns
+        $targets = [];
+        while ($row = $sessionResult->fetch_assoc()) {
+            $decoded = json_decode($row['blogger_post_likers'], true);
+            // Handle double-encoded JSON
+            if (is_string($decoded)) {
+                $decoded = json_decode($decoded, true);
+            }
+            if (!is_array($decoded)) {
+                continue;
+            }
+            foreach ($decoded as $target) {
+                $targets[$target] = true;
+            }
+        }
+        $sessionStmt->close();
+
+        if (empty($targets)) {
+            echo "No targets found in recent sessions.\n";
+            return;
+        }
+
+        $targets = array_keys($targets);
+        echo "Targets from sessions: " . implode(', ', $targets) . "\n";
+
+        $insertCount = 0;
+
+        foreach ($targets as $target) {
+
+            // Step 3: Recency guard — skip if used in last 2 days
+            $recentSql = "
+                SELECT COUNT(*) as cnt
+                FROM instagram_interact
+                WHERE target = ?
+                  AND instagram_username_interact = ?
+                  AND date_created > ?
+            ";
+            $recentStmt = $this->db->prepare($recentSql);
+            $recentStmt->bind_param("sss", $target, $instagram_username_interact, $dateMinus2);
+            $recentStmt->execute();
+            $recentRow = $recentStmt->get_result()->fetch_assoc();
+            $recentStmt->close();
+
+            if (($recentRow['cnt'] ?? 0) > 0) {
+                echo "Skipped (used in last 2 days): $target\n";
+                continue;
+            }
+
+            // Step 4: Calculate follow-back rate for this target
+            $totalSql = "
+                SELECT COUNT(*) as total
+                FROM instagram_interact
+                WHERE instagram_username_interact = ?
+                  AND target = ?
+                  AND followed = 1
+                  AND job_name = 'blogger-post-likers'
+            ";
+            $totalStmt = $this->db->prepare($totalSql);
+            $totalStmt->bind_param("ss", $instagram_username_interact, $target);
+            $totalStmt->execute();
+            $totalRow = $totalStmt->get_result()->fetch_assoc();
+            $totalStmt->close();
+            $totalFollows = (int)($totalRow['total'] ?? 0);
+
+            if ($totalFollows === 0) {
+                echo "Skipped (no follows recorded): $target\n";
+                continue;
+            }
+
+            $backSql = "
+                SELECT COUNT(*) as backs
+                FROM instagram_notifications
+                WHERE instagram_username_interact = ?
+                  AND target = ?
+                  AND is_follow_back = 1
+            ";
+            $backStmt = $this->db->prepare($backSql);
+            $backStmt->bind_param("ss", $instagram_username_interact, $target);
+            $backStmt->execute();
+            $backRow = $backStmt->get_result()->fetch_assoc();
+            $backStmt->close();
+            $followBacks = (int)($backRow['backs'] ?? 0);
+
+            $rate = $totalFollows > 0 ? $followBacks / $totalFollows : 0;
+
+            if ($rate <= 0.1) {
+                echo "Skipped (follow-back rate too low: " . round($rate * 100, 1) . "%): $target\n";
+                continue;
+            }
+
+            echo "Target $target — follow-back rate: " . round($rate * 100, 1) . "%\n";
+
+            // Step 5: Cross-job dedup
+            $dedupSql = "
+                SELECT COUNT(*) as cnt
+                FROM instagram_add_config
+                WHERE instagram_username_interact = ?
+                  AND instagram_username = ?
+            ";
+            $dedupStmt = $this->db->prepare($dedupSql);
+            $dedupStmt->bind_param("ss", $instagram_username_interact, $target);
+            $dedupStmt->execute();
+            $dedupRow = $dedupStmt->get_result()->fetch_assoc();
+            $dedupStmt->close();
+
+            if (($dedupRow['cnt'] ?? 0) > 0) {
+                echo "Skipped (exists in another job): $target\n";
+                continue;
+            }
+
+            // Step 6: Insert
+            $insertSql = "
+                INSERT INTO instagram_add_config
+                    (instagram_username_interact, instagram_username, job_name, is_added)
+                VALUES (?, ?, 'blogger-post-likers', 1)
+            ";
+            $insertStmt = $this->db->prepare($insertSql);
+            $insertStmt->bind_param("ss", $instagram_username_interact, $target);
+            $insertStmt->execute();
+            $insertStmt->close();
+
+            echo "Inserted: $instagram_username_interact / $target\n";
+            $insertCount++;
+        }
+
+        echo "updateConfigLikerSession completed. Inserted: $insertCount.\n";
+    }
+
+    /**
+     * Update config followers based on instagram_session.blogger_followers.
+     * Only considers sessions with successful_interactions > 10.
+     * Only adds targets with follow-back rate > 10% not used in the last 2 days.
+     *
+     * @param string $instagram_username_interact
+     */
+    public function updateConfigFollowerSession($instagram_username_interact)
+    {
+        $dateMinus2 = date('Y-m-d', strtotime('-2 days'));
+
+        // Step 1: Fetch sessions from last 2 days with successful_interactions > 10
+        $sessionSql = "
+            SELECT session_id, blogger_followers
+            FROM instagram_session
+            WHERE instagram_username_interact = ?
+              AND start_time >= DATE_SUB(NOW(), INTERVAL 2 DAY)
+              AND successful_interactions > 10
+              AND blogger_followers IS NOT NULL
+              AND blogger_followers != 'null'
+        ";
+        $sessionStmt = $this->db->prepare($sessionSql);
+        $sessionStmt->bind_param("s", $instagram_username_interact);
+        $sessionStmt->execute();
+        $sessionResult = $sessionStmt->get_result();
+
+        // Step 2: Build unique target list from JSON columns
+        $targets = [];
+        while ($row = $sessionResult->fetch_assoc()) {
+            $decoded = json_decode($row['blogger_followers'], true);
+            // Handle double-encoded JSON
+            if (is_string($decoded)) {
+                $decoded = json_decode($decoded, true);
+            }
+            if (!is_array($decoded)) {
+                continue;
+            }
+            foreach ($decoded as $target) {
+                $targets[$target] = true;
+            }
+        }
+        $sessionStmt->close();
+
+        if (empty($targets)) {
+            echo "No targets found in recent sessions.\n";
+            return;
+        }
+
+        $targets = array_keys($targets);
+        echo "Targets from sessions: " . implode(', ', $targets) . "\n";
+
+        $insertCount = 0;
+
+        foreach ($targets as $target) {
+
+            // Step 3: Recency guard — skip if used in last 2 days
+            $recentSql = "
+                SELECT COUNT(*) as cnt
+                FROM instagram_interact
+                WHERE target = ?
+                  AND instagram_username_interact = ?
+                  AND date_created > ?
+            ";
+            $recentStmt = $this->db->prepare($recentSql);
+            $recentStmt->bind_param("sss", $target, $instagram_username_interact, $dateMinus2);
+            $recentStmt->execute();
+            $recentRow = $recentStmt->get_result()->fetch_assoc();
+            $recentStmt->close();
+
+            if (($recentRow['cnt'] ?? 0) > 0) {
+                echo "Skipped (used in last 2 days): $target\n";
+                continue;
+            }
+
+            // Step 4: Calculate follow-back rate for this target
+            $totalSql = "
+                SELECT COUNT(*) as total
+                FROM instagram_interact
+                WHERE instagram_username_interact = ?
+                  AND target = ?
+                  AND followed = 1
+                  AND job_name = 'blogger-followers'
+            ";
+            $totalStmt = $this->db->prepare($totalSql);
+            $totalStmt->bind_param("ss", $instagram_username_interact, $target);
+            $totalStmt->execute();
+            $totalRow = $totalStmt->get_result()->fetch_assoc();
+            $totalStmt->close();
+            $totalFollows = (int)($totalRow['total'] ?? 0);
+
+            if ($totalFollows === 0) {
+                echo "Skipped (no follows recorded): $target\n";
+                continue;
+            }
+
+            $backSql = "
+                SELECT COUNT(*) as backs
+                FROM instagram_notifications
+                WHERE instagram_username_interact = ?
+                  AND target = ?
+                  AND is_follow_back = 1
+            ";
+            $backStmt = $this->db->prepare($backSql);
+            $backStmt->bind_param("ss", $instagram_username_interact, $target);
+            $backStmt->execute();
+            $backRow = $backStmt->get_result()->fetch_assoc();
+            $backStmt->close();
+            $followBacks = (int)($backRow['backs'] ?? 0);
+
+            $rate = $totalFollows > 0 ? $followBacks / $totalFollows : 0;
+
+            if ($rate <= 0.1) {
+                echo "Skipped (follow-back rate too low: " . round($rate * 100, 1) . "%): $target\n";
+                continue;
+            }
+
+            echo "Target $target — follow-back rate: " . round($rate * 100, 1) . "%\n";
+
+            // Step 5: Cross-job dedup
+            $dedupSql = "
+                SELECT COUNT(*) as cnt
+                FROM instagram_add_config
+                WHERE instagram_username_interact = ?
+                  AND instagram_username = ?
+            ";
+            $dedupStmt = $this->db->prepare($dedupSql);
+            $dedupStmt->bind_param("ss", $instagram_username_interact, $target);
+            $dedupStmt->execute();
+            $dedupRow = $dedupStmt->get_result()->fetch_assoc();
+            $dedupStmt->close();
+
+            if (($dedupRow['cnt'] ?? 0) > 0) {
+                echo "Skipped (exists in another job): $target\n";
+                continue;
+            }
+
+            // Step 6: Insert
+            $insertSql = "
+                INSERT INTO instagram_add_config
+                    (instagram_username_interact, instagram_username, job_name, is_added)
+                VALUES (?, ?, 'blogger-followers', 1)
+            ";
+            $insertStmt = $this->db->prepare($insertSql);
+            $insertStmt->bind_param("ss", $instagram_username_interact, $target);
+            $insertStmt->execute();
+            $insertStmt->close();
+
+            echo "Inserted: $instagram_username_interact / $target\n";
+            $insertCount++;
+        }
+
+        echo "updateConfigFollowerSession completed. Inserted: $insertCount.\n";
+    }
+
 }
 
 // ---------- Inline execution ----------
@@ -366,8 +673,10 @@ if (php_sapi_name() === 'cli') {
     //$DBNAME = "your_db_name";
 
     $updater = new InstagramConfigUpdater($DBUSER, $DBPASS, $DBNAME);
-    $updater->updateConfigFollowers($instagram_username_interact, $datee);
-    $updater->updateConfigLikers($instagram_username_interact,$datee);
+    #$updater->updateConfigFollowers($instagram_username_interact, $datee);
+    #$updater->updateConfigLikers($instagram_username_interact,$datee);
+    $updater->updateConfigLikerSession($instagram_username_interact);
+    $updater->updateConfigFollowerSession($instagram_username_interact);
     #$updater->updateRemoveConfig($instagram_username_interact,$datee);
 
     echo "Update completed.\n";
