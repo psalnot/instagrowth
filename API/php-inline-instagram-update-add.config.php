@@ -363,6 +363,7 @@ class InstagramConfigUpdater
             SELECT session_id, blogger_post_likers
             FROM instagram_session
             WHERE instagram_username_interact = ?
+              AND start_time >= DATE_SUB(NOW(), INTERVAL 60 DAY)
               AND successful_interactions > 10
               AND blogger_post_likers IS NOT NULL
               AND blogger_post_likers != 'null'
@@ -516,6 +517,7 @@ class InstagramConfigUpdater
             SELECT session_id, blogger_followers
             FROM instagram_session
             WHERE instagram_username_interact = ?
+              AND start_time >= DATE_SUB(NOW(), INTERVAL 60 DAY)
               AND successful_interactions > 10
               AND blogger_followers IS NOT NULL
               AND blogger_followers != 'null'
